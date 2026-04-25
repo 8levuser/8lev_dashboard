@@ -209,7 +209,7 @@ hero_html = """
         max-width: 820px;
         font-weight: 650;
     ">
-        This dashboard presents the performance, activity, and historical record of an automated investment system designed to generate ongoing realized returns through structured position management.
+        This dashboard presents the performance, activity, and historical record of an automated investment system designed to compound ongoing realized returns through structured position management.
     </div>
 </div>
 """
