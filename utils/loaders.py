@@ -1,33 +1,37 @@
 import json
-from config import (
-    DAILY_SUMMARY_FILE,
-    MONTHLY_LOG_FILE,
-    PATH_FILE,
-    TRADE_LOG_FILE,
-    DATA_CENTER_FILE,
-    OPEN_POSITIONS_LIVE_FILE,
-)
+from pathlib import Path
+
+
+# Project root = folder where INTRODUCTION.py lives
+BASE_DIR = Path(__file__).resolve().parent.parent
+DATA_DIR = BASE_DIR / "data"
+
+DAILY_SUMMARY_FILE = DATA_DIR / "daily_summary_log.json"
+MONTHLY_LOG_FILE = DATA_DIR / "monthly_log.json"
+TRADE_LOG_FILE = DATA_DIR / "trade_log.json"
+OPEN_POSITIONS_FILE = DATA_DIR / "open_positions_live.json"
+
+
+def load_json_file(file_path, default):
+    if not file_path.exists():
+        print(f"[Missing file] {file_path}")
+        return default
+
+    with open(file_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
 
 def load_daily_summary():
-    with open(DAILY_SUMMARY_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+    return load_json_file(DAILY_SUMMARY_FILE, [])
+
 
 def load_monthly_log():
-    with open(MONTHLY_LOG_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+    return load_json_file(MONTHLY_LOG_FILE, [])
 
-def load_path_data():
-    with open(PATH_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
 
 def load_trade_log():
-    with open(TRADE_LOG_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+    return load_json_file(TRADE_LOG_FILE, {})
 
-def load_data_center():
-    with open(DATA_CENTER_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
-    
+
 def load_open_positions_live():
-    with open(OPEN_POSITIONS_LIVE_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)    
+    return load_json_file(OPEN_POSITIONS_FILE, {"positions": []})
