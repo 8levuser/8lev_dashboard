@@ -361,16 +361,22 @@ total_days = len(daily_df) if not daily_df.empty else 0
 avg_moves_per_day = total_moves / total_days if total_days > 0 else None
 avg_profit_per_day = total_net_profit / total_days if total_days > 0 else None
 
+# Row 1: 2 cards
 metric_cards([
     ("Total Net Realized Profit", fmt_signed_currency(total_net_profit)),
     ("Total Realized Moves", f"{total_moves:,}"),
-    ("Average Profit per Move", fmt_signed_currency(avg_profit_per_move)),
-], columns=3)
+], columns=2)
 
+# Row 2: 2 cards
 metric_cards([
+    ("Average Profit per Move", fmt_signed_currency(avg_profit_per_move)),
     ("Average Moves per Day", f"{avg_moves_per_day:.2f}" if avg_moves_per_day else "—"),
+], columns=2)
+
+# Row 3: 1 card
+metric_cards([
     ("Average Profit per Day", fmt_signed_currency(avg_profit_per_day)),
-], columns=3)
+], columns=2)
 
 
 # ---------- CUMULATIVE REALIZED PROFIT ----------
