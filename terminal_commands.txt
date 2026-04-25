@@ -1,1 +1,5 @@
 .\venv\Scripts\Activate.ps1
+
+#undo last commit and push
+git reset --hard HEAD~1
+git push --force
