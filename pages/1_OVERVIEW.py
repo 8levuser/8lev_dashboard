@@ -166,6 +166,11 @@ y_min = equity_df["Equity"].min()
 y_max = equity_df["Equity"].max()
 y_padding = max((y_max - y_min) * 0.25, 25)
 
+y_floor = y_min - y_padding
+y_ceiling = y_max + y_padding
+
+equity_df["Baseline"] = y_floor
+
 x_min = equity_df["Date"].min()
 x_max = equity_df["Date"].max() + pd.Timedelta(days=3)
 
@@ -186,7 +191,7 @@ base = alt.Chart(equity_df).encode(
     y=alt.Y(
         "Equity:Q",
         title=None,
-        scale=alt.Scale(domain=[y_min - y_padding, y_max + y_padding], zero=False),
+        scale=alt.Scale(domain=[y_floor, y_ceiling], zero=False),
         axis=alt.Axis(grid=False)
     )
 )
@@ -199,9 +204,9 @@ area = base.mark_area(
     y=alt.Y(
         "Equity:Q",
         title=None,
-        scale=alt.Scale(domain=[y_min - y_padding, y_max + y_padding], zero=False)
+        scale=alt.Scale(domain=[y_floor, y_ceiling], zero=False)
     ),
-    y2=alt.value(360)
+    y2=alt.Y2("Baseline:Q")
 )
 
 line = base.mark_line(
@@ -239,7 +244,7 @@ chart = (
     .properties(
         height=380,
         background="#111814",
-        padding={"left": 48, "right": 32, "top": 24, "bottom": 18}
+        padding={"left": 28, "right": 32, "top": 24, "bottom": 18}
     )
     .configure_view(strokeWidth=0)
     .configure_axis(
@@ -257,10 +262,9 @@ chart = (
         tickColor="#2E7D32",
         labelPadding=12
     )
-    .interactive()
 )
 
-st.altair_chart(chart, width=820)
+st.altair_chart(chart, width="stretch")
 
 # ---------- OPEN POSITIONS ----------
 st.subheader("Open Positions")
