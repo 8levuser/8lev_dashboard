@@ -909,7 +909,7 @@ html, body {{
                 <div data-key="activity" data-type="number">Activity<span class="sort-indicator"></span></div>
                 <div data-key="realized" data-type="number">Realized<span class="sort-indicator"></span></div>
                 <div data-key="equity" data-type="number">Equity<span class="sort-indicator"></span></div>
-                <div data-key="deployed" data-type="number">Deploy<span class="sort-indicator"></span></div>
+                <div data-key="deployed" data-type="number">Deployed<span class="sort-indicator"></span></div>
                 <div data-key="unsettled" data-type="number">Unsettled<span class="sort-indicator"></span></div>
             </div>
 
