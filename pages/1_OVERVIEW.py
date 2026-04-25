@@ -239,7 +239,7 @@ chart = (
     .properties(
         height=380,
         background="#111814",
-        padding={"left": 24, "right": 32, "top": 24, "bottom": 18}
+        padding={"left": 48, "right": 32, "top": 24, "bottom": 18}
     )
     .configure_view(strokeWidth=0)
     .configure_axis(
