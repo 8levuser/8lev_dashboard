@@ -18,6 +18,29 @@ st.markdown("""
     background-color: #111814;
 }
 
+/* Mobile/sidebar navigation text */
+[data-testid="stSidebar"] * {
+    color: #E8F5E9 !important;
+}
+
+[data-testid="stSidebar"] a {
+    color: #E8F5E9 !important;
+}
+
+[data-testid="stSidebar"] a p {
+    color: #E8F5E9 !important;
+    font-weight: 800 !important;
+}
+
+[data-testid="stSidebar"] a[aria-current="page"] {
+    background-color: rgba(212, 175, 55, 0.16) !important;
+    border-radius: 10px;
+}
+
+[data-testid="stSidebar"] a[aria-current="page"] p {
+    color: #D4AF37 !important;
+}
+
 html, body, [class*="css"] {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif !important;
     color: #E8F5E9;
