@@ -271,37 +271,34 @@ html, body {
 
 .table-scroll {
     max-height: 650px;
+    overflow-x: auto;
     overflow-y: auto;
-    overflow-x: hidden;
     border-radius: 14px;
 }
 
 .table-grid {
     width: 100%;
-    min-width: 0;
+    min-width: 760px;
 }
 
 .table-row,
 .table-header {
     display: grid;
-
-    /* 🔧 MAIN CONTROL: column widths */
     grid-template-columns:
-        0.65fr  /* Symbol */
-        0.45fr  /* Shares */
-        0.7fr   /* Entry */
-        0.7fr   /* Exit */
-        0.8fr   /* Profit */
-        0.8fr   /* Return % */
-        0.95fr  /* Entry Date */
-        0.95fr; /* Exit Date */
-
-    gap: 4px;
+        0.65fr
+        0.45fr
+        0.7fr
+        0.7fr
+        0.8fr
+        0.8fr
+        0.95fr
+        0.95fr;
+    gap: 5px;
     align-items: center;
 }
 
 .table-header {
-    padding: 8px 8px 10px 8px;
+    padding: 10px 10px 12px 10px;
     color: #D4AF37;
     font-weight: 900;
     font-size: 13px;
@@ -376,7 +373,7 @@ html, body {
 
     .table-grid {
         width: 100%;
-        min-width: 760px; /* 🔧 mobile minimum width */
+        min-width: 760px;
     }
 
     .table-row,
@@ -501,4 +498,4 @@ headers.forEach(header => {
 </script>
 """
 
-components.html(cards_html, height=740, scrolling=False)
+st.iframe(cards_html, height=740)

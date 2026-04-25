@@ -754,7 +754,12 @@ daily_table_html = f"""
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
 }}
 
-/* Custom Scrollbar */
+html, body {{
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}}
+
 ::-webkit-scrollbar {{
     width: 6px;
     height: 6px;
@@ -773,60 +778,40 @@ daily_table_html = f"""
     background: rgba(212, 175, 55, 0.6);
 }}
 
-html, body {{
-    margin: 0;
-    padding: 0;
-    background: transparent;
-}}
-
-html, body {{
-    margin: 0;
-    padding: 0;
-    background: transparent;
-}}
-
 .table-shell {{
     background-color: #111814;
     border: 1px solid rgba(212, 175, 55, 0.20);
     border-radius: 22px;
-    padding: 12px;
+    padding: 14px;
     box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
 }}
 
 .table-scroll {{
     max-height: 650px;
+    overflow-x: auto;
     overflow-y: auto;
     border-radius: 14px;
 }}
 
 .table-grid {{
     width: 100%;
-    min-width: 0;  /* 🔥 removes forced horizontal scroll */
+    min-width: 660px;
 }}
 
 .table-row,
 .table-header {{
     display: grid;
-
-    /* 🔥 TIGHT COLUMN CONTROL */
-    grid-template-columns:
-        0.80fr   /* Date */
-        0.7fr   /* Activity */
-        0.9fr    /* Realized */
-        1fr      /* Equity */
-        1fr      /* Deployed */
-        1fr;     /* Unsettled */
-
-    gap: 4px;   /* 🔥 tighter spacing */
+    grid-template-columns: 1fr 0.8fr 1fr 1fr 1.15fr 1.15fr;
+    gap: 8px;
     align-items: center;
 }}
 
 .table-header {{
-    padding: 8px 8px 10px 8px;
+    padding: 10px 10px 12px 10px;
     color: #D4AF37;
     font-weight: 900;
-    font-size: 12px;
-    letter-spacing: 0.4px;
+    font-size: 13px;
+    letter-spacing: 0.45px;
     text-transform: uppercase;
     border-bottom: 1px solid rgba(212, 175, 55, 0.22);
     position: sticky;
@@ -835,17 +820,28 @@ html, body {{
     z-index: 3;
 }}
 
+.table-header div {{
+    cursor: pointer;
+    user-select: none;
+}}
+
 .table-header div:hover {{
     color: #FFE082;
 }}
 
+.sort-indicator {{
+    opacity: 0.75;
+    font-size: 11px;
+    margin-left: 4px;
+}}
+
 .table-row {{
-    padding: 8px 8px;
+    padding: 11px 10px;
     color: #E8F5E9;
     font-weight: 700;
-    font-size: 13px;   /* 🔥 slightly smaller */
+    font-size: 14px;
     border-bottom: 1px solid rgba(165, 214, 167, 0.08);
-    border-radius: 10px;
+    border-radius: 12px;
     transition: background-color 0.12s ease;
 }}
 
@@ -866,27 +862,55 @@ html, body {{
 .pl {{
     font-weight: 900;
 }}
+
+@media (max-width: 700px) {{
+    .table-shell {{
+        border-radius: 18px;
+        padding: 10px;
+    }}
+
+    .table-scroll {{
+        max-height: 620px;
+        border-radius: 12px;
+    }}
+
+    .table-grid {{
+        width: 100%;
+        min-width: 620px;
+    }}
+
+    .table-row,
+    .table-header {{
+        grid-template-columns: 1fr 0.75fr 1fr 1fr 1.1fr 1.1fr;
+        gap: 6px;
+    }}
+
+    .table-header {{
+        font-size: 12px;
+    }}
+
+    .table-row {{
+        font-size: 13px;
+    }}
+}}
 </style>
 
 <div class="table-shell">
     <div class="table-scroll">
         <div class="table-grid" id="daily-summary-table">
-
             <div class="table-header">
-                <div>Date</div>
-                <div>Activity</div>
-                <div>Realized</div>
-                <div>Equity</div>
-                <div>Deploy</div>
-                <div>Unsettled</div>
+                <div data-key="date" data-type="text">Date<span class="sort-indicator"></span></div>
+                <div data-key="activity" data-type="number">Activity<span class="sort-indicator"></span></div>
+                <div data-key="realized" data-type="number">Realized<span class="sort-indicator"></span></div>
+                <div data-key="equity" data-type="number">Equity<span class="sort-indicator"></span></div>
+                <div data-key="deployed" data-type="number">Deploy<span class="sort-indicator"></span></div>
+                <div data-key="unsettled" data-type="number">Unsettled<span class="sort-indicator"></span></div>
             </div>
 
             {daily_rows_html}
-
         </div>
     </div>
 </div>
-
 
 <script>
 const table = document.getElementById("daily-summary-table");
@@ -940,4 +964,4 @@ headers.forEach(header => {{
 </script>
 """
 
-components.html(daily_table_html, height=740, scrolling=False)
+st.iframe(daily_table_html, height=740)
