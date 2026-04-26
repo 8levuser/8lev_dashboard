@@ -190,6 +190,19 @@ if st.session_state.day_index >= len(daily_options):
 selected_date = daily_options[st.session_state.day_index]
 
 # ---------- DATE NAVIGATION ----------
+
+st.markdown("""
+<style>
+div[data-testid="stButton"] button {
+    padding: 2px 2px !important;
+    font-size: 11px !important;
+    height: 26px !important;
+    min-height: 14px !important;
+    border-radius: 8px !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
 nav_buttons, nav_date, spacer = st.columns([0.16, 0.3, 1.5])
 
 with nav_buttons:
@@ -214,7 +227,7 @@ with nav_date:
             color: #D4AF37;
             font-weight: 900;
             font-size: 15px;
-            margin-top: 10px;
+            margin-top: 2px;
             margin-left: 8px;
             letter-spacing: 0.2px;
         ">
