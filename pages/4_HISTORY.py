@@ -168,19 +168,6 @@ if selected_symbols:
 else:
     filtered_df = df.copy()
 
-# ---------- STATS ----------
-closed_positions = len(filtered_df)
-total_realized_profit = filtered_df["profit"].sum()
-days_since_first_move = compute_business_days_since_first_move(filtered_df)
-
-st.subheader("History Snapshot")
-
-col1, col2, col3 = st.columns(3)
-
-col1.metric("Closed Positions", closed_positions)
-col2.metric("Total Realized Profit", fmt_signed_currency(total_realized_profit))
-col3.metric("Days Since First Move", days_since_first_move)
-
 # ---------- PAGINATION ----------
 st.subheader("Closed Positions Log")
 
