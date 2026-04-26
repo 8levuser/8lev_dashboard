@@ -194,9 +194,9 @@ selected_date = daily_options[st.session_state.day_index]
 st.markdown("""
 <style>
 div[data-testid="stButton"] button {
-    padding: 2px 2px !important;
+    padding: 0px 0px !important;
     font-size: 11px !important;
-    height: 26px !important;
+    height: 50px !important;
     min-height: 50px !important;
     border-radius: 8px !important;
 }
