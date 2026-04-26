@@ -8,9 +8,8 @@ from utils.parsers import get_latest_daily_summary
 # ---------- PAGE PATHS ----------
 PAGE_OVERVIEW = "pages/1_OVERVIEW.py"
 PAGE_ACTIVITY = "pages/2_ACTIVITY.py"
-PAGE_HISTORY = "pages/3_HISTORY.py"
-PAGE_PERFORMANCE = "pages/4_PERFORMANCE.py"
-
+PAGE_PERFORMANCE = "pages/3_PERFORMANCE.py"
+PAGE_HISTORY = "pages/4_HISTORY.py"
 
 # ---------- THEME ----------
 st.markdown("""
