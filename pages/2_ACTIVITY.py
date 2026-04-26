@@ -197,7 +197,7 @@ div[data-testid="stButton"] button {
     padding: 2px 2px !important;
     font-size: 11px !important;
     height: 26px !important;
-    min-height: 14px !important;
+    min-height: 50px !important;
     border-radius: 8px !important;
 }
 </style>
@@ -227,7 +227,7 @@ with nav_date:
             color: #D4AF37;
             font-weight: 900;
             font-size: 15px;
-            margin-top: 2px;
+            margin-top: 5px;
             margin-left: 8px;
             letter-spacing: 0.2px;
         ">
