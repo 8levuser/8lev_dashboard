@@ -265,6 +265,16 @@ with col2:
     )
 
 with col3:
+    st.page_link(PAGE_PERFORMANCE, label="Performance")
+    preview_card(
+        "Capital progression and long-term realized metrics.",
+        "Net Profit",
+        fmt_signed_currency(total_profit),
+        "Days",
+        performance_days,
+    )
+
+with col4:
     st.page_link(PAGE_HISTORY, label="History")
     preview_card(
         "Complete closed-position record and filters.",
@@ -273,16 +283,6 @@ with col3:
         "Latest",
         latest_date,
         value_2_style="color:#CFE8D2; font-size:10px; font-weight:800; line-height:1.25;"
-    )
-
-with col4:
-    st.page_link(PAGE_PERFORMANCE, label="Performance")
-    preview_card(
-        "Capital progression and long-term realized metrics.",
-        "Net Profit",
-        fmt_signed_currency(total_profit),
-        "Days",
-        performance_days,
     )
 
 
