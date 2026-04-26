@@ -23,7 +23,7 @@ UNSETTLED_FUNDS_SIZE = 22        # Unsettled Funds dollar amount
 
 SUMMARY_CARD_PADDING = 20        # Inner padding inside the card
 SUMMARY_GRID_GAP = 16            # Space between data blocks
-SUMMARY_CARD_HEIGHT = 460        # Height of the embedded summary card
+SUMMARY_CARD_HEIGHT = 450        # Height of the embedded summary card
 
 
 st.markdown("""
@@ -361,7 +361,21 @@ components.html(summary_html, height=SUMMARY_CARD_HEIGHT, scrolling=False)
 st.subheader("Latest Activity")
 
 if latest_activity_date:
-    st.caption(f"Showing closed positions from: {latest_activity_date}")
+    st.markdown(
+        f"""
+        <div style="
+            color: #A5D6A7;
+            font-size: 12px;
+            font-weight: 700;
+            margin-top: -4px;
+            margin-bottom: 8px;
+            line-height: 1.2;
+        ">
+            Showing closed positions from: {latest_activity_date}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 if not latest_trades:
     st.info("No realized activity found for the latest available date.")
