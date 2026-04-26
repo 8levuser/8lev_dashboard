@@ -23,7 +23,7 @@ UNSETTLED_FUNDS_SIZE = 22        # Unsettled Funds dollar amount
 
 SUMMARY_CARD_PADDING = 20        # Inner padding inside the card
 SUMMARY_GRID_GAP = 16            # Space between data blocks
-SUMMARY_CARD_HEIGHT = 320        # Height of the embedded summary card
+SUMMARY_CARD_HEIGHT = 460        # Height of the embedded summary card
 
 
 st.markdown("""
