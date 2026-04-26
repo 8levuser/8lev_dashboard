@@ -220,22 +220,6 @@ with nav_buttons:
                 st.session_state.day_index -= 1
                 st.rerun()
 
-with nav_date:
-    st.markdown(
-        f"""
-        <div style="
-            color: #D4AF37;
-            font-weight: 900;
-            font-size: 15px;
-            margin-top: 5px;
-            margin-left: 8px;
-            letter-spacing: 0.2px;
-        ">
-            {selected_date}
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
 
 selected_summary = next(
     entry for entry in daily_data
