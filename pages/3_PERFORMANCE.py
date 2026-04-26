@@ -353,6 +353,11 @@ if trade_df.empty:
 st.subheader("Performance Snapshot")
 
 total_net_profit = trade_df["profit"].sum()
+if not daily_df.empty:
+    initial_equity = daily_df["total_equity"].iloc[0]
+    pct_growth = total_net_profit / initial_equity if initial_equity != 0 else None
+else:
+    pct_growth = None
 total_moves = len(trade_df)
 avg_profit_per_move = trade_df["profit"].mean()
 
@@ -361,23 +366,35 @@ total_days = len(daily_df) if not daily_df.empty else 0
 avg_moves_per_day = total_moves / total_days if total_days > 0 else None
 avg_profit_per_day = total_net_profit / total_days if total_days > 0 else None
 
-# Row 1: 2 cards
+# Days Invested = business days from first move to latest exit
+first_move = trade_df["buy_date_dt"].min()
+latest_exit = trade_df["sell_date_dt"].max()
+
+if pd.notna(first_move) and pd.notna(latest_exit):
+    days_invested = len(pd.bdate_range(start=first_move.date(), end=latest_exit.date()))
+else:
+    days_invested = None
+
+# Row 1
 metric_cards([
-    ("Total Net Realized Profit", fmt_signed_currency(total_net_profit)),
-    ("Total Realized Moves", f"{total_moves:,}"),
+    ("Total Net Realized Profit",
+ f"{fmt_signed_currency(total_net_profit)} "
+),
+    ("Days Invested", f"{days_invested:,}" if days_invested else "—"),
 ], columns=2)
 
-# Row 2: 2 cards
+# Row 2
 metric_cards([
     ("Average Profit per Move", fmt_signed_currency(avg_profit_per_move)),
     ("Average Moves per Day", f"{avg_moves_per_day:.2f}" if avg_moves_per_day else "—"),
 ], columns=2)
 
-# Row 3: 1 card
+# Row 3
 metric_cards([
     ("Average Profit per Day", fmt_signed_currency(avg_profit_per_day)),
+    ("Total Realized Moves", f"{total_moves:,}"),
+    
 ], columns=2)
-
 
 # ---------- CUMULATIVE REALIZED PROFIT ----------
 st.subheader("Cumulative Realized Profit")
