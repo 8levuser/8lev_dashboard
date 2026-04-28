@@ -180,7 +180,7 @@ if not trade_df.empty and "sell_date" in trade_df.columns:
     latest_trade = trade_df["sell_date_dt"].max()
 
     if pd.notna(latest_trade):
-        latest_date = latest_trade.strftime("%b %d, %Y")
+        latest_date = latest_trade.strftime("%Y-%m-%d")
     else:
         latest_date = "—"
 else:
