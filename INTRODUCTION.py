@@ -301,7 +301,7 @@ concept_html = """
         font-weight: 900;
         margin-bottom: 12px;
     ">
-        What you’re looking at
+        What you're looking at
     </div>
 
     <div style="
