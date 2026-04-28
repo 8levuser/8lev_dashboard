@@ -17343,5 +17343,114 @@
         ],
         "raw_message": "🚀 Matt Day Summary | 2026-04-24 🎯\nAsset Activity: 11\nRealized Profit: $3.26\nTotal Equity: 2815.97\nDeployed Capital: $2650.19\nUnsettled Funds: $116.20\n📈 Profit Performance per Asset:\n- SABR: $0.10\n- HNST: $0.18\n- EVGO: $0.28\n- GSIT: $0.08\n- TBLA: $0.08\n- BLZE: $0.10\n- SFIX: $0.16\n- COUR: $1.98\n- SG: $0.08\n- MCW: $0.07\n- GENI: $0.15",
         "logged_at": "2026-04-24T17:00:10.036909"
+    },
+    {
+        "bot_name": "Matt",
+        "summary_date": "2026-04-27",
+        "asset_activity": 24,
+        "realized_profit": 5.15,
+        "total_equity": 2823.86,
+        "deployed_capital": 2489.35,
+        "unsettled_funds": 333.77,
+        "profit_per_asset": [
+            {
+                "symbol": "PTON",
+                "profit": 1.5
+            },
+            {
+                "symbol": "RLX",
+                "profit": 0.55
+            },
+            {
+                "symbol": "RNW",
+                "profit": 0.06
+            },
+            {
+                "symbol": "JBLU",
+                "profit": 0.1
+            },
+            {
+                "symbol": "GDRX",
+                "profit": 0.09
+            },
+            {
+                "symbol": "BFLY",
+                "profit": 0.06
+            },
+            {
+                "symbol": "SXC",
+                "profit": 0.07
+            },
+            {
+                "symbol": "UROY",
+                "profit": 0.12
+            },
+            {
+                "symbol": "VSTM",
+                "profit": 0.13
+            },
+            {
+                "symbol": "COMP",
+                "profit": 0.08
+            },
+            {
+                "symbol": "PAYS",
+                "profit": 0.08
+            },
+            {
+                "symbol": "EDIT",
+                "profit": 0.49
+            },
+            {
+                "symbol": "DUOT",
+                "profit": 0.21
+            },
+            {
+                "symbol": "VNDA",
+                "profit": 0.08
+            },
+            {
+                "symbol": "UROY",
+                "profit": 0.08
+            },
+            {
+                "symbol": "LAC",
+                "profit": 0.05
+            },
+            {
+                "symbol": "UROY",
+                "profit": 0.08
+            },
+            {
+                "symbol": "OPTU",
+                "profit": 0.54
+            },
+            {
+                "symbol": "JVA",
+                "profit": 0.05
+            },
+            {
+                "symbol": "COTY",
+                "profit": 0.12
+            },
+            {
+                "symbol": "DNUT",
+                "profit": 0.08
+            },
+            {
+                "symbol": "UROY",
+                "profit": 0.1
+            },
+            {
+                "symbol": "BB",
+                "profit": 0.27
+            },
+            {
+                "symbol": "BLZE",
+                "profit": 0.16
+            }
+        ],
+        "raw_message": "🚀 Matt Day Summary | 2026-04-27 🎯\nAsset Activity: 24\nRealized Profit: $5.15\nTotal Equity: 2823.86\nDeployed Capital: $2489.35\nUnsettled Funds: $333.77\n📈 Profit Performance per Asset:\n- PTON: $1.50\n- RLX: $0.55\n- RNW: $0.06\n- JBLU: $0.10\n- GDRX: $0.09\n- BFLY: $0.06\n- SXC: $0.07\n- UROY: $0.12\n- VSTM: $0.13\n- COMP: $0.08\n- PAYS: $0.08\n- EDIT: $0.49\n- DUOT: $0.21\n- VNDA: $0.08\n- UROY: $0.08\n- LAC: $0.05\n- UROY: $0.08\n- OPTU: $0.54\n- JVA: $0.05\n- COTY: $0.12\n- DNUT: $0.08\n- UROY: $0.10\n- BB: $0.27\n- BLZE: $0.16",
+        "logged_at": "2026-04-27T17:00:04.962387"
     }
 ]
