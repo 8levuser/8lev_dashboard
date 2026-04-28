@@ -113,12 +113,29 @@ open_positions = open_positions_payload.get("positions", [])
 # ---------- EQUITY STATUS CARD ----------
 daily_df = pd.DataFrame(daily_data)
 daily_df["summary_date_dt"] = pd.to_datetime(daily_df["summary_date"], errors="coerce")
+daily_df["total_equity"] = pd.to_numeric(daily_df["total_equity"], errors="coerce")
+daily_df = daily_df.dropna(subset=["summary_date_dt", "total_equity"])
 daily_df = daily_df.sort_values("summary_date_dt").reset_index(drop=True)
 
-latest_equity = daily_df["total_equity"].iloc[-1]
-previous_equity = daily_df["total_equity"].iloc[-2] if len(daily_df) > 1 else None
+live_total_equity = open_positions_payload.get("total_equity")
+live_total_equity = pd.to_numeric(live_total_equity, errors="coerce")
 
-if previous_equity is not None:
+if pd.isna(live_total_equity):
+    live_total_equity = None
+
+if len(daily_df) > 0:
+    latest_daily_equity = daily_df["total_equity"].iloc[-1]
+else:
+    latest_daily_equity = None
+
+if live_total_equity is not None:
+    latest_equity = live_total_equity
+    previous_equity = latest_daily_equity
+else:
+    latest_equity = latest_daily_equity
+    previous_equity = daily_df["total_equity"].iloc[-2] if len(daily_df) > 1 else None
+
+if latest_equity is not None and previous_equity is not None:
     equity_change = latest_equity - previous_equity
     equity_change_pct = equity_change / previous_equity if previous_equity != 0 else None
 else:
@@ -175,6 +192,7 @@ equity_card_html = f"""
 """
 
 st.html(equity_card_html)
+
 # ---------- EQUITY CURVE ----------
 st.subheader("Equity Curve")
 
