@@ -145,7 +145,8 @@ trade_df = pd.DataFrame(list(trade_log.values())) if trade_log else pd.DataFrame
 
 open_positions = open_positions_payload.get("positions", []) if open_positions_payload else []
 
-latest_equity = latest.get("total_equity")
+live_total_equity = open_positions_payload.get("total_equity") if open_positions_payload else None
+latest_equity = live_total_equity if live_total_equity is not None else latest.get("total_equity")
 latest_realized = latest.get("realized_profit")
 latest_activity = latest.get("asset_activity")
 
