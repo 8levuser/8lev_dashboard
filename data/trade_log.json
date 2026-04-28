@@ -40973,5 +40973,137 @@
         "buy_date": "2026-04-27 12:34",
         "profit": 0.16,
         "trade_percentage": 0.0192
+    },
+    "123398442": {
+        "id": 123398442,
+        "symbol": "WVE",
+        "sell_price": 7.26,
+        "quantity": 1.0,
+        "sell_date": "2026-04-28 04:30",
+        "buy_price": 6.98,
+        "buy_date": "2026-04-27 11:03",
+        "profit": 0.28,
+        "trade_percentage": 0.0401
+    },
+    "123398414": {
+        "id": 123398414,
+        "symbol": "GSIT",
+        "sell_price": 7.26,
+        "quantity": 1.0,
+        "sell_date": "2026-04-28 05:30",
+        "buy_price": 7.15,
+        "buy_date": "2026-04-27 08:25",
+        "profit": 0.11,
+        "trade_percentage": 0.0154
+    },
+    "123400908": {
+        "id": 123400908,
+        "symbol": "GNW",
+        "sell_price": 8.99,
+        "quantity": 1.0,
+        "sell_date": "2026-04-28 06:30",
+        "buy_price": 8.83,
+        "buy_date": "2026-04-27 14:51",
+        "profit": 0.16,
+        "trade_percentage": 0.0181
+    },
+    "123400509": {
+        "id": 123400509,
+        "symbol": "BGS",
+        "sell_price": 5.47,
+        "quantity": 1.0,
+        "sell_date": "2026-04-28 06:31",
+        "buy_price": 5.41,
+        "buy_date": "2026-04-23 06:55",
+        "profit": 0.06,
+        "trade_percentage": 0.0111
+    },
+    "123400931": {
+        "id": 123400931,
+        "symbol": "GENI",
+        "sell_price": 4.43,
+        "quantity": 2.0,
+        "sell_date": "2026-04-28 06:33",
+        "buy_price": 4.34,
+        "buy_date": "2026-04-28 05:01",
+        "profit": 0.18,
+        "trade_percentage": 0.0207
+    },
+    "123400862": {
+        "id": 123400862,
+        "symbol": "ARHS",
+        "sell_price": 7.68,
+        "quantity": 1.0,
+        "sell_date": "2026-04-28 06:34",
+        "buy_price": 7.52,
+        "buy_date": "2026-04-27 08:38",
+        "profit": 0.16,
+        "trade_percentage": 0.0213
+    },
+    "123402050": {
+        "id": 123402050,
+        "symbol": "BLZE",
+        "sell_price": 4.24,
+        "quantity": 2.0,
+        "sell_date": "2026-04-28 06:35",
+        "buy_price": 4.16,
+        "buy_date": "2026-04-28 06:30",
+        "profit": 0.16,
+        "trade_percentage": 0.0192
+    },
+    "123400388": {
+        "id": 123400388,
+        "symbol": "UDMY",
+        "sell_price": 4.77,
+        "quantity": 4.0,
+        "sell_date": "2026-04-28 06:38",
+        "buy_price": 4.64,
+        "buy_date": "2026-04-21 09:44",
+        "profit": 0.52,
+        "trade_percentage": 0.028
+    },
+    "123400446": {
+        "id": 123400446,
+        "symbol": "SATL",
+        "sell_price": 6.39,
+        "quantity": 4.0,
+        "sell_date": "2026-04-28 07:08",
+        "buy_price": 6.3,
+        "buy_date": "2026-04-23 06:30",
+        "profit": 0.36,
+        "trade_percentage": 0.0143
+    },
+    "123400925": {
+        "id": 123400925,
+        "symbol": "BMBL",
+        "sell_price": 4.36,
+        "quantity": 2.0,
+        "sell_date": "2026-04-28 07:28",
+        "buy_price": 4.24,
+        "buy_date": "2026-04-28 04:35",
+        "profit": 0.24,
+        "trade_percentage": 0.0283
+    },
+    "123444059": {
+        "id": 123444059,
+        "symbol": "MNKD",
+        "sell_price": 2.74,
+        "quantity": 3.0,
+        "sell_date": "2026-04-28 08:33",
+        "buy_price": 2.68,
+        "buy_date": "2026-04-27 08:41",
+        "profit": 0.18,
+        "trade_percentage": 0.0224
+    },
+    "123444291": {
+        "id": 123444291,
+        "symbol": "ITUB",
+        "sell_price": 8.86,
+        "quantity": 1.0,
+        "sell_date": "2026-04-28 09:49",
+        "buy_price": 8.68,
+        "buy_date": "2026-04-28 06:30",
+        "profit": 0.18,
+        "trade_percentage": 0.0207
     }
 }
