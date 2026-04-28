@@ -174,8 +174,15 @@ if not trade_df.empty and "buy_date" in trade_df.columns and "sell_date" in trad
 else:
     performance_days = "—"
 
-if not daily_df.empty and "summary_date" in daily_df.columns:
-    latest_date = daily_df["summary_date"].iloc[-1]
+if not trade_df.empty and "sell_date" in trade_df.columns:
+    trade_df["sell_date_dt"] = pd.to_datetime(trade_df["sell_date"], errors="coerce")
+
+    latest_trade = trade_df["sell_date_dt"].max()
+
+    if pd.notna(latest_trade):
+        latest_date = latest_trade.strftime("%b %d, %Y")
+    else:
+        latest_date = "—"
 else:
     latest_date = "—"
 
