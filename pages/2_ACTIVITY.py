@@ -166,6 +166,8 @@ info_html = f"""
     margin-bottom: -10px;
     line-height: 1.2;
 ">
+    <div>Last updated: 08:00PM ET {latest_summary['summary_date']}</div>
+    <div>Next update: 08:00PM ET {next_update}</div>
 </div>
 """
 
