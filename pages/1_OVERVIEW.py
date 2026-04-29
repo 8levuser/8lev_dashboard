@@ -198,10 +198,144 @@ st.subheader("Equity Curve")
 
 dates, equity = prepare_equity_curve(daily_data)
 
-equity_df = pd.DataFrame({
+full_equity_df = pd.DataFrame({
     "Date": pd.to_datetime(dates, errors="coerce"),
     "Equity": equity
-}).dropna().sort_values("Date")
+}).dropna().sort_values("Date").reset_index(drop=True)
+
+user_agent = st.context.headers.get("user-agent", "").lower()
+
+is_mobile = (
+    "mobile" in user_agent
+    or "iphone" in user_agent
+    or "android" in user_agent
+)
+
+# ---------- MOBILE RANGE SELECTOR STATE ----------
+selected_range = st.session_state.get("mobile_equity_range", "MAX") if is_mobile else "MAX"
+
+def mobile_range_selector(options, default="MAX", key="mobile_equity_range"):
+    if key not in st.session_state:
+        st.session_state[key] = default
+
+    st.markdown("""
+    <style>
+    div[data-testid="stSegmentedControl"] {
+        margin-top: 6px;
+        margin-bottom: 8px;
+        overflow-x: hidden !important;
+        max-width: 100% !important;
+    }
+
+    div[data-testid="stSegmentedControl"] > div {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        gap: 2px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    div[data-testid="stSegmentedControl"] button {
+        min-width: 0px !important;
+        padding: 1px 2px !important;
+        font-size: 5px !important;
+        font-weight: 700 !important;
+        color: #A5D6A7 !important;
+        border-radius: 999px !important;
+        border: 1px solid rgba(76, 175, 80, 0.32) !important;
+        background-color: #111814 !important;
+        white-space: nowrap !important;
+    }
+
+    div[data-testid="stSegmentedControl"] button[aria-pressed="true"] {
+        color: #E8F5E9 !important;
+        border-color: #4CAF50 !important;
+        background-color: rgba(46, 125, 50, 0.38) !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    selected = st.segmented_control(
+        "Equity range",
+        options,
+        selection_mode="single",
+        default=st.session_state[key],
+        label_visibility="collapsed",
+        key=key,
+    )
+
+    if selected is None:
+        selected = default
+
+    return selected
+
+def filter_equity_range(df, selected):
+    if df.empty:
+        return df
+
+    latest_date = df["Date"].max()
+
+    if selected == "1D":
+        return df.tail(1)
+
+    if selected == "1W":
+        cutoff = latest_date - pd.Timedelta(days=7)
+        return df[df["Date"] >= cutoff]
+
+    if selected == "1M":
+        cutoff = latest_date - pd.DateOffset(months=1)
+        return df[df["Date"] >= cutoff]
+
+    if selected == "3M":
+        cutoff = latest_date - pd.DateOffset(months=3)
+        return df[df["Date"] >= cutoff]
+
+    if selected == "YTD":
+        year_start = pd.Timestamp(year=latest_date.year, month=1, day=1)
+        return df[df["Date"] >= year_start]
+
+    if selected == "1Y":
+        cutoff = latest_date - pd.DateOffset(years=1)
+        return df[df["Date"] >= cutoff]
+
+    return df
+
+
+equity_df = filter_equity_range(full_equity_df, selected_range).copy()
+
+# Fallback if a short range returns too little data
+if len(equity_df) < 2 and len(full_equity_df) >= 2:
+    equity_df = full_equity_df.tail(2).copy()
+
+# ---------- RANGE PERFORMANCE LABEL ----------
+if is_mobile and len(equity_df) >= 2:
+    start_equity = equity_df["Equity"].iloc[0]
+    end_equity = equity_df["Equity"].iloc[-1]
+
+    range_change = end_equity - start_equity
+    range_change_pct = range_change / start_equity if start_equity != 0 else None
+
+    range_color = "#4CAF50" if range_change >= 0 else "#FF5C5C"
+
+    range_change_text = fmt_signed_currency(range_change)
+    range_pct_text = (
+        f"({range_change_pct * 100:+.2f}%)"
+        if range_change_pct is not None
+        else ""
+    )
+
+    st.html(f"""
+    <div style="
+        color: {range_color};
+        font-size: 14px;
+        font-weight: 850;
+        margin-top: -2px;
+        margin-bottom: 8px;
+        text-align: center;
+    ">
+        {range_change_text} {range_pct_text} · {selected_range}
+    </div>
+    """)
 
 y_min = equity_df["Equity"].min()
 y_max = equity_df["Equity"].max()
@@ -214,14 +348,6 @@ equity_df["Baseline"] = y_floor
 
 x_min = equity_df["Date"].min()
 x_max = equity_df["Date"].max() + pd.Timedelta(days=3)
-
-user_agent = st.context.headers.get("user-agent", "").lower()
-
-is_mobile = (
-    "mobile" in user_agent
-    or "iphone" in user_agent
-    or "android" in user_agent
-)
 
 base = alt.Chart(equity_df).encode(
     x=alt.X(
@@ -258,14 +384,39 @@ line = base.mark_line(
 )
 
 if is_mobile:
+    latest_point_df = equity_df.tail(1).copy()
+    latest_point_df["Label"] = latest_point_df["Equity"].apply(lambda x: f"${x:,.2f}")
+
+    latest_point = alt.Chart(latest_point_df).mark_circle(
+        size=85,
+        color="#4CAF50"
+    ).encode(
+        x="Date:T",
+        y="Equity:Q"
+    )
+
+    latest_label = alt.Chart(latest_point_df).mark_text(
+        align="left",
+        dx=8,
+        dy=-8,
+        fontSize=12,
+        fontWeight=800,
+        color="#E8F5E9"
+    ).encode(
+        x="Date:T",
+        y="Equity:Q",
+        text="Label:N"
+    )
+
     chart = (
-        alt.layer(area, line)
+        alt.layer(area, line, latest_point, latest_label)
         .properties(
             height=300,
             background="#111814",
-            padding={"left": 5, "right": -7, "top": -5, "bottom": 7}
+            padding={"left": 5, "right": -15, "top": -5, "bottom": 7}
         )
     )
+
 else:
     hover = alt.selection_point(
         nearest=True,
@@ -303,7 +454,7 @@ else:
         .properties(
             height=400,
             background="#111814",
-            padding={"left": 5, "right": -7, "top": -5, "bottom": 7}
+            padding={"left": 5, "right": -20, "top": -5, "bottom": 7}
         )
     )
 
@@ -328,6 +479,12 @@ chart = (
 )
 
 st.altair_chart(chart, width="stretch")
+if is_mobile:
+    selected_range = mobile_range_selector(
+        ["1D", "1W", "1M", "3M", "YTD", "1Y", "MAX"],
+        default="MAX",
+        key="mobile_equity_range"
+    )
 
 # ---------- OPEN POSITIONS ----------
 st.subheader("Open Positions")
