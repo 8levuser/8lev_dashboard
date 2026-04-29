@@ -215,11 +215,12 @@ equity_df["Baseline"] = y_floor
 x_min = equity_df["Date"].min()
 x_max = equity_df["Date"].max() + pd.Timedelta(days=3)
 
-hover = alt.selection_point(
-    nearest=True,
-    on="pointermove",
-    encodings=["x"],
-    empty=False
+user_agent = st.context.headers.get("user-agent", "").lower()
+
+is_mobile = (
+    "mobile" in user_agent
+    or "iphone" in user_agent
+    or "android" in user_agent
 )
 
 base = alt.Chart(equity_df).encode(
@@ -256,37 +257,58 @@ line = base.mark_line(
     color="#4CAF50"
 )
 
-selectors = base.mark_point(
-    opacity=0,
-    size=220
-).encode(
-    tooltip=[
-        alt.Tooltip("Date:T", title="Date", format="%b %d, %Y"),
-        alt.Tooltip("Equity:Q", title="Equity", format="$,.2f"),
-    ]
-).add_params(hover)
+if is_mobile:
+    chart = (
+        alt.layer(area, line)
+        .properties(
+            height=300,
+            background="#111814",
+            padding={"left": 5, "right": -7, "top": -5, "bottom": 7}
+        )
+    )
+else:
+    hover = alt.selection_point(
+        nearest=True,
+        on="pointermove",
+        encodings=["x"],
+        empty=False
+    )
 
-points = base.mark_circle(
-    size=85,
-    color="#4CAF50"
-).encode(
-    opacity=alt.condition(hover, alt.value(1), alt.value(0))
-)
+    selectors = base.mark_point(
+        opacity=0,
+        size=220
+    ).encode(
+        tooltip=[
+            alt.Tooltip("Date:T", title="Date", format="%b %d, %Y"),
+            alt.Tooltip("Equity:Q", title="Equity", format="$,.2f"),
+        ]
+    ).add_params(hover)
 
-rules = alt.Chart(equity_df).mark_rule(
-    color="#777777"
-).encode(
-    x="Date:T",
-    opacity=alt.condition(hover, alt.value(0.45), alt.value(0))
-).add_params(hover)
+    points = base.mark_circle(
+        size=85,
+        color="#4CAF50"
+    ).encode(
+        opacity=alt.condition(hover, alt.value(1), alt.value(0))
+    )
+
+    rules = alt.Chart(equity_df).mark_rule(
+        color="#777777"
+    ).encode(
+        x="Date:T",
+        opacity=alt.condition(hover, alt.value(0.45), alt.value(0))
+    ).add_params(hover)
+
+    chart = (
+        alt.layer(area, line, selectors, points, rules)
+        .properties(
+            height=400,
+            background="#111814",
+            padding={"left": 5, "right": -7, "top": -5, "bottom": 7}
+        )
+    )
 
 chart = (
-    alt.layer(area, line, selectors, points, rules)
-    .properties(
-        height=400,
-        background="#111814",
-        padding={"left": 5, "right": -7, "top": -5, "bottom": 7}
-    )
+    chart
     .configure_view(strokeWidth=0)
     .configure_axis(
         labelFont="Segoe UI",
