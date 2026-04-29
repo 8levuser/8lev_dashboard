@@ -41105,5 +41105,27 @@
         "buy_date": "2026-04-28 06:30",
         "profit": 0.18,
         "trade_percentage": 0.0207
+    },
+    "123522889": {
+        "id": 123522889,
+        "symbol": "INDI",
+        "sell_price": 3.96,
+        "quantity": 2.0,
+        "sell_date": "2026-04-29 04:37",
+        "buy_price": 3.72,
+        "buy_date": "2026-04-28 06:30",
+        "profit": 0.48,
+        "trade_percentage": 0.0645
+    },
+    "123524557": {
+        "id": 123524557,
+        "symbol": "PLUG",
+        "sell_price": 3.16,
+        "quantity": 2.0,
+        "sell_date": "2026-04-29 06:30",
+        "buy_price": 3.12,
+        "buy_date": "2026-04-27 06:30",
+        "profit": 0.08,
+        "trade_percentage": 0.0128
     }
 }
