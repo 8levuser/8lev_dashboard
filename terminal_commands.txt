@@ -3,3 +3,8 @@
 #undo last commit and push
 git reset --hard HEAD~1
 git push --force
+
+#commit latest change and push
+git add .
+git commit -m "Update Equity Curve"
+git push
