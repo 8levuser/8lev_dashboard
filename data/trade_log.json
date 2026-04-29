@@ -41127,5 +41127,16 @@
         "buy_date": "2026-04-27 06:30",
         "profit": 0.08,
         "trade_percentage": 0.0128
+    },
+    "123526004": {
+        "id": 123526004,
+        "symbol": "SFIX",
+        "sell_price": 3.75,
+        "quantity": 2.0,
+        "sell_date": "2026-04-29 07:16",
+        "buy_price": 3.7,
+        "buy_date": "2026-04-29 06:30",
+        "profit": 0.1,
+        "trade_percentage": 0.0135
     }
 }
