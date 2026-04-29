@@ -41138,5 +41138,27 @@
         "buy_date": "2026-04-29 06:30",
         "profit": 0.1,
         "trade_percentage": 0.0135
+    },
+    "123586430": {
+        "id": 123586430,
+        "symbol": "NPWR",
+        "sell_price": 1.84,
+        "quantity": 5.0,
+        "sell_date": "2026-04-29 10:49",
+        "buy_price": 1.77,
+        "buy_date": "2026-04-29 06:42",
+        "profit": 0.35,
+        "trade_percentage": 0.0395
+    },
+    "123585867": {
+        "id": 123585867,
+        "symbol": "AUR",
+        "sell_price": 5.12,
+        "quantity": 1.0,
+        "sell_date": "2026-04-29 10:51",
+        "buy_price": 5.06,
+        "buy_date": "2026-04-23 06:55",
+        "profit": 0.06,
+        "trade_percentage": 0.0119
     }
 }
