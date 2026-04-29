@@ -283,17 +283,17 @@ rules = alt.Chart(equity_df).mark_rule(
 chart = (
     alt.layer(area, line, selectors, points, rules)
     .properties(
-        height=380,
+        height=400,
         background="#111814",
-        padding={"left": 28, "right": 32, "top": 24, "bottom": 18}
+        padding={"left": 5, "right": -7, "top": -5, "bottom": 7}
     )
     .configure_view(strokeWidth=0)
     .configure_axis(
         labelFont="Segoe UI",
         titleFont="Segoe UI",
-        labelFontSize=14,
+        labelFontSize=10,
         titleFontSize=15,
-        labelFontWeight=700,
+        labelFontWeight=600,
         titleFontWeight=800,
         labelColor="#E8F5E9",
         titleColor="#D4AF37",
