@@ -17452,5 +17452,66 @@
         ],
         "raw_message": "🚀 Matt Day Summary | 2026-04-27 🎯\nAsset Activity: 24\nRealized Profit: $5.15\nTotal Equity: 2823.86\nDeployed Capital: $2489.35\nUnsettled Funds: $333.77\n📈 Profit Performance per Asset:\n- PTON: $1.50\n- RLX: $0.55\n- RNW: $0.06\n- JBLU: $0.10\n- GDRX: $0.09\n- BFLY: $0.06\n- SXC: $0.07\n- UROY: $0.12\n- VSTM: $0.13\n- COMP: $0.08\n- PAYS: $0.08\n- EDIT: $0.49\n- DUOT: $0.21\n- VNDA: $0.08\n- UROY: $0.08\n- LAC: $0.05\n- UROY: $0.08\n- OPTU: $0.54\n- JVA: $0.05\n- COTY: $0.12\n- DNUT: $0.08\n- UROY: $0.10\n- BB: $0.27\n- BLZE: $0.16",
         "logged_at": "2026-04-27T17:00:04.962387"
+    },
+    {
+        "bot_name": "Matt",
+        "summary_date": "2026-04-28",
+        "asset_activity": 12,
+        "realized_profit": 2.59,
+        "total_equity": 2850.95,
+        "deployed_capital": 2550.13,
+        "unsettled_funds": 124.44,
+        "profit_per_asset": [
+            {
+                "symbol": "WVE",
+                "profit": 0.28
+            },
+            {
+                "symbol": "GSIT",
+                "profit": 0.11
+            },
+            {
+                "symbol": "GNW",
+                "profit": 0.16
+            },
+            {
+                "symbol": "BGS",
+                "profit": 0.06
+            },
+            {
+                "symbol": "GENI",
+                "profit": 0.18
+            },
+            {
+                "symbol": "ARHS",
+                "profit": 0.16
+            },
+            {
+                "symbol": "BLZE",
+                "profit": 0.16
+            },
+            {
+                "symbol": "UDMY",
+                "profit": 0.52
+            },
+            {
+                "symbol": "SATL",
+                "profit": 0.36
+            },
+            {
+                "symbol": "BMBL",
+                "profit": 0.24
+            },
+            {
+                "symbol": "MNKD",
+                "profit": 0.18
+            },
+            {
+                "symbol": "ITUB",
+                "profit": 0.18
+            }
+        ],
+        "raw_message": "🚀 Matt Day Summary | 2026-04-28 🎯\nAsset Activity: 12\nRealized Profit: $2.59\nTotal Equity: 2850.95\nDeployed Capital: $2550.13\nUnsettled Funds: $124.44\n📈 Profit Performance per Asset:\n- WVE: $0.28\n- GSIT: $0.11\n- GNW: $0.16\n- BGS: $0.06\n- GENI: $0.18\n- ARHS: $0.16\n- BLZE: $0.16\n- UDMY: $0.52\n- SATL: $0.36\n- BMBL: $0.24\n- MNKD: $0.18\n- ITUB: $0.18",
+        "logged_at": "2026-04-28T17:00:12.543482"
     }
 ]
