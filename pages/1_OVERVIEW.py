@@ -220,46 +220,38 @@ def mobile_range_selector(options, default="MAX", key="mobile_equity_range"):
 
     st.markdown("""
     <style>
-    div[data-testid="stSegmentedControl"] {
-        margin-top: 6px;
-        margin-bottom: 8px;
+    div[data-testid="stPills"] {
+        max-width: 100% !important;
         overflow-x: hidden !important;
-        max-width: 100% !important;
+        margin-top: 4px !important;
+        margin-bottom: 8px !important;
     }
 
-    div[data-testid="stSegmentedControl"] > div {
-        display: flex !important;
-        flex-wrap: nowrap !important;
-        gap: 2px !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    div[data-testid="stSegmentedControl"] button {
-        min-width: 0px !important;
-        padding: 1px 2px !important;
-        font-size: 5px !important;
-        font-weight: 700 !important;
-        color: #A5D6A7 !important;
+    div[data-testid="stPills"] button {
+        padding: 2px 6px !important;
+        min-height: 24px !important;
+        font-size: 10px !important;
+        font-weight: 900 !important;
         border-radius: 999px !important;
-        border: 1px solid rgba(76, 175, 80, 0.32) !important;
+        color: #A5D6A7 !important;
         background-color: #111814 !important;
+        border: 1px solid rgba(76, 175, 80, 0.35) !important;
         white-space: nowrap !important;
     }
 
-    div[data-testid="stSegmentedControl"] button[aria-pressed="true"] {
+    div[data-testid="stPills"] button[aria-pressed="true"] {
         color: #E8F5E9 !important;
-        border-color: #4CAF50 !important;
-        background-color: rgba(46, 125, 50, 0.38) !important;
+        background-color: rgba(46, 125, 50, 0.35) !important;
+        border: 1px solid #4CAF50 !important;
     }
     </style>
     """, unsafe_allow_html=True)
 
-    selected = st.segmented_control(
+    selected = st.pills(
         "Equity range",
         options,
-        selection_mode="single",
         default=st.session_state[key],
+        selection_mode="single",
         label_visibility="collapsed",
         key=key,
     )
@@ -413,7 +405,7 @@ if is_mobile:
         .properties(
             height=300,
             background="#111814",
-            padding={"left": 5, "right": -15, "top": -5, "bottom": 7}
+            padding={"left": 0, "right": 0, "top": -5, "bottom": 7}
         )
     )
 
@@ -454,7 +446,7 @@ else:
         .properties(
             height=400,
             background="#111814",
-            padding={"left": 5, "right": -20, "top": -5, "bottom": 7}
+            padding={"left": 5, "right": -7, "top": -5, "bottom": 7}
         )
     )
 
