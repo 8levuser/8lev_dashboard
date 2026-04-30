@@ -6,5 +6,5 @@ git push --force
 
 #commit latest change and push
 git add .
-git commit -m "Update Equity Curve"
+git commit -m "Update Performance Page"
 git push

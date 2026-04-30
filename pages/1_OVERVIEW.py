@@ -565,7 +565,7 @@ if is_mobile:
 
     latest_point = alt.Chart(latest_point_df).mark_circle(
         size=85,
-        color="chart_color"
+        color=chart_color
     ).encode(
         x="Date:T",
         y="Equity:Q"
