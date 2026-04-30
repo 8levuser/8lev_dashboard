@@ -1,7 +1,7 @@
 {
-    "generated_at": "2026-04-30T08:05:01.466529-07:00",
+    "generated_at": "2026-04-30T09:05:01.597204-07:00",
     "source_bot": "2h8Lev_Bot",
-    "total_equity": 2810.9243,
+    "total_equity": 2820.853828,
     "positions": [
         {
             "symbol": "ABEV",
@@ -157,15 +157,6 @@
             "unrealized_pl_pct": 0.0
         },
         {
-            "symbol": "EVLV",
-            "total_cost_basis": 6.92,
-            "quantity": 1.0,
-            "entry_price": 6.92,
-            "last_close": 7.03,
-            "unrealized_pl": 0.11000000000000032,
-            "unrealized_pl_pct": 0.01589595375722548
-        },
-        {
             "symbol": "GAMB",
             "total_cost_basis": 19.62,
             "quantity": 5.0,
@@ -265,15 +256,6 @@
             "unrealized_pl_pct": -0.08847736625514416
         },
         {
-            "symbol": "LUMN",
-            "total_cost_basis": 8.85,
-            "quantity": 1.0,
-            "entry_price": 8.85,
-            "last_close": 8.69,
-            "unrealized_pl": -0.16000000000000014,
-            "unrealized_pl_pct": -0.018079096045197758
-        },
-        {
             "symbol": "MOMO",
             "total_cost_basis": 6.39,
             "quantity": 1.0,
@@ -346,15 +328,6 @@
             "unrealized_pl_pct": -0.09116022099447516
         },
         {
-            "symbol": "SABR",
-            "total_cost_basis": 9.0,
-            "quantity": 5.0,
-            "entry_price": 1.8,
-            "last_close": 1.81,
-            "unrealized_pl": 0.050000000000000044,
-            "unrealized_pl_pct": 0.00555555555555556
-        },
-        {
             "symbol": "SGMT",
             "total_cost_basis": 8.34,
             "quantity": 1.0,
@@ -389,15 +362,6 @@
             "last_close": 6.48,
             "unrealized_pl": 0.0,
             "unrealized_pl_pct": 0.0
-        },
-        {
-            "symbol": "SVV",
-            "total_cost_basis": 8.39,
-            "quantity": 1.0,
-            "entry_price": 8.39,
-            "last_close": 8.23,
-            "unrealized_pl": -0.16000000000000014,
-            "unrealized_pl_pct": -0.01907032181168059
         },
         {
             "symbol": "TALK",

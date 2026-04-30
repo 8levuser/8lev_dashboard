@@ -41314,5 +41314,49 @@
         "buy_date": "2026-04-29 07:56",
         "profit": 0.32,
         "trade_percentage": 0.0371
+    },
+    "123675189": {
+        "id": 123675189,
+        "symbol": "LUMN",
+        "sell_price": 8.94,
+        "quantity": 1.0,
+        "sell_date": "2026-04-30 08:25",
+        "buy_price": 8.85,
+        "buy_date": "2026-04-28 04:22",
+        "profit": 0.09,
+        "trade_percentage": 0.0102
+    },
+    "123675574": {
+        "id": 123675574,
+        "symbol": "EVLV",
+        "sell_price": 7.13,
+        "quantity": 1.0,
+        "sell_date": "2026-04-30 08:22",
+        "buy_price": 6.92,
+        "buy_date": "2026-04-30 07:21",
+        "profit": 0.21,
+        "trade_percentage": 0.0303
+    },
+    "123675289": {
+        "id": 123675289,
+        "symbol": "SABR",
+        "sell_price": 1.84,
+        "quantity": 5.0,
+        "sell_date": "2026-04-30 08:31",
+        "buy_price": 1.8,
+        "buy_date": "2026-04-28 07:02",
+        "profit": 0.2,
+        "trade_percentage": 0.0222
+    },
+    "123675416": {
+        "id": 123675416,
+        "symbol": "SVV",
+        "sell_price": 8.49,
+        "quantity": 1.0,
+        "sell_date": "2026-04-30 08:42",
+        "buy_price": 8.39,
+        "buy_date": "2026-04-29 06:30",
+        "profit": 0.1,
+        "trade_percentage": 0.0119
     }
 }
