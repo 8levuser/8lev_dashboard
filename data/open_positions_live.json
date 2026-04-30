@@ -1,7 +1,7 @@
 {
-    "generated_at": "2026-04-30T07:05:01.596992-07:00",
+    "generated_at": "2026-04-30T08:05:01.466529-07:00",
     "source_bot": "2h8Lev_Bot",
-    "total_equity": 2784.8396,
+    "total_equity": 2810.9243,
     "positions": [
         {
             "symbol": "ABEV",
@@ -85,15 +85,6 @@
             "unrealized_pl_pct": -0.06733167082294254
         },
         {
-            "symbol": "BGS",
-            "total_cost_basis": 5.38,
-            "quantity": 1.0,
-            "entry_price": 5.38,
-            "last_close": 5.3,
-            "unrealized_pl": -0.08000000000000007,
-            "unrealized_pl_pct": -0.014869888475836444
-        },
-        {
             "symbol": "BLND",
             "total_cost_basis": 7.85,
             "quantity": 5.0,
@@ -101,6 +92,15 @@
             "last_close": 1.42,
             "unrealized_pl": -0.7499999999999996,
             "unrealized_pl_pct": -0.0955414012738853
+        },
+        {
+            "symbol": "BMBL",
+            "total_cost_basis": 8.18,
+            "quantity": 2.0,
+            "entry_price": 4.09,
+            "last_close": 4.21,
+            "unrealized_pl": 0.2400000000000002,
+            "unrealized_pl_pct": 0.029339853300733524
         },
         {
             "symbol": "CCO",
@@ -130,15 +130,6 @@
             "unrealized_pl_pct": -0.03787878787878786
         },
         {
-            "symbol": "CRNC",
-            "total_cost_basis": 8.64,
-            "quantity": 1.0,
-            "entry_price": 8.64,
-            "last_close": 8.41,
-            "unrealized_pl": -0.23000000000000043,
-            "unrealized_pl_pct": -0.02662037037037042
-        },
-        {
             "symbol": "CXM",
             "total_cost_basis": 589.41,
             "quantity": 104.0,
@@ -166,13 +157,13 @@
             "unrealized_pl_pct": 0.0
         },
         {
-            "symbol": "FNKO",
-            "total_cost_basis": 8.62,
-            "quantity": 2.0,
-            "entry_price": 4.31,
-            "last_close": 4.27,
-            "unrealized_pl": -0.08000000000000007,
-            "unrealized_pl_pct": -0.00928074245939676
+            "symbol": "EVLV",
+            "total_cost_basis": 6.92,
+            "quantity": 1.0,
+            "entry_price": 6.92,
+            "last_close": 7.03,
+            "unrealized_pl": 0.11000000000000032,
+            "unrealized_pl_pct": 0.01589595375722548
         },
         {
             "symbol": "GAMB",

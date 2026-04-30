@@ -41281,5 +41281,38 @@
         "buy_date": "2026-04-28 07:19",
         "profit": 0.09,
         "trade_percentage": 0.0177
+    },
+    "123628037": {
+        "id": 123628037,
+        "symbol": "BGS",
+        "sell_price": 5.44,
+        "quantity": 1.0,
+        "sell_date": "2026-04-30 07:23",
+        "buy_price": 5.38,
+        "buy_date": "2026-04-29 08:14",
+        "profit": 0.06,
+        "trade_percentage": 0.0112
+    },
+    "123627988": {
+        "id": 123627988,
+        "symbol": "CRNC",
+        "sell_price": 8.73,
+        "quantity": 1.0,
+        "sell_date": "2026-04-30 07:29",
+        "buy_price": 8.64,
+        "buy_date": "2026-04-29 06:30",
+        "profit": 0.09,
+        "trade_percentage": 0.0104
+    },
+    "123628021": {
+        "id": 123628021,
+        "symbol": "FNKO",
+        "sell_price": 4.47,
+        "quantity": 2.0,
+        "sell_date": "2026-04-30 08:03",
+        "buy_price": 4.31,
+        "buy_date": "2026-04-29 07:56",
+        "profit": 0.32,
+        "trade_percentage": 0.0371
     }
 }
