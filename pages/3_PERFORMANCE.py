@@ -443,53 +443,6 @@ st.altair_chart(
     ),
     width="stretch"
 )
-# ---------- EQUITY PROGRESSION ----------
-st.subheader("Equity Progression")
-
-equity_base = alt.Chart(daily_df).encode(
-    x=alt.X("summary_date_dt:T", title=None),
-    y=alt.Y(
-        "total_equity:Q",
-        title="Equity",
-        scale=alt.Scale(zero=False)
-    )
-)
-
-equity_area = equity_base.mark_area(
-    interpolate="monotone",
-    opacity=0.16,
-    color="#4CAF50"
-)
-
-equity_line = equity_base.mark_line(
-    interpolate="monotone",
-    strokeWidth=3,
-    color="#4CAF50"
-)
-
-equity_selectors, equity_points, equity_rules = add_snap_layers(
-    equity_base,
-    daily_df,
-    "summary_date_dt",
-    [
-        alt.Tooltip("summary_date_dt:T", title="Date", format="%b %d, %Y"),
-        alt.Tooltip("total_equity:Q", title="Equity", format="$,.2f"),
-    ]
-)
-
-st.altair_chart(
-    themed_chart(
-        alt.layer(
-            equity_area,
-            equity_line,
-            equity_selectors,
-            equity_points,
-            equity_rules
-        ),
-        height=340
-    ),
-    width="stretch"
-)
 
 # ---------- DAILY REALIZED PROFIT ----------
 st.subheader("Daily Realized Profit")
