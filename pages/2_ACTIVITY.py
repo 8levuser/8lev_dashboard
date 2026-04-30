@@ -191,35 +191,129 @@ selected_date = daily_options[st.session_state.day_index]
 
 # ---------- DATE NAVIGATION ----------
 
-st.markdown("""
+# ============================================================
+# DATE NAVIGATION MOBILE / DESKTOP CONTROLS
+# ============================================================
+
+NAV_BUTTON_HEIGHT = 42
+NAV_BUTTON_FONT_SIZE = 13
+NAV_BUTTON_RADIUS = 9
+
+NAV_BUTTON_ROW_WIDTH_DESKTOP = 190      # Total width of the button group on desktop
+NAV_BUTTON_ROW_WIDTH_MOBILE = 170       # Total width of the button group on mobile
+NAV_BUTTON_GAP = 6                      # Space between buttons
+
+st.markdown(f"""
 <style>
-div[data-testid="stButton"] button {
+/* ============================================================
+   DATE NAVIGATION BUTTON STYLING
+   ============================================================ */
+
+/* Style all Streamlit buttons in this date navigation area */
+div[data-testid="stButton"] button {{
+    background-color: #111814 !important;
+    border: 1px solid rgba(212, 175, 55, 0.25) !important;
+    color: #D4AF37 !important;
+    border-radius: {NAV_BUTTON_RADIUS}px !important;
+    font-weight: 900 !important;
+
     padding: 0px 0px !important;
-    font-size: 11px !important;
-    height: 50px !important;
-    min-height: 50px !important;
-    border-radius: 8px !important;
-}
+    font-size: {NAV_BUTTON_FONT_SIZE}px !important;
+    height: {NAV_BUTTON_HEIGHT}px !important;
+    min-height: {NAV_BUTTON_HEIGHT}px !important;
+    line-height: 1 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}}
+
+div[data-testid="stButton"] button:hover {{
+    border-color: rgba(212, 175, 55, 0.55) !important;
+    background-color: rgba(212, 175, 55, 0.07) !important;
+    color: #FFE082 !important;
+}}
+
+div[data-testid="stButton"] button:active {{
+    background-color: rgba(212, 175, 55, 0.12) !important;
+}}
+
+/* ============================================================
+   HOT FIX:
+   Force nested Streamlit columns in this nav row to stay horizontal.
+   Streamlit often stacks columns on mobile. This tries to override that.
+   ============================================================ */
+
+div[data-testid="column"] div[data-testid="stHorizontalBlock"] {{
+    flex-wrap: nowrap !important;
+}}
+
+div[data-testid="column"] div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {{
+    min-width: 0 !important;
+    width: auto !important;
+    flex: 1 1 0 !important;
+}}
+
+/* Reduce ugly spacing inside the button row */
+div[data-testid="column"] div[data-testid="stButton"] {{
+    margin: 0px !important;
+}}
+
+div[data-testid="column"] div[data-testid="stButton"] button {{
+    width: 100% !important;
+}}
+
+/* ============================================================
+   MOBILE OVERRIDES
+   ============================================================ */
+
+@media (max-width: 760px) {{
+
+    /* Prevent the nav button columns from stacking vertically */
+    div[data-testid="stHorizontalBlock"] {{
+        flex-wrap: nowrap !important;
+        gap: {NAV_BUTTON_GAP}px !important;
+    }}
+
+    div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {{
+        width: auto !important;
+        min-width: 0 !important;
+        flex: 1 1 0 !important;
+    }}
+
+    div[data-testid="stButton"] button {{
+        height: {NAV_BUTTON_HEIGHT}px !important;
+        min-height: {NAV_BUTTON_HEIGHT}px !important;
+        font-size: {NAV_BUTTON_FONT_SIZE}px !important;
+        padding: 0px !important;
+    }}
+}}
 </style>
 """, unsafe_allow_html=True)
 
-nav_buttons, nav_date, spacer = st.columns([0.16, 0.3, 1.5])
+
+# Wider button group now because we have 3 buttons instead of 2.
+nav_buttons, nav_date, spacer = st.columns([0.22, 0.3, 1.45])
 
 with nav_buttons:
-    b1, b2 = st.columns(2)
+    b1, b2, b3 = st.columns(3)
 
     with b1:
-        if st.button("◀", key="prev_day_btn"):
+        if st.button("◀", key="prev_day_btn", help="Previous summary"):
             if st.session_state.day_index < len(daily_options) - 1:
                 st.session_state.day_index += 1
                 st.rerun()
 
     with b2:
-        if st.button("▶", key="next_day_btn"):
+        if st.button("▶", key="next_day_btn", help="Next summary"):
             if st.session_state.day_index > 0:
                 st.session_state.day_index -= 1
                 st.rerun()
 
+    with b3:
+        if st.button("⟳", key="latest_day_btn", help="Jump to latest summary"):
+            st.session_state.day_index = 0
+            st.rerun()
 
 selected_summary = next(
     entry for entry in daily_data
@@ -345,6 +439,9 @@ components.html(summary_html, height=SUMMARY_CARD_HEIGHT, scrolling=False)
 st.subheader("Latest Activity")
 
 if latest_activity_date:
+    closed_count = len(latest_trades)
+    position_word = "position" if closed_count == 1 else "positions"
+
     st.markdown(
         f"""
         <div style="
@@ -355,7 +452,7 @@ if latest_activity_date:
             margin-bottom: 8px;
             line-height: 1.2;
         ">
-            Showing closed positions from: {latest_activity_date}
+            Showing {closed_count} closed {position_word} from: {latest_activity_date}
         </div>
         """,
         unsafe_allow_html=True
