@@ -1,7 +1,7 @@
 {
-    "generated_at": "2026-04-30T09:05:01.597204-07:00",
+    "generated_at": "2026-04-30T10:05:01.573578-07:00",
     "source_bot": "2h8Lev_Bot",
-    "total_equity": 2820.853828,
+    "total_equity": 2823.1848,
     "positions": [
         {
             "symbol": "ABEV",
@@ -56,15 +56,6 @@
             "last_close": 1.5598,
             "unrealized_pl": -1.8121999999999974,
             "unrealized_pl_pct": -0.09552978386926714
-        },
-        {
-            "symbol": "ARDX",
-            "total_cost_basis": 6.27,
-            "quantity": 1.0,
-            "entry_price": 6.27,
-            "last_close": 6.01,
-            "unrealized_pl": -0.2599999999999998,
-            "unrealized_pl_pct": -0.04146730462519933
         },
         {
             "symbol": "ARHS",

@@ -41358,5 +41358,16 @@
         "buy_date": "2026-04-29 06:30",
         "profit": 0.1,
         "trade_percentage": 0.0119
+    },
+    "123674548": {
+        "id": 123674548,
+        "symbol": "ARDX",
+        "sell_price": 6.34,
+        "quantity": 1.0,
+        "sell_date": "2026-04-30 09:39",
+        "buy_price": 6.27,
+        "buy_date": "2026-04-21 06:49",
+        "profit": 0.07,
+        "trade_percentage": 0.0112
     }
 }
