@@ -72,6 +72,42 @@ h1, h2, h3 {
     border-radius: 18px;
     border: 1px solid rgba(212, 175, 55, 0.16);
 }
+
+/* ---------- MOBILE PAGE WIDTH / OVERFLOW CONTROL ---------- */
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+}
+
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+.block-container {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+}
+
+iframe {
+    max-width: 100% !important;
+}
+
+@media (max-width: 700px) {
+    .block-container {
+        padding-left: 0rem !important;
+        padding-right: 0rem !important;
+        max-width: 100% !important;
+    }
+
+    h1, h2, h3 {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    [data-testid="stAltairChart"] {
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+    }
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -136,7 +172,6 @@ if pd.isna(live_total_equity):
     live_total_equity = None
 
 # Pull the live/current date from open_positions_live.json
-# Your sample uses: "generated_at": "2026-04-29T17:05:01.874373-07:00"
 live_generated_at = open_positions_payload.get("generated_at")
 live_dt = pd.to_datetime(live_generated_at, errors="coerce")
 
@@ -238,8 +273,60 @@ dates, equity = prepare_equity_curve(daily_data)
 
 full_equity_df = pd.DataFrame({
     "Date": pd.to_datetime(dates, errors="coerce"),
-    "Equity": equity
-}).dropna().sort_values("Date").reset_index(drop=True)
+    "Equity": pd.to_numeric(equity, errors="coerce")
+})
+
+# Force daily summary chart dates to timezone-naive.
+# This prevents conflicts when we append generated_at from open_positions_live.json.
+full_equity_df["Date"] = full_equity_df["Date"].dt.tz_localize(None)
+
+full_equity_df = (
+    full_equity_df
+    .dropna(subset=["Date", "Equity"])
+    .sort_values("Date")
+    .reset_index(drop=True)
+)
+
+# Append latest live equity from open_positions_live.json so the chart
+# matches the Total Equity card.
+if live_total_equity is not None:
+    live_chart_date = pd.to_datetime(
+        open_positions_payload.get("generated_at"),
+        errors="coerce"
+    )
+
+    if pd.isna(live_chart_date):
+        live_chart_date = pd.Timestamp.now()
+    else:
+        # Convert timezone-aware generated_at into timezone-naive timestamp.
+        live_chart_date = live_chart_date.tz_localize(None)
+
+    live_row = pd.DataFrame([{
+        "Date": live_chart_date,
+        "Equity": live_total_equity
+    }])
+
+    full_equity_df = pd.concat(
+        [full_equity_df, live_row],
+        ignore_index=True
+    )
+
+    full_equity_df["Date"] = pd.to_datetime(
+        full_equity_df["Date"],
+        errors="coerce"
+    )
+
+    full_equity_df["Equity"] = pd.to_numeric(
+        full_equity_df["Equity"],
+        errors="coerce"
+    )
+
+    full_equity_df = (
+        full_equity_df
+        .dropna(subset=["Date", "Equity"])
+        .sort_values("Date")
+        .reset_index(drop=True)
+    )
 
 user_agent = st.context.headers.get("user-agent", "").lower()
 
@@ -249,13 +336,12 @@ is_mobile = (
     or "android" in user_agent
 )
 
-# ---------- MOBILE RANGE SELECTOR STATE ----------
-selected_range = st.session_state.get("mobile_equity_range", "MAX") if is_mobile else "MAX"
 
 def mobile_range_selector(options, default="MAX", key="mobile_equity_range"):
     if key not in st.session_state:
         st.session_state[key] = default
 
+    # This keeps the older working button sizing.
     st.markdown("""
     <style>
     div[data-testid="stPills"] {
@@ -275,12 +361,17 @@ def mobile_range_selector(options, default="MAX", key="mobile_equity_range"):
         background-color: #111814 !important;
         border: 1px solid rgba(76, 175, 80, 0.35) !important;
         white-space: nowrap !important;
+        box-shadow: none !important;
     }
 
-    div[data-testid="stPills"] button[aria-pressed="true"] {
+    div[data-testid="stPills"] button[aria-pressed="true"],
+    div[data-testid="stPills"] button[aria-selected="true"],
+    div[data-testid="stPills"] button[kind="primary"],
+    div[data-testid="stPills"] button[data-testid*="baseButton-primary"] {
         color: #E8F5E9 !important;
         background-color: rgba(46, 125, 50, 0.35) !important;
         border: 1px solid #4CAF50 !important;
+        box-shadow: none !important;
     }
     </style>
     """, unsafe_allow_html=True)
@@ -299,6 +390,7 @@ def mobile_range_selector(options, default="MAX", key="mobile_equity_range"):
 
     return selected
 
+
 def filter_equity_range(df, selected):
     if df.empty:
         return df
@@ -306,7 +398,7 @@ def filter_equity_range(df, selected):
     latest_date = df["Date"].max()
 
     if selected == "1D":
-        return df.tail(1)
+        return df.tail(2) if len(df) >= 2 else df
 
     if selected == "1W":
         cutoff = latest_date - pd.Timedelta(days=7)
@@ -331,6 +423,10 @@ def filter_equity_range(df, selected):
     return df
 
 
+# Read the selected mobile range before filtering/charting.
+# The selector itself is rendered below the chart.
+selected_range = st.session_state.get("mobile_equity_range", "MAX") if is_mobile else "MAX"
+
 equity_df = filter_equity_range(full_equity_df, selected_range).copy()
 
 # Fallback if a short range returns too little data
@@ -348,6 +444,7 @@ if is_mobile and len(equity_df) >= 2:
     range_color = "#4CAF50" if range_change >= 0 else "#FF5C5C"
 
     range_change_text = fmt_signed_currency(range_change)
+
     range_pct_text = (
         f"({range_change_pct * 100:+.2f}%)"
         if range_change_pct is not None
@@ -362,6 +459,7 @@ if is_mobile and len(equity_df) >= 2:
         margin-top: -2px;
         margin-bottom: 8px;
         text-align: center;
+        width: 100%;
     ">
         {range_change_text} {range_pct_text} · {selected_range}
     </div>
@@ -377,7 +475,13 @@ y_ceiling = y_max + y_padding
 equity_df["Baseline"] = y_floor
 
 x_min = equity_df["Date"].min()
-x_max = equity_df["Date"].max() + pd.Timedelta(days=3)
+
+if is_mobile:
+    # Keep this tight on mobile. The latest label is moved left,
+    # so we no longer need large extra right-side date padding.
+    x_max = equity_df["Date"].max() + pd.Timedelta(hours=6)
+else:
+    x_max = equity_df["Date"].max() + pd.Timedelta(days=3)
 
 base = alt.Chart(equity_df).encode(
     x=alt.X(
@@ -425,9 +529,11 @@ if is_mobile:
         y="Equity:Q"
     )
 
+    # Put the label to the LEFT of the point so it does not unlock
+    # horizontal scrolling by overflowing past the right edge.
     latest_label = alt.Chart(latest_point_df).mark_text(
-        align="left",
-        dx=8,
+        align="right",
+        dx=-8,
         dy=-8,
         fontSize=12,
         fontWeight=800,
@@ -509,8 +615,9 @@ chart = (
 )
 
 st.altair_chart(chart, width="stretch")
+
 if is_mobile:
-    selected_range = mobile_range_selector(
+    mobile_range_selector(
         ["1D", "1W", "1M", "3M", "YTD", "1Y", "MAX"],
         default="MAX",
         key="mobile_equity_range"
