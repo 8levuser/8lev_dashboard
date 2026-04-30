@@ -1,7 +1,7 @@
 {
-    "generated_at": "2026-04-30T10:05:01.573578-07:00",
+    "generated_at": "2026-04-30T11:05:01.519115-07:00",
     "source_bot": "2h8Lev_Bot",
-    "total_equity": 2823.1848,
+    "total_equity": 2833.3451,
     "positions": [
         {
             "symbol": "ABEV",
@@ -130,24 +130,6 @@
             "unrealized_pl_pct": -0.12536672265485818
         },
         {
-            "symbol": "DNUT",
-            "total_cost_basis": 7.64,
-            "quantity": 2.0,
-            "entry_price": 3.82,
-            "last_close": 3.65,
-            "unrealized_pl": -0.33999999999999986,
-            "unrealized_pl_pct": -0.044502617801047105
-        },
-        {
-            "symbol": "DUOT",
-            "total_cost_basis": 8.25,
-            "quantity": 1.0,
-            "entry_price": 8.25,
-            "last_close": 8.25,
-            "unrealized_pl": 0.0,
-            "unrealized_pl_pct": 0.0
-        },
-        {
             "symbol": "GAMB",
             "total_cost_basis": 19.62,
             "quantity": 5.0,
@@ -164,6 +146,15 @@
             "last_close": 4.25,
             "unrealized_pl": -0.1999999999999993,
             "unrealized_pl_pct": -0.022988505747126357
+        },
+        {
+            "symbol": "GNW",
+            "total_cost_basis": 8.93,
+            "quantity": 1.0,
+            "entry_price": 8.93,
+            "last_close": 8.9777,
+            "unrealized_pl": 0.04770000000000074,
+            "unrealized_pl_pct": 0.005341545352743645
         },
         {
             "symbol": "GOTU",
@@ -245,6 +236,15 @@
             "last_close": 4.43,
             "unrealized_pl": -0.4300000000000006,
             "unrealized_pl_pct": -0.08847736625514416
+        },
+        {
+            "symbol": "MCW",
+            "total_cost_basis": 7.07,
+            "quantity": 1.0,
+            "entry_price": 7.07,
+            "last_close": 7.07,
+            "unrealized_pl": 0.0,
+            "unrealized_pl_pct": 0.0
         },
         {
             "symbol": "MOMO",

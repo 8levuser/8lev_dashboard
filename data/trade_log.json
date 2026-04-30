@@ -41369,5 +41369,27 @@
         "buy_date": "2026-04-21 06:49",
         "profit": 0.07,
         "trade_percentage": 0.0112
+    },
+    "123709655": {
+        "id": 123709655,
+        "symbol": "DUOT",
+        "sell_price": 8.68,
+        "quantity": 1.0,
+        "sell_date": "2026-04-30 10:31",
+        "buy_price": 8.25,
+        "buy_date": "2026-04-29 06:33",
+        "profit": 0.43,
+        "trade_percentage": 0.0521
+    },
+    "123709604": {
+        "id": 123709604,
+        "symbol": "DNUT",
+        "sell_price": 3.86,
+        "quantity": 2.0,
+        "sell_date": "2026-04-30 11:01",
+        "buy_price": 3.82,
+        "buy_date": "2026-04-28 12:23",
+        "profit": 0.08,
+        "trade_percentage": 0.0105
     }
 }
