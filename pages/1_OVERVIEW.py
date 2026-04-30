@@ -464,6 +464,16 @@ equity_df = filter_equity_range(full_equity_df, selected_range).copy()
 if len(equity_df) < 2 and len(full_equity_df) >= 2:
     equity_df = full_equity_df.tail(2).copy()
 
+# ---------- CHART COLOR BY RANGE PERFORMANCE ----------
+if len(equity_df) >= 2:
+    range_start_equity = equity_df["Equity"].iloc[0]
+    range_end_equity = equity_df["Equity"].iloc[-1]
+    chart_color = "#4CAF50" if range_end_equity >= range_start_equity else "#FF5C5C"
+    chart_fill_opacity = 0.16 if range_end_equity >= range_start_equity else 0.14
+else:
+    chart_color = "#4CAF50"
+    chart_fill_opacity = 0.16
+
 # ---------- RANGE PERFORMANCE LABEL ----------
 if is_mobile and len(equity_df) >= 2:
     start_equity = equity_df["Equity"].iloc[0]
@@ -531,9 +541,9 @@ base = alt.Chart(equity_df).encode(
 )
 
 area = base.mark_area(
-    opacity=0.16,
+    opacity=chart_fill_opacity,
     interpolate="monotone",
-    color="#4CAF50"
+    color=chart_color
 ).encode(
     y=alt.Y(
         "Equity:Q",
@@ -546,7 +556,7 @@ area = base.mark_area(
 line = base.mark_line(
     strokeWidth=3,
     interpolate="monotone",
-    color="#4CAF50"
+    color=chart_color
 )
 
 if is_mobile:
@@ -555,7 +565,7 @@ if is_mobile:
 
     latest_point = alt.Chart(latest_point_df).mark_circle(
         size=85,
-        color="#4CAF50"
+        color="chart_color"
     ).encode(
         x="Date:T",
         y="Equity:Q"
