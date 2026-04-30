@@ -398,6 +398,37 @@ def filter_equity_range(df, selected):
     latest_date = df["Date"].max()
 
     if selected == "1D":
+        # For 1D, compare previous completed daily summary equity
+        # against the latest live equity from open_positions_live.json.
+        if latest_equity is not None and previous_equity is not None:
+            previous_day_rows = daily_df[daily_df["summary_day"] < live_day]
+
+            if len(previous_day_rows) > 0:
+                previous_day_date = previous_day_rows["summary_date_dt"].iloc[-1]
+            else:
+                previous_day_date = latest_date - pd.Timedelta(days=1)
+
+            live_chart_date = pd.to_datetime(
+                open_positions_payload.get("generated_at"),
+                errors="coerce"
+            )
+
+            if pd.isna(live_chart_date):
+                live_chart_date = pd.Timestamp.now()
+            else:
+                live_chart_date = live_chart_date.tz_localize(None)
+
+            return pd.DataFrame([
+                {
+                    "Date": previous_day_date,
+                    "Equity": previous_equity
+                },
+                {
+                    "Date": live_chart_date,
+                    "Equity": latest_equity
+                }
+            ])
+
         return df.tail(2) if len(df) >= 2 else df
 
     if selected == "1W":
@@ -477,9 +508,10 @@ equity_df["Baseline"] = y_floor
 x_min = equity_df["Date"].min()
 
 if is_mobile:
-    # Keep this tight on mobile. The latest label is moved left,
-    # so we no longer need large extra right-side date padding.
-    x_max = equity_df["Date"].max() + pd.Timedelta(hours=6)
+    if selected_range == "1D":
+        x_max = equity_df["Date"].max()
+    else:
+        x_max = equity_df["Date"].max() + pd.Timedelta(hours=6)
 else:
     x_max = equity_df["Date"].max() + pd.Timedelta(days=3)
 
