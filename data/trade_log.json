@@ -41160,5 +41160,126 @@
         "buy_date": "2026-04-23 06:55",
         "profit": 0.06,
         "trade_percentage": 0.0119
+    },
+    "123625576": {
+        "id": 123625576,
+        "symbol": "LAC",
+        "sell_price": 5.03,
+        "quantity": 1.0,
+        "sell_date": "2026-04-30 04:20",
+        "buy_price": 4.85,
+        "buy_date": "2026-04-29 06:48",
+        "profit": 0.18,
+        "trade_percentage": 0.0371
+    },
+    "123625208": {
+        "id": 123625208,
+        "symbol": "MFG",
+        "sell_price": 8.48,
+        "quantity": 1.0,
+        "sell_date": "2026-04-30 04:23",
+        "buy_price": 8.35,
+        "buy_date": "2026-04-21 07:46",
+        "profit": 0.13,
+        "trade_percentage": 0.0156
+    },
+    "123625424": {
+        "id": 123625424,
+        "symbol": "ADT",
+        "sell_price": 7.44,
+        "quantity": 1.0,
+        "sell_date": "2026-04-30 04:28",
+        "buy_price": 7.22,
+        "buy_date": "2026-04-27 12:59",
+        "profit": 0.22,
+        "trade_percentage": 0.0305
+    },
+    "123625493": {
+        "id": 123625493,
+        "symbol": "BMBL",
+        "sell_price": 4.31,
+        "quantity": 2.0,
+        "sell_date": "2026-04-30 06:04",
+        "buy_price": 4.24,
+        "buy_date": "2026-04-28 08:09",
+        "profit": 0.14,
+        "trade_percentage": 0.0165
+    },
+    "123627375": {
+        "id": 123627375,
+        "symbol": "NVAX",
+        "sell_price": 8.07,
+        "quantity": 4.0,
+        "sell_date": "2026-04-30 06:30",
+        "buy_price": 7.99,
+        "buy_date": "2026-04-20 06:30",
+        "profit": 0.32,
+        "trade_percentage": 0.01
+    },
+    "123627584": {
+        "id": 123627584,
+        "symbol": "MDXG",
+        "sell_price": 3.17,
+        "quantity": 8.0,
+        "sell_date": "2026-04-30 06:30",
+        "buy_price": 3.0,
+        "buy_date": "2026-04-27 11:33",
+        "profit": 1.36,
+        "trade_percentage": 0.0567
+    },
+    "123627976": {
+        "id": 123627976,
+        "symbol": "KURA",
+        "sell_price": 8.95,
+        "quantity": 1.0,
+        "sell_date": "2026-04-30 06:31",
+        "buy_price": 8.73,
+        "buy_date": "2026-04-29 06:30",
+        "profit": 0.22,
+        "trade_percentage": 0.0252
+    },
+    "123628015": {
+        "id": 123628015,
+        "symbol": "SGMT",
+        "sell_price": 8.77,
+        "quantity": 1.0,
+        "sell_date": "2026-04-30 06:33",
+        "buy_price": 8.42,
+        "buy_date": "2026-04-29 06:38",
+        "profit": 0.35,
+        "trade_percentage": 0.0416
+    },
+    "123627618": {
+        "id": 123627618,
+        "symbol": "SLI",
+        "sell_price": 3.83,
+        "quantity": 2.0,
+        "sell_date": "2026-04-30 06:35",
+        "buy_price": 3.79,
+        "buy_date": "2026-04-28 06:30",
+        "profit": 0.08,
+        "trade_percentage": 0.0106
+    },
+    "123628028": {
+        "id": 123628028,
+        "symbol": "ASPN",
+        "sell_price": 3.64,
+        "quantity": 2.0,
+        "sell_date": "2026-04-30 06:39",
+        "buy_price": 3.54,
+        "buy_date": "2026-04-29 08:09",
+        "profit": 0.2,
+        "trade_percentage": 0.0282
+    },
+    "123627661": {
+        "id": 123627661,
+        "symbol": "RNW",
+        "sell_price": 5.17,
+        "quantity": 1.0,
+        "sell_date": "2026-04-30 06:43",
+        "buy_price": 5.08,
+        "buy_date": "2026-04-28 07:19",
+        "profit": 0.09,
+        "trade_percentage": 0.0177
     }
 }

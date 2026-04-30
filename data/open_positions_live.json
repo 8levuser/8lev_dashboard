@@ -1,7 +1,7 @@
 {
-    "generated_at": "2026-04-29T17:05:01.874373-07:00",
+    "generated_at": "2026-04-30T07:05:01.596992-07:00",
     "source_bot": "2h8Lev_Bot",
-    "total_equity": 2811.2128,
+    "total_equity": 2784.8396,
     "positions": [
         {
             "symbol": "ABEV",
@@ -20,15 +20,6 @@
             "last_close": 3.3093,
             "unrealized_pl": -1.2535000000000007,
             "unrealized_pl_pct": -0.07042134831460678
-        },
-        {
-            "symbol": "ADT",
-            "total_cost_basis": 7.22,
-            "quantity": 1.0,
-            "entry_price": 7.22,
-            "last_close": 7.17,
-            "unrealized_pl": -0.04999999999999982,
-            "unrealized_pl_pct": -0.0069252077562326625
         },
         {
             "symbol": "AIOT",
@@ -94,15 +85,6 @@
             "unrealized_pl_pct": -0.06733167082294254
         },
         {
-            "symbol": "ASPN",
-            "total_cost_basis": 7.08,
-            "quantity": 2.0,
-            "entry_price": 3.54,
-            "last_close": 3.61,
-            "unrealized_pl": 0.13999999999999968,
-            "unrealized_pl_pct": 0.01977401129943498
-        },
-        {
             "symbol": "BGS",
             "total_cost_basis": 5.38,
             "quantity": 1.0,
@@ -119,15 +101,6 @@
             "last_close": 1.42,
             "unrealized_pl": -0.7499999999999996,
             "unrealized_pl_pct": -0.0955414012738853
-        },
-        {
-            "symbol": "BMBL",
-            "total_cost_basis": 8.46,
-            "quantity": 2.0,
-            "entry_price": 4.23,
-            "last_close": 4.21,
-            "unrealized_pl": -0.040000000000000924,
-            "unrealized_pl_pct": -0.004728132387706964
         },
         {
             "symbol": "CCO",
@@ -292,24 +265,6 @@
             "unrealized_pl_pct": -0.03312629399585924
         },
         {
-            "symbol": "KURA",
-            "total_cost_basis": 8.73,
-            "quantity": 1.0,
-            "entry_price": 8.73,
-            "last_close": 8.75,
-            "unrealized_pl": 0.019999999999999574,
-            "unrealized_pl_pct": 0.002290950744558943
-        },
-        {
-            "symbol": "LAC",
-            "total_cost_basis": 4.85,
-            "quantity": 1.0,
-            "entry_price": 4.85,
-            "last_close": 4.98,
-            "unrealized_pl": 0.13000000000000078,
-            "unrealized_pl_pct": 0.026804123711340368
-        },
-        {
             "symbol": "LFMD",
             "total_cost_basis": 4.86,
             "quantity": 1.0,
@@ -326,24 +281,6 @@
             "last_close": 8.69,
             "unrealized_pl": -0.16000000000000014,
             "unrealized_pl_pct": -0.018079096045197758
-        },
-        {
-            "symbol": "MDXG",
-            "total_cost_basis": 23.94,
-            "quantity": 8.0,
-            "entry_price": 2.9925,
-            "last_close": 2.86,
-            "unrealized_pl": -1.0600000000000023,
-            "unrealized_pl_pct": -0.044277360066833846
-        },
-        {
-            "symbol": "MFG",
-            "total_cost_basis": 8.35,
-            "quantity": 1.0,
-            "entry_price": 8.35,
-            "last_close": 8.42,
-            "unrealized_pl": 0.07000000000000028,
-            "unrealized_pl_pct": 0.008383233532934166
         },
         {
             "symbol": "MOMO",
@@ -373,15 +310,6 @@
             "unrealized_pl_pct": -0.05181952662721891
         },
         {
-            "symbol": "NVAX",
-            "total_cost_basis": 31.93,
-            "quantity": 4.0,
-            "entry_price": 7.9825,
-            "last_close": 7.8358,
-            "unrealized_pl": -0.5868000000000002,
-            "unrealized_pl_pct": -0.018377701221421867
-        },
-        {
             "symbol": "POET",
             "total_cost_basis": 7.49,
             "quantity": 1.0,
@@ -407,15 +335,6 @@
             "last_close": 2.14,
             "unrealized_pl": -0.35999999999999943,
             "unrealized_pl_pct": -0.04035874439461877
-        },
-        {
-            "symbol": "RNW",
-            "total_cost_basis": 5.08,
-            "quantity": 1.0,
-            "entry_price": 5.08,
-            "last_close": 5.07,
-            "unrealized_pl": -0.009999999999999787,
-            "unrealized_pl_pct": -0.001968503937007832
         },
         {
             "symbol": "RR",
@@ -446,12 +365,12 @@
         },
         {
             "symbol": "SGMT",
-            "total_cost_basis": 8.42,
+            "total_cost_basis": 8.34,
             "quantity": 1.0,
-            "entry_price": 8.42,
+            "entry_price": 8.34,
             "last_close": 8.6,
-            "unrealized_pl": 0.17999999999999972,
-            "unrealized_pl_pct": 0.021377672209026095
+            "unrealized_pl": 0.2599999999999998,
+            "unrealized_pl_pct": 0.031175059952038345
         },
         {
             "symbol": "SLDP",
@@ -461,15 +380,6 @@
             "last_close": 3.34,
             "unrealized_pl": -17.85999999999999,
             "unrealized_pl_pct": -0.1359001674022218
-        },
-        {
-            "symbol": "SLI",
-            "total_cost_basis": 7.58,
-            "quantity": 2.0,
-            "entry_price": 3.79,
-            "last_close": 3.7,
-            "unrealized_pl": -0.17999999999999972,
-            "unrealized_pl_pct": -0.023746701846965663
         },
         {
             "symbol": "SNAP",
