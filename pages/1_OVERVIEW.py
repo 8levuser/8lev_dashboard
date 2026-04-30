@@ -112,28 +112,64 @@ open_positions = open_positions_payload.get("positions", [])
 
 # ---------- EQUITY STATUS CARD ----------
 daily_df = pd.DataFrame(daily_data)
-daily_df["summary_date_dt"] = pd.to_datetime(daily_df["summary_date"], errors="coerce")
-daily_df["total_equity"] = pd.to_numeric(daily_df["total_equity"], errors="coerce")
-daily_df = daily_df.dropna(subset=["summary_date_dt", "total_equity"])
+
+daily_df["summary_date_dt"] = pd.to_datetime(
+    daily_df["summary_date"],
+    errors="coerce"
+)
+
+daily_df["summary_day"] = daily_df["summary_date_dt"].dt.date
+
+daily_df["total_equity"] = pd.to_numeric(
+    daily_df["total_equity"],
+    errors="coerce"
+)
+
+daily_df = daily_df.dropna(subset=["summary_date_dt", "summary_day", "total_equity"])
 daily_df = daily_df.sort_values("summary_date_dt").reset_index(drop=True)
 
+# Pull latest/current equity from open_positions_live.json
 live_total_equity = open_positions_payload.get("total_equity")
 live_total_equity = pd.to_numeric(live_total_equity, errors="coerce")
 
 if pd.isna(live_total_equity):
     live_total_equity = None
 
-if len(daily_df) > 0:
-    latest_daily_equity = daily_df["total_equity"].iloc[-1]
-else:
-    latest_daily_equity = None
+# Pull the live/current date from open_positions_live.json
+# Your sample uses: "generated_at": "2026-04-29T17:05:01.874373-07:00"
+live_generated_at = open_positions_payload.get("generated_at")
+live_dt = pd.to_datetime(live_generated_at, errors="coerce")
 
-if live_total_equity is not None:
-    latest_equity = live_total_equity
-    previous_equity = latest_daily_equity
+if pd.isna(live_dt):
+    live_day = pd.Timestamp.today().date()
 else:
-    latest_equity = latest_daily_equity
-    previous_equity = daily_df["total_equity"].iloc[-2] if len(daily_df) > 1 else None
+    live_day = live_dt.date()
+
+# Latest equity should come from the live hourly file
+latest_equity = live_total_equity
+
+# Previous equity should come from the newest daily summary BEFORE the live date.
+# This prevents comparing today against today after the daily summary log updates.
+previous_daily_rows = daily_df[daily_df["summary_day"] < live_day]
+
+if len(previous_daily_rows) > 0:
+    previous_equity = previous_daily_rows["total_equity"].iloc[-1]
+else:
+    previous_equity = None
+
+# Fallback:
+# If live equity is unavailable, use the latest daily summary and compare it
+# against the previous daily summary.
+if latest_equity is None:
+    if len(daily_df) >= 2:
+        latest_equity = daily_df["total_equity"].iloc[-1]
+        previous_equity = daily_df["total_equity"].iloc[-2]
+    elif len(daily_df) == 1:
+        latest_equity = daily_df["total_equity"].iloc[-1]
+        previous_equity = None
+    else:
+        latest_equity = None
+        previous_equity = None
 
 if latest_equity is not None and previous_equity is not None:
     equity_change = latest_equity - previous_equity
@@ -143,9 +179,11 @@ else:
     equity_change_pct = None
 
 equity_change_text = fmt_signed_currency(equity_change)
+
 equity_change_pct_text = (
     f"({equity_change_pct * 100:+.2f}%)"
-    if equity_change_pct is not None else ""
+    if equity_change_pct is not None
+    else ""
 )
 
 change_color = "#4CAF50" if equity_change is not None and equity_change >= 0 else "#FF5C5C"
