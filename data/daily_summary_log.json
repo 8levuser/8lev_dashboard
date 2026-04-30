@@ -17513,5 +17513,38 @@
         ],
         "raw_message": "🚀 Matt Day Summary | 2026-04-28 🎯\nAsset Activity: 12\nRealized Profit: $2.59\nTotal Equity: 2850.95\nDeployed Capital: $2550.13\nUnsettled Funds: $124.44\n📈 Profit Performance per Asset:\n- WVE: $0.28\n- GSIT: $0.11\n- GNW: $0.16\n- BGS: $0.06\n- GENI: $0.18\n- ARHS: $0.16\n- BLZE: $0.16\n- UDMY: $0.52\n- SATL: $0.36\n- BMBL: $0.24\n- MNKD: $0.18\n- ITUB: $0.18",
         "logged_at": "2026-04-28T17:00:12.543482"
+    },
+    {
+        "bot_name": "Matt",
+        "summary_date": "2026-04-29",
+        "asset_activity": 5,
+        "realized_profit": 1.07,
+        "total_equity": 2811.21,
+        "deployed_capital": 2652.49,
+        "unsettled_funds": 36.06,
+        "profit_per_asset": [
+            {
+                "symbol": "INDI",
+                "profit": 0.48
+            },
+            {
+                "symbol": "PLUG",
+                "profit": 0.08
+            },
+            {
+                "symbol": "SFIX",
+                "profit": 0.1
+            },
+            {
+                "symbol": "NPWR",
+                "profit": 0.35
+            },
+            {
+                "symbol": "AUR",
+                "profit": 0.06
+            }
+        ],
+        "raw_message": "🚀 Matt Day Summary | 2026-04-29 🎯\nAsset Activity: 5\nRealized Profit: $1.07\nTotal Equity: 2811.21\nDeployed Capital: $2652.49\nUnsettled Funds: $36.06\n📈 Profit Performance per Asset:\n- INDI: $0.48\n- PLUG: $0.08\n- SFIX: $0.10\n- NPWR: $0.35\n- AUR: $0.06",
+        "logged_at": "2026-04-29T17:00:12.652978"
     }
 ]

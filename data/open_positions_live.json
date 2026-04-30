@@ -1,277 +1,277 @@
 {
-    "generated_at": "2026-04-29T13:05:01.168570-07:00",
+    "generated_at": "2026-04-29T17:05:01.874373-07:00",
     "source_bot": "2h8Lev_Bot",
-    "total_equity": 2806.6024,
+    "total_equity": 2811.2128,
     "positions": [
         {
             "symbol": "ABEV",
             "total_cost_basis": 6.06,
             "quantity": 2.0,
             "entry_price": 3.03,
-            "last_close": 2.91,
-            "unrealized_pl": -0.23999999999999932,
-            "unrealized_pl_pct": -0.03960396039603949
+            "last_close": 2.85,
+            "unrealized_pl": -0.35999999999999943,
+            "unrealized_pl_pct": -0.05940594059405931
         },
         {
             "symbol": "ACB",
             "total_cost_basis": 17.8,
             "quantity": 5.0,
             "entry_price": 3.56,
-            "last_close": 3.4548,
-            "unrealized_pl": -0.5259999999999998,
-            "unrealized_pl_pct": -0.029550561797752797
+            "last_close": 3.3093,
+            "unrealized_pl": -1.2535000000000007,
+            "unrealized_pl_pct": -0.07042134831460678
         },
         {
             "symbol": "ADT",
             "total_cost_basis": 7.22,
             "quantity": 1.0,
             "entry_price": 7.22,
-            "last_close": 7.19,
-            "unrealized_pl": -0.02999999999999936,
-            "unrealized_pl_pct": -0.004155124653739524
+            "last_close": 7.17,
+            "unrealized_pl": -0.04999999999999982,
+            "unrealized_pl_pct": -0.0069252077562326625
         },
         {
             "symbol": "AIOT",
             "total_cost_basis": 19.14,
             "quantity": 6.0,
             "entry_price": 3.19,
-            "last_close": 3.09,
-            "unrealized_pl": -0.6000000000000005,
-            "unrealized_pl_pct": -0.03134796238244517
+            "last_close": 3.3057,
+            "unrealized_pl": 0.6941999999999995,
+            "unrealized_pl_pct": 0.036269592476489004
         },
         {
             "symbol": "ALIT",
             "total_cost_basis": 271.39,
             "quantity": 328.0,
             "entry_price": 0.8274085365853658,
-            "last_close": 0.7075,
-            "unrealized_pl": -39.32999999999999,
-            "unrealized_pl_pct": -0.14492059397914436
+            "last_close": 0.7533,
+            "unrealized_pl": -24.307600000000004,
+            "unrealized_pl_pct": -0.08956704373779434
         },
         {
             "symbol": "ALT",
             "total_cost_basis": 27.13,
             "quantity": 9.0,
             "entry_price": 3.0144444444444445,
-            "last_close": 2.74,
-            "unrealized_pl": -2.4699999999999984,
-            "unrealized_pl_pct": -0.09104312569111679
+            "last_close": 2.6265,
+            "unrealized_pl": -3.4915,
+            "unrealized_pl_pct": -0.1286951713969775
         },
         {
             "symbol": "AMC",
             "total_cost_basis": 18.97,
             "quantity": 11.0,
             "entry_price": 1.7245454545454544,
-            "last_close": 1.6335,
-            "unrealized_pl": -1.0014999999999987,
-            "unrealized_pl_pct": -0.052793885081707896
+            "last_close": 1.5598,
+            "unrealized_pl": -1.8121999999999974,
+            "unrealized_pl_pct": -0.09552978386926714
         },
         {
             "symbol": "ARDX",
             "total_cost_basis": 6.27,
             "quantity": 1.0,
             "entry_price": 6.27,
-            "last_close": 5.97,
-            "unrealized_pl": -0.2999999999999998,
-            "unrealized_pl_pct": -0.04784688995215308
+            "last_close": 6.01,
+            "unrealized_pl": -0.2599999999999998,
+            "unrealized_pl_pct": -0.04146730462519933
         },
         {
             "symbol": "ARHS",
             "total_cost_basis": 7.52,
             "quantity": 1.0,
             "entry_price": 7.52,
-            "last_close": 7.54,
-            "unrealized_pl": 0.020000000000000462,
-            "unrealized_pl_pct": 0.002659574468085168
+            "last_close": 7.34,
+            "unrealized_pl": -0.17999999999999972,
+            "unrealized_pl_pct": -0.023936170212765923
         },
         {
             "symbol": "ARRY",
             "total_cost_basis": 8.02,
             "quantity": 1.0,
             "entry_price": 8.02,
-            "last_close": 7.93,
-            "unrealized_pl": -0.08999999999999986,
-            "unrealized_pl_pct": -0.01122194513715709
+            "last_close": 7.48,
+            "unrealized_pl": -0.5399999999999991,
+            "unrealized_pl_pct": -0.06733167082294254
         },
         {
             "symbol": "ASPN",
             "total_cost_basis": 7.08,
             "quantity": 2.0,
             "entry_price": 3.54,
-            "last_close": 3.56,
-            "unrealized_pl": 0.040000000000000036,
-            "unrealized_pl_pct": 0.005649717514124299
+            "last_close": 3.61,
+            "unrealized_pl": 0.13999999999999968,
+            "unrealized_pl_pct": 0.01977401129943498
         },
         {
             "symbol": "BGS",
             "total_cost_basis": 5.38,
             "quantity": 1.0,
             "entry_price": 5.38,
-            "last_close": 5.46,
-            "unrealized_pl": 0.08000000000000007,
-            "unrealized_pl_pct": 0.014869888475836444
+            "last_close": 5.3,
+            "unrealized_pl": -0.08000000000000007,
+            "unrealized_pl_pct": -0.014869888475836444
         },
         {
             "symbol": "BLND",
             "total_cost_basis": 7.85,
             "quantity": 5.0,
             "entry_price": 1.5699999999999998,
-            "last_close": 1.43,
-            "unrealized_pl": -0.6999999999999995,
-            "unrealized_pl_pct": -0.08917197452229295
+            "last_close": 1.42,
+            "unrealized_pl": -0.7499999999999996,
+            "unrealized_pl_pct": -0.0955414012738853
         },
         {
             "symbol": "BMBL",
             "total_cost_basis": 8.46,
             "quantity": 2.0,
             "entry_price": 4.23,
-            "last_close": 4.26,
-            "unrealized_pl": 0.05999999999999872,
-            "unrealized_pl_pct": 0.007092198581560132
+            "last_close": 4.21,
+            "unrealized_pl": -0.040000000000000924,
+            "unrealized_pl_pct": -0.004728132387706964
         },
         {
             "symbol": "CCO",
             "total_cost_basis": 7.14,
             "quantity": 3.0,
             "entry_price": 2.38,
-            "last_close": 2.39,
-            "unrealized_pl": 0.030000000000000693,
-            "unrealized_pl_pct": 0.0042016806722690045
+            "last_close": 2.4,
+            "unrealized_pl": 0.06000000000000005,
+            "unrealized_pl_pct": 0.008403361344537823
         },
         {
             "symbol": "CLNE",
             "total_cost_basis": 7.29,
             "quantity": 3.0,
             "entry_price": 2.43,
-            "last_close": 2.21,
-            "unrealized_pl": -0.6600000000000006,
-            "unrealized_pl_pct": -0.09053497942386839
+            "last_close": 2.29,
+            "unrealized_pl": -0.4200000000000004,
+            "unrealized_pl_pct": -0.057613168724279885
         },
         {
             "symbol": "COMP",
             "total_cost_basis": 7.92,
             "quantity": 1.0,
             "entry_price": 7.92,
-            "last_close": 7.89,
-            "unrealized_pl": -0.03000000000000025,
-            "unrealized_pl_pct": -0.003787878787878819
+            "last_close": 7.62,
+            "unrealized_pl": -0.2999999999999998,
+            "unrealized_pl_pct": -0.03787878787878786
         },
         {
             "symbol": "CRNC",
             "total_cost_basis": 8.64,
             "quantity": 1.0,
             "entry_price": 8.64,
-            "last_close": 8.735,
-            "unrealized_pl": 0.09499999999999886,
-            "unrealized_pl_pct": 0.010995370370370239
+            "last_close": 8.41,
+            "unrealized_pl": -0.23000000000000043,
+            "unrealized_pl_pct": -0.02662037037037042
         },
         {
             "symbol": "CXM",
             "total_cost_basis": 589.41,
             "quantity": 104.0,
             "entry_price": 5.667403846153846,
-            "last_close": 5.07,
-            "unrealized_pl": -62.12999999999994,
-            "unrealized_pl_pct": -0.10541049524100361
+            "last_close": 4.9569,
+            "unrealized_pl": -73.89239999999995,
+            "unrealized_pl_pct": -0.12536672265485818
         },
         {
             "symbol": "DNUT",
             "total_cost_basis": 7.64,
             "quantity": 2.0,
             "entry_price": 3.82,
-            "last_close": 3.78,
-            "unrealized_pl": -0.08000000000000007,
-            "unrealized_pl_pct": -0.010471204188481685
+            "last_close": 3.65,
+            "unrealized_pl": -0.33999999999999986,
+            "unrealized_pl_pct": -0.044502617801047105
         },
         {
             "symbol": "DUOT",
             "total_cost_basis": 8.25,
             "quantity": 1.0,
             "entry_price": 8.25,
-            "last_close": 8.39,
-            "unrealized_pl": 0.14000000000000057,
-            "unrealized_pl_pct": 0.016969696969697037
+            "last_close": 8.25,
+            "unrealized_pl": 0.0,
+            "unrealized_pl_pct": 0.0
         },
         {
             "symbol": "FNKO",
             "total_cost_basis": 8.62,
             "quantity": 2.0,
             "entry_price": 4.31,
-            "last_close": 4.41,
-            "unrealized_pl": 0.20000000000000107,
-            "unrealized_pl_pct": 0.023201856148492007
+            "last_close": 4.27,
+            "unrealized_pl": -0.08000000000000007,
+            "unrealized_pl_pct": -0.00928074245939676
         },
         {
             "symbol": "GAMB",
             "total_cost_basis": 19.62,
             "quantity": 5.0,
             "entry_price": 3.9240000000000004,
-            "last_close": 3.91,
-            "unrealized_pl": -0.07000000000000117,
-            "unrealized_pl_pct": -0.0035677879714577556
+            "last_close": 3.79,
+            "unrealized_pl": -0.6700000000000017,
+            "unrealized_pl_pct": -0.03414882772680946
         },
         {
             "symbol": "GENI",
             "total_cost_basis": 8.7,
             "quantity": 2.0,
             "entry_price": 4.35,
-            "last_close": 4.32,
-            "unrealized_pl": -0.05999999999999872,
-            "unrealized_pl_pct": -0.006896551724137784
+            "last_close": 4.25,
+            "unrealized_pl": -0.1999999999999993,
+            "unrealized_pl_pct": -0.022988505747126357
         },
         {
             "symbol": "GOTU",
             "total_cost_basis": 449.05,
             "quantity": 164.0,
             "entry_price": 2.738109756097561,
-            "last_close": 1.92,
-            "unrealized_pl": -134.17000000000004,
-            "unrealized_pl_pct": -0.29878632668967825
+            "last_close": 1.86,
+            "unrealized_pl": -144.01000000000002,
+            "unrealized_pl_pct": -0.32069925398062576
         },
         {
             "symbol": "GRAB",
             "total_cost_basis": 8.26,
             "quantity": 2.0,
             "entry_price": 4.13,
-            "last_close": 3.8628,
-            "unrealized_pl": -0.5343999999999998,
-            "unrealized_pl_pct": -0.06469733656174331
+            "last_close": 3.8197,
+            "unrealized_pl": -0.6205999999999996,
+            "unrealized_pl_pct": -0.07513317191283288
         },
         {
             "symbol": "GREE",
             "total_cost_basis": 8.12,
             "quantity": 7.0,
             "entry_price": 1.16,
-            "last_close": 1.12,
-            "unrealized_pl": -0.2799999999999987,
-            "unrealized_pl_pct": -0.034482758620689495
+            "last_close": 1.11,
+            "unrealized_pl": -0.34999999999999876,
+            "unrealized_pl_pct": -0.04310344827586192
         },
         {
             "symbol": "HNST",
             "total_cost_basis": 7.0,
             "quantity": 2.0,
             "entry_price": 3.5,
-            "last_close": 3.5,
-            "unrealized_pl": 0.0,
-            "unrealized_pl_pct": 0.0
+            "last_close": 3.33,
+            "unrealized_pl": -0.33999999999999986,
+            "unrealized_pl_pct": -0.04857142857142855
         },
         {
             "symbol": "HUYA",
             "total_cost_basis": 6.32,
             "quantity": 2.0,
             "entry_price": 3.16,
-            "last_close": 3.03,
-            "unrealized_pl": -0.2600000000000007,
-            "unrealized_pl_pct": -0.04113924050632922
+            "last_close": 3.06,
+            "unrealized_pl": -0.20000000000000018,
+            "unrealized_pl_pct": -0.031645569620253194
         },
         {
             "symbol": "JBLU",
             "total_cost_basis": 5.22,
             "quantity": 1.0,
             "entry_price": 5.22,
-            "last_close": 5.02,
-            "unrealized_pl": -0.20000000000000018,
-            "unrealized_pl_pct": -0.03831417624521077
+            "last_close": 4.8897,
+            "unrealized_pl": -0.33029999999999937,
+            "unrealized_pl_pct": -0.0632758620689654
         },
         {
             "symbol": "JMIA",
@@ -287,216 +287,216 @@
             "total_cost_basis": 4.83,
             "quantity": 1.0,
             "entry_price": 4.83,
-            "last_close": 4.89,
-            "unrealized_pl": 0.05999999999999961,
-            "unrealized_pl_pct": 0.012422360248447124
+            "last_close": 4.67,
+            "unrealized_pl": -0.16000000000000014,
+            "unrealized_pl_pct": -0.03312629399585924
         },
         {
             "symbol": "KURA",
             "total_cost_basis": 8.73,
             "quantity": 1.0,
             "entry_price": 8.73,
-            "last_close": 8.83,
-            "unrealized_pl": 0.09999999999999964,
-            "unrealized_pl_pct": 0.01145475372279492
+            "last_close": 8.75,
+            "unrealized_pl": 0.019999999999999574,
+            "unrealized_pl_pct": 0.002290950744558943
         },
         {
             "symbol": "LAC",
             "total_cost_basis": 4.85,
             "quantity": 1.0,
             "entry_price": 4.85,
-            "last_close": 4.9505,
-            "unrealized_pl": 0.10050000000000026,
-            "unrealized_pl_pct": 0.020721649484536135
+            "last_close": 4.98,
+            "unrealized_pl": 0.13000000000000078,
+            "unrealized_pl_pct": 0.026804123711340368
         },
         {
             "symbol": "LFMD",
             "total_cost_basis": 4.86,
             "quantity": 1.0,
             "entry_price": 4.86,
-            "last_close": 4.55,
-            "unrealized_pl": -0.3100000000000005,
-            "unrealized_pl_pct": -0.06378600823045277
+            "last_close": 4.43,
+            "unrealized_pl": -0.4300000000000006,
+            "unrealized_pl_pct": -0.08847736625514416
         },
         {
             "symbol": "LUMN",
             "total_cost_basis": 8.85,
             "quantity": 1.0,
             "entry_price": 8.85,
-            "last_close": 8.75,
-            "unrealized_pl": -0.09999999999999964,
-            "unrealized_pl_pct": -0.011299435028248548
+            "last_close": 8.69,
+            "unrealized_pl": -0.16000000000000014,
+            "unrealized_pl_pct": -0.018079096045197758
         },
         {
             "symbol": "MDXG",
-            "total_cost_basis": 6.72,
-            "quantity": 2.0,
-            "entry_price": 3.36,
-            "last_close": 3.4,
-            "unrealized_pl": 0.08000000000000007,
-            "unrealized_pl_pct": 0.011904761904761916
+            "total_cost_basis": 23.94,
+            "quantity": 8.0,
+            "entry_price": 2.9925,
+            "last_close": 2.86,
+            "unrealized_pl": -1.0600000000000023,
+            "unrealized_pl_pct": -0.044277360066833846
         },
         {
             "symbol": "MFG",
             "total_cost_basis": 8.35,
             "quantity": 1.0,
             "entry_price": 8.35,
-            "last_close": 8.45,
-            "unrealized_pl": 0.09999999999999964,
-            "unrealized_pl_pct": 0.011976047904191574
+            "last_close": 8.42,
+            "unrealized_pl": 0.07000000000000028,
+            "unrealized_pl_pct": 0.008383233532934166
         },
         {
             "symbol": "MOMO",
             "total_cost_basis": 6.39,
             "quantity": 1.0,
             "entry_price": 6.39,
-            "last_close": 6.14,
-            "unrealized_pl": -0.25,
-            "unrealized_pl_pct": -0.03912363067292645
+            "last_close": 6.07,
+            "unrealized_pl": -0.3199999999999994,
+            "unrealized_pl_pct": -0.050078247261345764
         },
         {
             "symbol": "NG",
             "total_cost_basis": 8.77,
             "quantity": 1.0,
             "entry_price": 8.77,
-            "last_close": 8.2,
-            "unrealized_pl": -0.5700000000000003,
-            "unrealized_pl_pct": -0.0649942987457241
+            "last_close": 7.86,
+            "unrealized_pl": -0.9099999999999993,
+            "unrealized_pl_pct": -0.10376282782212079
         },
         {
             "symbol": "NIO",
             "total_cost_basis": 6.76,
             "quantity": 1.0,
             "entry_price": 6.76,
-            "last_close": 6.36,
-            "unrealized_pl": -0.39999999999999947,
-            "unrealized_pl_pct": -0.059171597633136015
+            "last_close": 6.4097,
+            "unrealized_pl": -0.35029999999999983,
+            "unrealized_pl_pct": -0.05181952662721891
         },
         {
             "symbol": "NVAX",
             "total_cost_basis": 31.93,
             "quantity": 4.0,
             "entry_price": 7.9825,
-            "last_close": 7.93,
-            "unrealized_pl": -0.21000000000000085,
-            "unrealized_pl_pct": -0.006576886940181674
+            "last_close": 7.8358,
+            "unrealized_pl": -0.5868000000000002,
+            "unrealized_pl_pct": -0.018377701221421867
         },
         {
             "symbol": "POET",
             "total_cost_basis": 7.49,
             "quantity": 1.0,
             "entry_price": 7.49,
-            "last_close": 7.94,
-            "unrealized_pl": 0.4500000000000002,
-            "unrealized_pl_pct": 0.06008010680907879
+            "last_close": 6.52,
+            "unrealized_pl": -0.9700000000000006,
+            "unrealized_pl_pct": -0.129506008010681
         },
         {
             "symbol": "RERE",
             "total_cost_basis": 18.31,
             "quantity": 4.0,
             "entry_price": 4.5775,
-            "last_close": 4.48,
-            "unrealized_pl": -0.389999999999997,
-            "unrealized_pl_pct": -0.021299836155106337
+            "last_close": 4.4,
+            "unrealized_pl": -0.7099999999999973,
+            "unrealized_pl_pct": -0.03877662479519374
         },
         {
             "symbol": "RLX",
             "total_cost_basis": 8.92,
             "quantity": 4.0,
             "entry_price": 2.23,
-            "last_close": 2.2,
-            "unrealized_pl": -0.11999999999999922,
-            "unrealized_pl_pct": -0.01345291479820619
+            "last_close": 2.14,
+            "unrealized_pl": -0.35999999999999943,
+            "unrealized_pl_pct": -0.04035874439461877
         },
         {
             "symbol": "RNW",
             "total_cost_basis": 5.08,
             "quantity": 1.0,
             "entry_price": 5.08,
-            "last_close": 5.03,
-            "unrealized_pl": -0.04999999999999982,
-            "unrealized_pl_pct": -0.009842519685039335
+            "last_close": 5.07,
+            "unrealized_pl": -0.009999999999999787,
+            "unrealized_pl_pct": -0.001968503937007832
         },
         {
             "symbol": "RR",
             "total_cost_basis": 7.86,
             "quantity": 3.0,
             "entry_price": 2.62,
-            "last_close": 2.42,
-            "unrealized_pl": -0.6000000000000005,
-            "unrealized_pl_pct": -0.07633587786259549
+            "last_close": 2.35,
+            "unrealized_pl": -0.81,
+            "unrealized_pl_pct": -0.10305343511450382
         },
         {
             "symbol": "RXRX",
             "total_cost_basis": 7.24,
             "quantity": 2.0,
             "entry_price": 3.62,
-            "last_close": 3.4101,
-            "unrealized_pl": -0.4198000000000004,
-            "unrealized_pl_pct": -0.057983425414364693
+            "last_close": 3.29,
+            "unrealized_pl": -0.6600000000000001,
+            "unrealized_pl_pct": -0.09116022099447516
         },
         {
             "symbol": "SABR",
             "total_cost_basis": 9.0,
             "quantity": 5.0,
             "entry_price": 1.8,
-            "last_close": 1.84,
-            "unrealized_pl": 0.20000000000000018,
-            "unrealized_pl_pct": 0.02222222222222224
+            "last_close": 1.81,
+            "unrealized_pl": 0.050000000000000044,
+            "unrealized_pl_pct": 0.00555555555555556
         },
         {
             "symbol": "SGMT",
             "total_cost_basis": 8.42,
             "quantity": 1.0,
             "entry_price": 8.42,
-            "last_close": 8.7508,
-            "unrealized_pl": 0.3308,
-            "unrealized_pl_pct": 0.03928741092636579
+            "last_close": 8.6,
+            "unrealized_pl": 0.17999999999999972,
+            "unrealized_pl_pct": 0.021377672209026095
         },
         {
             "symbol": "SLDP",
             "total_cost_basis": 131.42,
             "quantity": 34.0,
             "entry_price": 3.8652941176470583,
-            "last_close": 3.51,
-            "unrealized_pl": -12.079999999999991,
-            "unrealized_pl_pct": -0.0919190381981433
+            "last_close": 3.34,
+            "unrealized_pl": -17.85999999999999,
+            "unrealized_pl_pct": -0.1359001674022218
         },
         {
             "symbol": "SLI",
             "total_cost_basis": 7.58,
             "quantity": 2.0,
             "entry_price": 3.79,
-            "last_close": 3.73,
-            "unrealized_pl": -0.1200000000000001,
-            "unrealized_pl_pct": -0.015831134564643815
+            "last_close": 3.7,
+            "unrealized_pl": -0.17999999999999972,
+            "unrealized_pl_pct": -0.023746701846965663
         },
         {
             "symbol": "SNAP",
             "total_cost_basis": 205.8,
             "quantity": 33.0,
             "entry_price": 6.236363636363636,
-            "last_close": 5.9503,
-            "unrealized_pl": -9.440099999999987,
-            "unrealized_pl_pct": -0.04587026239067049
+            "last_close": 5.96,
+            "unrealized_pl": -9.120000000000001,
+            "unrealized_pl_pct": -0.044314868804664724
         },
         {
             "symbol": "STKL",
             "total_cost_basis": 6.48,
             "quantity": 1.0,
             "entry_price": 6.48,
-            "last_close": 6.49,
-            "unrealized_pl": 0.009999999999999787,
-            "unrealized_pl_pct": 0.0015432098765431768
+            "last_close": 6.48,
+            "unrealized_pl": 0.0,
+            "unrealized_pl_pct": 0.0
         },
         {
             "symbol": "SVV",
             "total_cost_basis": 8.39,
             "quantity": 1.0,
             "entry_price": 8.39,
-            "last_close": 8.46,
-            "unrealized_pl": 0.07000000000000028,
-            "unrealized_pl_pct": 0.008343265792610284
+            "last_close": 8.23,
+            "unrealized_pl": -0.16000000000000014,
+            "unrealized_pl_pct": -0.01907032181168059
         },
         {
             "symbol": "TALK",
@@ -512,90 +512,90 @@
             "total_cost_basis": 7.6,
             "quantity": 2.0,
             "entry_price": 3.8,
-            "last_close": 3.78,
-            "unrealized_pl": -0.040000000000000036,
-            "unrealized_pl_pct": -0.005263157894736847
+            "last_close": 3.75,
+            "unrealized_pl": -0.09999999999999964,
+            "unrealized_pl_pct": -0.01315789473684206
         },
         {
             "symbol": "TIGR",
             "total_cost_basis": 7.21,
             "quantity": 1.0,
             "entry_price": 7.21,
-            "last_close": 6.6906,
-            "unrealized_pl": -0.5194000000000001,
-            "unrealized_pl_pct": -0.07203883495145633
+            "last_close": 6.5362,
+            "unrealized_pl": -0.6738,
+            "unrealized_pl_pct": -0.09345353675450763
         },
         {
             "symbol": "TWI",
             "total_cost_basis": 8.13,
             "quantity": 1.0,
             "entry_price": 8.13,
-            "last_close": 8.13,
-            "unrealized_pl": 0.0,
-            "unrealized_pl_pct": 0.0
+            "last_close": 7.99,
+            "unrealized_pl": -0.14000000000000057,
+            "unrealized_pl_pct": -0.017220172201722086
         },
         {
             "symbol": "UA",
             "total_cost_basis": 6.41,
             "quantity": 1.0,
             "entry_price": 6.41,
-            "last_close": 6.19,
-            "unrealized_pl": -0.21999999999999975,
-            "unrealized_pl_pct": -0.034321372854914156
+            "last_close": 5.98,
+            "unrealized_pl": -0.4299999999999997,
+            "unrealized_pl_pct": -0.06708268330733225
         },
         {
             "symbol": "UAA",
             "total_cost_basis": 6.64,
             "quantity": 1.0,
             "entry_price": 6.64,
-            "last_close": 6.4,
-            "unrealized_pl": -0.23999999999999932,
-            "unrealized_pl_pct": -0.03614457831325291
+            "last_close": 6.17,
+            "unrealized_pl": -0.46999999999999975,
+            "unrealized_pl_pct": -0.07078313253012045
         },
         {
             "symbol": "URG",
             "total_cost_basis": 8.85,
             "quantity": 5.0,
             "entry_price": 1.77,
-            "last_close": 1.75,
-            "unrealized_pl": -0.10000000000000009,
-            "unrealized_pl_pct": -0.011299435028248598
+            "last_close": 1.7,
+            "unrealized_pl": -0.3500000000000003,
+            "unrealized_pl_pct": -0.039548022598870095
         },
         {
             "symbol": "VERI",
             "total_cost_basis": 17.59,
             "quantity": 8.0,
             "entry_price": 2.19875,
-            "last_close": 2.17,
-            "unrealized_pl": -0.23000000000000043,
-            "unrealized_pl_pct": -0.013075611142694737
+            "last_close": 2.04,
+            "unrealized_pl": -1.2699999999999996,
+            "unrealized_pl_pct": -0.07220011370096643
         },
         {
             "symbol": "VSTM",
             "total_cost_basis": 5.85,
             "quantity": 1.0,
             "entry_price": 5.85,
-            "last_close": 5.46,
-            "unrealized_pl": -0.3899999999999997,
-            "unrealized_pl_pct": -0.06666666666666661
+            "last_close": 5.4,
+            "unrealized_pl": -0.4499999999999993,
+            "unrealized_pl_pct": -0.0769230769230768
         },
         {
             "symbol": "YEXT",
             "total_cost_basis": 437.59,
             "quantity": 107.0,
             "entry_price": 4.0896261682242985,
-            "last_close": 3.93,
-            "unrealized_pl": -17.07999999999992,
-            "unrealized_pl_pct": -0.039031970566054806
+            "last_close": 3.79,
+            "unrealized_pl": -32.05999999999993,
+            "unrealized_pl_pct": -0.07326492835759486
         },
         {
             "symbol": "YMM",
             "total_cost_basis": 8.68,
             "quantity": 1.0,
             "entry_price": 8.68,
-            "last_close": 8.65,
-            "unrealized_pl": -0.02999999999999936,
-            "unrealized_pl_pct": -0.0034562211981566085
+            "last_close": 8.32,
+            "unrealized_pl": -0.35999999999999943,
+            "unrealized_pl_pct": -0.04147465437788012
         }
     ]
 }
