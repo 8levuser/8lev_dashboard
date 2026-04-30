@@ -192,24 +192,27 @@ selected_date = daily_options[st.session_state.day_index]
 # ---------- DATE NAVIGATION ----------
 
 # ============================================================
-# DATE NAVIGATION MOBILE / DESKTOP CONTROLS
+# DATE NAVIGATION CONTROLS
+# This version uses real st.button buttons again.
+# No HTML links. No query params. No nested columns.
 # ============================================================
 
-NAV_BUTTON_HEIGHT = 42
-NAV_BUTTON_FONT_SIZE = 13
+NAV_BUTTON_HEIGHT = 38
+NAV_BUTTON_FONT_SIZE = 14
 NAV_BUTTON_RADIUS = 9
 
-NAV_BUTTON_ROW_WIDTH_DESKTOP = 190      # Total width of the button group on desktop
-NAV_BUTTON_ROW_WIDTH_MOBILE = 170       # Total width of the button group on mobile
-NAV_BUTTON_GAP = 6                      # Space between buttons
+NAV_MOBILE_BREAKPOINT = 760
+NAV_MOBILE_BUTTON_HEIGHT = 36
+NAV_MOBILE_BUTTON_FONT_SIZE = 13
+
 
 st.markdown(f"""
 <style>
 /* ============================================================
-   DATE NAVIGATION BUTTON STYLING
+   DATE NAVIGATION BUTTONS
+   Real Streamlit buttons, but without nested columns.
    ============================================================ */
 
-/* Style all Streamlit buttons in this date navigation area */
 div[data-testid="stButton"] button {{
     background-color: #111814 !important;
     border: 1px solid rgba(212, 175, 55, 0.25) !important;
@@ -238,82 +241,65 @@ div[data-testid="stButton"] button:active {{
     background-color: rgba(212, 175, 55, 0.12) !important;
 }}
 
-/* ============================================================
-   HOT FIX:
-   Force nested Streamlit columns in this nav row to stay horizontal.
-   Streamlit often stacks columns on mobile. This tries to override that.
-   ============================================================ */
-
-div[data-testid="column"] div[data-testid="stHorizontalBlock"] {{
-    flex-wrap: nowrap !important;
-}}
-
-div[data-testid="column"] div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {{
-    min-width: 0 !important;
-    width: auto !important;
-    flex: 1 1 0 !important;
-}}
-
-/* Reduce ugly spacing inside the button row */
-div[data-testid="column"] div[data-testid="stButton"] {{
-    margin: 0px !important;
-}}
-
-div[data-testid="column"] div[data-testid="stButton"] button {{
+/* Make the actual button fill its tiny column */
+div[data-testid="stButton"] button {{
     width: 100% !important;
 }}
 
 /* ============================================================
-   MOBILE OVERRIDES
+   MOBILE HOT FIX
+   This is intentionally much less aggressive than before.
+   It only tries to prevent the immediate nav row from wrapping.
    ============================================================ */
 
-@media (max-width: 760px) {{
-
-    /* Prevent the nav button columns from stacking vertically */
-    div[data-testid="stHorizontalBlock"] {{
-        flex-wrap: nowrap !important;
-        gap: {NAV_BUTTON_GAP}px !important;
-    }}
-
-    div[data-testid="stHorizontalBlock"] > div[data-testid="column"] {{
-        width: auto !important;
-        min-width: 0 !important;
-        flex: 1 1 0 !important;
-    }}
+@media (max-width: {NAV_MOBILE_BREAKPOINT}px) {{
 
     div[data-testid="stButton"] button {{
-        height: {NAV_BUTTON_HEIGHT}px !important;
-        min-height: {NAV_BUTTON_HEIGHT}px !important;
-        font-size: {NAV_BUTTON_FONT_SIZE}px !important;
+        height: {NAV_MOBILE_BUTTON_HEIGHT}px !important;
+        min-height: {NAV_MOBILE_BUTTON_HEIGHT}px !important;
+        font-size: {NAV_MOBILE_BUTTON_FONT_SIZE}px !important;
         padding: 0px !important;
     }}
+
+    /*
+    Important:
+    Do NOT force all stHorizontalBlock elements globally.
+    That caused the side-scroll issue before.
+    */
 }}
 </style>
 """, unsafe_allow_html=True)
 
 
-# Wider button group now because we have 3 buttons instead of 2.
-nav_buttons, nav_date, spacer = st.columns([0.22, 0.3, 1.45])
+# Button order:
+# ◀ = older summary
+# ▶ = newer summary
+# ⟳ = jump to latest summary
+#
+# This is one single Streamlit column row.
+# No nested columns.
+# The spacer keeps the buttons grouped on the left on desktop.
+b1, b2, b3, spacer = st.columns([0.06, 0.06, 0.06, 0.82], gap="small")
 
-with nav_buttons:
-    b1, b2, b3 = st.columns(3)
-
-    with b1:
-        if st.button("◀", key="prev_day_btn", help="Previous summary"):
-            if st.session_state.day_index < len(daily_options) - 1:
-                st.session_state.day_index += 1
-                st.rerun()
-
-    with b2:
-        if st.button("▶", key="next_day_btn", help="Next summary"):
-            if st.session_state.day_index > 0:
-                st.session_state.day_index -= 1
-                st.rerun()
-
-    with b3:
-        if st.button("⟳", key="latest_day_btn", help="Jump to latest summary"):
-            st.session_state.day_index = 0
+with b1:
+    if st.button("◀", key="prev_day_btn", help="Older summary", use_container_width=True):
+        if st.session_state.day_index < len(daily_options) - 1:
+            st.session_state.day_index += 1
             st.rerun()
+
+with b2:
+    if st.button("▶", key="next_day_btn", help="Newer summary", use_container_width=True):
+        if st.session_state.day_index > 0:
+            st.session_state.day_index -= 1
+            st.rerun()
+
+with b3:
+    if st.button("⟳", key="latest_day_btn", help="Jump to latest summary", use_container_width=True):
+        st.session_state.day_index = 0
+        st.rerun()
+
+
+selected_date = daily_options[st.session_state.day_index]
 
 selected_summary = next(
     entry for entry in daily_data
@@ -434,7 +420,6 @@ body {{
 """
 
 components.html(summary_html, height=SUMMARY_CARD_HEIGHT, scrolling=False)
-
 # ---------- LATEST ACTIVITY ----------
 st.subheader("Latest Activity")
 
