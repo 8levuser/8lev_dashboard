@@ -41402,5 +41402,16 @@
         "buy_date": "2026-04-23 07:28",
         "profit": 0.1,
         "trade_percentage": 0.0113
+    },
+    "123742926": {
+        "id": 123742926,
+        "symbol": "JMIA",
+        "sell_price": 7.12,
+        "quantity": 1.0,
+        "sell_date": "2026-04-30 12:56",
+        "buy_price": 7.04,
+        "buy_date": "2026-04-27 08:49",
+        "profit": 0.08,
+        "trade_percentage": 0.0114
     }
 }

@@ -1,7 +1,7 @@
 {
-    "generated_at": "2026-04-30T12:05:01.722454-07:00",
+    "generated_at": "2026-04-30T13:05:01.423535-07:00",
     "source_bot": "2h8Lev_Bot",
-    "total_equity": 2843.7403,
+    "total_equity": 2855.963,
     "positions": [
         {
             "symbol": "ABEV",
@@ -130,6 +130,15 @@
             "unrealized_pl_pct": -0.12536672265485818
         },
         {
+            "symbol": "EVGO",
+            "total_cost_basis": 8.4,
+            "quantity": 4.0,
+            "entry_price": 2.1,
+            "last_close": 2.12,
+            "unrealized_pl": 0.08000000000000007,
+            "unrealized_pl_pct": 0.009523809523809532
+        },
+        {
             "symbol": "GAMB",
             "total_cost_basis": 19.62,
             "quantity": 5.0,
@@ -209,15 +218,6 @@
             "last_close": 4.8897,
             "unrealized_pl": -0.33029999999999937,
             "unrealized_pl_pct": -0.0632758620689654
-        },
-        {
-            "symbol": "JMIA",
-            "total_cost_basis": 7.04,
-            "quantity": 1.0,
-            "entry_price": 7.04,
-            "last_close": 6.81,
-            "unrealized_pl": -0.23000000000000043,
-            "unrealized_pl_pct": -0.03267045454545461
         },
         {
             "symbol": "JVA",
