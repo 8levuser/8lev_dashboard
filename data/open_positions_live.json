@@ -1,7 +1,7 @@
 {
-    "generated_at": "2026-04-30T11:05:01.519115-07:00",
+    "generated_at": "2026-04-30T12:05:01.722454-07:00",
     "source_bot": "2h8Lev_Bot",
-    "total_equity": 2833.3451,
+    "total_equity": 2843.7403,
     "positions": [
         {
             "symbol": "ABEV",
@@ -407,15 +407,6 @@
             "last_close": 6.17,
             "unrealized_pl": -0.46999999999999975,
             "unrealized_pl_pct": -0.07078313253012045
-        },
-        {
-            "symbol": "URG",
-            "total_cost_basis": 8.85,
-            "quantity": 5.0,
-            "entry_price": 1.77,
-            "last_close": 1.7,
-            "unrealized_pl": -0.3500000000000003,
-            "unrealized_pl_pct": -0.039548022598870095
         },
         {
             "symbol": "VERI",

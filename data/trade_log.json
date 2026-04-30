@@ -41391,5 +41391,16 @@
         "buy_date": "2026-04-28 12:23",
         "profit": 0.08,
         "trade_percentage": 0.0105
+    },
+    "123709193": {
+        "id": 123709193,
+        "symbol": "URG",
+        "sell_price": 1.79,
+        "quantity": 5.0,
+        "sell_date": "2026-04-30 11:48",
+        "buy_price": 1.77,
+        "buy_date": "2026-04-23 07:28",
+        "profit": 0.1,
+        "trade_percentage": 0.0113
     }
 }
