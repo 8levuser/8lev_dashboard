@@ -1,7 +1,7 @@
 {
-    "generated_at": "2026-05-01T09:05:01.664596-07:00",
+    "generated_at": "2026-05-01T10:05:01.623865-07:00",
     "source_bot": "2h8Lev_Bot",
-    "total_equity": 2908.588593,
+    "total_equity": 2908.763993,
     "positions": [
         {
             "symbol": "AMC",
@@ -40,6 +40,15 @@
             "unrealized_pl_pct": -0.024355300859598968
         },
         {
+            "symbol": "KURA",
+            "total_cost_basis": 8.8,
+            "quantity": 1.0,
+            "entry_price": 8.8,
+            "last_close": 8.83,
+            "unrealized_pl": 0.02999999999999936,
+            "unrealized_pl_pct": 0.003409090909090836
+        },
+        {
             "symbol": "LAC",
             "total_cost_basis": 5.56,
             "quantity": 1.0,
@@ -47,6 +56,15 @@
             "last_close": 4.98,
             "unrealized_pl": -0.5799999999999992,
             "unrealized_pl_pct": -0.10431654676258979
+        },
+        {
+            "symbol": "LFST",
+            "total_cost_basis": 7.49,
+            "quantity": 1.0,
+            "entry_price": 7.49,
+            "last_close": 7.43,
+            "unrealized_pl": -0.0600000000000005,
+            "unrealized_pl_pct": -0.008010680907877236
         },
         {
             "symbol": "NIO",
@@ -76,6 +94,15 @@
             "unrealized_pl_pct": -0.012605042016806641
         },
         {
+            "symbol": "SGMT",
+            "total_cost_basis": 7.8,
+            "quantity": 1.0,
+            "entry_price": 7.8,
+            "last_close": 8.04,
+            "unrealized_pl": 0.23999999999999932,
+            "unrealized_pl_pct": 0.030769230769230684
+        },
+        {
             "symbol": "SLDP",
             "total_cost_basis": 6.73,
             "quantity": 2.0,
@@ -85,13 +112,13 @@
             "unrealized_pl_pct": 0.03120356612184249
         },
         {
-            "symbol": "SLI",
-            "total_cost_basis": 7.67,
-            "quantity": 2.0,
-            "entry_price": 3.835,
-            "last_close": 3.86,
-            "unrealized_pl": 0.04999999999999982,
-            "unrealized_pl_pct": 0.006518904823989547
+            "symbol": "TALK",
+            "total_cost_basis": 5.18,
+            "quantity": 1.0,
+            "entry_price": 5.18,
+            "last_close": 5.19,
+            "unrealized_pl": 0.010000000000000675,
+            "unrealized_pl_pct": 0.0019305019305020609
         },
         {
             "symbol": "URG",

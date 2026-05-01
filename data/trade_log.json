@@ -42128,5 +42128,16 @@
         "buy_date": "2026-05-01 07:18",
         "profit": 0.05,
         "trade_percentage": 0.0066
+    },
+    "123809371": {
+        "id": 123809371,
+        "symbol": "SLI",
+        "sell_price": 3.89,
+        "quantity": 2.0,
+        "sell_date": "2026-05-01 09:59",
+        "buy_price": 3.84,
+        "buy_date": "2026-05-01 08:13",
+        "profit": 0.1,
+        "trade_percentage": 0.013
     }
 }
