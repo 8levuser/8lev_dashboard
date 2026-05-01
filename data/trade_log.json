@@ -42139,5 +42139,16 @@
         "buy_date": "2026-05-01 08:13",
         "profit": 0.1,
         "trade_percentage": 0.013
+    },
+    "123809425": {
+        "id": 123809425,
+        "symbol": "RR",
+        "sell_price": 2.5,
+        "quantity": 3.0,
+        "sell_date": "2026-05-01 10:08",
+        "buy_price": 2.38,
+        "buy_date": "2026-05-01 08:12",
+        "profit": 0.36,
+        "trade_percentage": 0.0504
     }
 }

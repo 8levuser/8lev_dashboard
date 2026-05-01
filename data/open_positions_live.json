@@ -1,7 +1,7 @@
 {
-    "generated_at": "2026-05-01T10:05:01.623865-07:00",
+    "generated_at": "2026-05-01T11:05:01.913567-07:00",
     "source_bot": "2h8Lev_Bot",
-    "total_equity": 2908.763993,
+    "total_equity": 2908.878793,
     "positions": [
         {
             "symbol": "AMC",
@@ -11,6 +11,15 @@
             "last_close": 1.55,
             "unrealized_pl": 0.5500000000000007,
             "unrealized_pl_pct": 0.06285714285714294
+        },
+        {
+            "symbol": "GNW",
+            "total_cost_basis": 8.77,
+            "quantity": 1.0,
+            "entry_price": 8.77,
+            "last_close": 8.9777,
+            "unrealized_pl": 0.20770000000000088,
+            "unrealized_pl_pct": 0.0236830102622578
         },
         {
             "symbol": "GRAB",
@@ -83,15 +92,6 @@
             "last_close": 5.57,
             "unrealized_pl": 0.2600000000000007,
             "unrealized_pl_pct": 0.04896421845574401
-        },
-        {
-            "symbol": "RR",
-            "total_cost_basis": 7.14,
-            "quantity": 3.0,
-            "entry_price": 2.38,
-            "last_close": 2.35,
-            "unrealized_pl": -0.08999999999999941,
-            "unrealized_pl_pct": -0.012605042016806641
         },
         {
             "symbol": "SGMT",
