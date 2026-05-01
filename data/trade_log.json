@@ -41424,5 +41424,104 @@
         "buy_date": "2026-04-30 12:41",
         "profit": 0.16,
         "trade_percentage": 0.019
+    },
+    "123759318": {
+        "id": 123759318,
+        "symbol": "ALIT",
+        "sell_price": 0.85,
+        "quantity": 328.0,
+        "sell_date": "2026-05-01 04:16",
+        "buy_price": 0.83,
+        "buy_date": "2026-02-09 06:34",
+        "profit": 6.56,
+        "trade_percentage": 0.0241
+    },
+    "123761493": {
+        "id": 123761493,
+        "symbol": "HNST",
+        "sell_price": 3.55,
+        "quantity": 2.0,
+        "sell_date": "2026-05-01 06:31",
+        "buy_price": 3.5,
+        "buy_date": "2026-04-27 11:35",
+        "profit": 0.1,
+        "trade_percentage": 0.0143
+    },
+    "123761261": {
+        "id": 123761261,
+        "symbol": "GAMB",
+        "sell_price": 3.97,
+        "quantity": 5.0,
+        "sell_date": "2026-05-01 06:31",
+        "buy_price": 3.93,
+        "buy_date": "2026-03-16 06:39",
+        "profit": 0.2,
+        "trade_percentage": 0.0102
+    },
+    "123761398": {
+        "id": 123761398,
+        "symbol": "AIOT",
+        "sell_price": 3.31,
+        "quantity": 6.0,
+        "sell_date": "2026-05-01 06:31",
+        "buy_price": 3.19,
+        "buy_date": "2026-04-23 06:39",
+        "profit": 0.72,
+        "trade_percentage": 0.0376
+    },
+    "123761509": {
+        "id": 123761509,
+        "symbol": "GENI",
+        "sell_price": 4.49,
+        "quantity": 2.0,
+        "sell_date": "2026-05-01 06:31",
+        "buy_price": 4.35,
+        "buy_date": "2026-04-28 06:36",
+        "profit": 0.28,
+        "trade_percentage": 0.0322
+    },
+    "123763447": {
+        "id": 123763447,
+        "symbol": "SLI",
+        "sell_price": 3.9,
+        "quantity": 2.0,
+        "sell_date": "2026-05-01 06:32",
+        "buy_price": 3.85,
+        "buy_date": "2026-05-01 06:30",
+        "profit": 0.1,
+        "trade_percentage": 0.013
+    },
+    "123761830": {
+        "id": 123761830,
+        "symbol": "SGMT",
+        "sell_price": 8.43,
+        "quantity": 1.0,
+        "sell_date": "2026-05-01 06:33",
+        "buy_price": 8.34,
+        "buy_date": "2026-04-30 06:49",
+        "profit": 0.09,
+        "trade_percentage": 0.0108
+    },
+    "123761502": {
+        "id": 123761502,
+        "symbol": "GREE",
+        "sell_price": 1.19,
+        "quantity": 7.0,
+        "sell_date": "2026-05-01 06:36",
+        "buy_price": 1.16,
+        "buy_date": "2026-04-28 05:04",
+        "profit": 0.21,
+        "trade_percentage": 0.0259
+    },
+    "123763570": {
+        "id": 123763570,
+        "symbol": "ARDX",
+        "sell_price": 6.46,
+        "quantity": 1.0,
+        "sell_date": "2026-05-01 06:55",
+        "buy_price": 6.0,
+        "buy_date": "2026-05-01 06:30",
+        "profit": 0.46,
+        "trade_percentage": 0.0767
     }
 }
