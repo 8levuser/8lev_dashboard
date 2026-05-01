@@ -23,7 +23,11 @@ UNSETTLED_FUNDS_SIZE = 22        # Unsettled Funds dollar amount
 
 SUMMARY_CARD_PADDING = 20        # Inner padding inside the card
 SUMMARY_GRID_GAP = 16            # Space between data blocks
-SUMMARY_CARD_HEIGHT = 450        # Height of the embedded summary card
+
+# This controls how much iframe space exists under the visible summary card.
+# Lower = nav buttons move closer to the card.
+# If the card gets clipped, increase this slightly.
+SUMMARY_CARD_HEIGHT = 300
 
 
 st.markdown("""
@@ -115,6 +119,7 @@ html, body {
 
 iframe {
     max-width: 100% !important;
+    margin-bottom: 0px !important;
 }
 
 @media (max-width: 700px) {
@@ -190,13 +195,7 @@ if st.session_state.day_index < 0:
     st.session_state.day_index = 0
 
 
-# ---------- DATE NAVIGATION ----------
-
-# ============================================================
-# DATE NAVIGATION CONTROLS
-# Real st.button buttons.
-# This version keeps your reverted stable layout, but tightens spacing.
-# ============================================================
+# ---------- DATE NAVIGATION CONTROLS ----------
 
 NAV_BUTTON_HEIGHT = 32
 NAV_BUTTON_FONT_SIZE = 13
@@ -211,9 +210,10 @@ NAV_MOBILE_BUTTON_FONT_SIZE = 12
 # Larger first three numbers = wider/more rectangular buttons.
 NAV_COLUMN_LAYOUT = [0.052, 0.052, 0.0452, 0.86]
 
-# Controls distance between nav buttons and summary iframe/card.
-# More negative = card moves closer upward.
-SUMMARY_IFRAME_TOP_MARGIN = -14
+# Controls button spacing below the summary card.
+# Since the buttons are below an iframe, SUMMARY_CARD_HEIGHT is still the main control.
+NAV_TOP_MARGIN = 0
+NAV_BOTTOM_MARGIN = 12
 
 
 st.markdown(f"""
@@ -222,10 +222,6 @@ st.markdown(f"""
    DATE NAVIGATION BUTTONS
    Applies to the real Streamlit buttons.
    ============================================================ */
-
-div[data-testid="stButton"] {{
-    margin-bottom: 0px !important;
-}}
 
 div[data-testid="stButton"] button {{
     background-color: #111814 !important;
@@ -257,9 +253,22 @@ div[data-testid="stButton"] button:active {{
     background-color: rgba(212, 175, 55, 0.12) !important;
 }}
 
-/* Pull the Daily Summary iframe/card closer to the nav buttons */
-iframe {{
-    margin-top: {SUMMARY_IFRAME_TOP_MARGIN}px !important;
+/* Scoped nav spacing below the Daily Summary card */
+.st-key-summary_nav_below {{
+    margin-top: {NAV_TOP_MARGIN}px !important;
+    padding-top: 0px !important;
+    margin-bottom: {NAV_BOTTOM_MARGIN}px !important;
+}}
+
+.st-key-summary_nav_below div[data-testid="stHorizontalBlock"] {{
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+}}
+
+.st-key-summary_nav_below div[data-testid="stButton"] {{
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    padding-top: 0px !important;
 }}
 
 @media (max-width: {NAV_MOBILE_BREAKPOINT}px) {{
@@ -270,10 +279,17 @@ iframe {{
         font-size: {NAV_MOBILE_BUTTON_FONT_SIZE}px !important;
         padding: 0px !important;
     }}
+
+    .st-key-summary_nav_below {{
+        margin-top: {NAV_TOP_MARGIN}px !important;
+        margin-bottom: {NAV_BOTTOM_MARGIN}px !important;
+    }}
 }}
 </style>
 """, unsafe_allow_html=True)
 
+
+# ---------- SELECT SUMMARY BASED ON CURRENT INDEX ----------
 selected_date = daily_options[st.session_state.day_index]
 
 selected_summary = next(
@@ -285,6 +301,8 @@ profit = selected_summary["realized_profit"]
 profit_text = fmt_signed_currency(profit)
 profit_color = "#4CAF50" if profit >= 0 else "#FF5C5C"
 
+
+# ---------- SUMMARY CARD ----------
 summary_html = f"""
 <style>
 * {{
@@ -396,31 +414,31 @@ body {{
 
 components.html(summary_html, height=SUMMARY_CARD_HEIGHT, scrolling=False)
 
-# Button order:
-# ◀ = older summary
-# ▶ = newer summary
-# ⟳ = jump to latest summary
-#
-# gap=None removes Streamlit's built-in spacing between columns.
-# NAV_COLUMN_LAYOUT controls how tight the buttons sit next to each other.
-b1, b2, b3, spacer = st.columns(NAV_COLUMN_LAYOUT, gap=None)
 
-with b1:
-    if st.button("◀", key="prev_day_btn", help="Older summary", use_container_width=True):
-        if st.session_state.day_index < len(daily_options) - 1:
-            st.session_state.day_index += 1
+# ---------- SUMMARY CARD NAVIGATION BUTTONS ----------
+# Buttons are rendered below the Daily Summary card.
+# When clicked, they update day_index and rerun the page.
+
+with st.container(key="summary_nav_below"):
+    b1, b2, b3, spacer = st.columns(NAV_COLUMN_LAYOUT, gap=None)
+
+    with b1:
+        if st.button("◀", key="prev_day_btn", help="Older summary", use_container_width=True):
+            if st.session_state.day_index < len(daily_options) - 1:
+                st.session_state.day_index += 1
+                st.rerun()
+
+    with b2:
+        if st.button("▶", key="next_day_btn", help="Newer summary", use_container_width=True):
+            if st.session_state.day_index > 0:
+                st.session_state.day_index -= 1
+                st.rerun()
+
+    with b3:
+        if st.button("⟳", key="latest_day_btn", help="Jump to latest summary", use_container_width=True):
+            st.session_state.day_index = 0
             st.rerun()
 
-with b2:
-    if st.button("▶", key="next_day_btn", help="Newer summary", use_container_width=True):
-        if st.session_state.day_index > 0:
-            st.session_state.day_index -= 1
-            st.rerun()
-
-with b3:
-    if st.button("⟳", key="latest_day_btn", help="Jump to latest summary", use_container_width=True):
-        st.session_state.day_index = 0
-        st.rerun()
 
 # ---------- LATEST ACTIVITY ----------
 st.subheader("Latest Activity")
