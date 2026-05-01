@@ -24,10 +24,10 @@ UNSETTLED_FUNDS_SIZE = 22        # Unsettled Funds dollar amount
 SUMMARY_CARD_PADDING = 20        # Inner padding inside the card
 SUMMARY_GRID_GAP = 16            # Space between data blocks
 
-# This controls how much iframe space exists under the visible summary card.
-# Lower = nav buttons move closer to the card.
-# If the card gets clipped, increase this slightly.
-SUMMARY_CARD_HEIGHT = 300
+# Desktop card can be shorter because the grid is 2 columns.
+# Mobile card needs more height because the grid stacks into 1 column.
+SUMMARY_CARD_HEIGHT_DESKTOP = 300
+SUMMARY_CARD_HEIGHT_MOBILE = 470
 
 
 st.markdown("""
@@ -150,6 +150,21 @@ def fmt_signed_currency(value):
 
 
 st.title("Activity")
+
+# ---------- MOBILE DETECTION ----------
+user_agent = st.context.headers.get("user-agent", "").lower()
+
+is_mobile = (
+    "mobile" in user_agent
+    or "iphone" in user_agent
+    or "android" in user_agent
+)
+
+SUMMARY_CARD_HEIGHT = (
+    SUMMARY_CARD_HEIGHT_MOBILE
+    if is_mobile
+    else SUMMARY_CARD_HEIGHT_DESKTOP
+)
 
 # ---------- LOAD DATA ----------
 daily_data = load_daily_summary()
