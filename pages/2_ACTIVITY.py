@@ -100,30 +100,29 @@ h1, h2, h3 {
     border-radius: 14px;
 }
 
-/* Navigation buttons */
-div[data-testid="stButton"] button {
-    background-color: #111814;
-    border: 1px solid rgba(212, 175, 55, 0.25);
-    color: #D4AF37;
-    border-radius: 8px;
-    font-weight: 900;
-
-    padding: 2px 6px;
-    font-size: 11px;
-    min-width: 30px;
-    height: 15px;
-
-    line-height: 1;
+/* ---------- MOBILE PAGE WIDTH / OVERFLOW CONTROL ---------- */
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
 }
 
-div[data-testid="stButton"] button:hover {
-    border-color: rgba(212, 175, 55, 0.55);
-    background-color: rgba(212, 175, 55, 0.07);
-    color: #FFE082;
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+.block-container {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
 }
 
-div[data-testid="stButton"] button:active {
-    background-color: rgba(212, 175, 55, 0.12);
+iframe {
+    max-width: 100% !important;
+}
+
+@media (max-width: 700px) {
+    .block-container {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+        max-width: 100% !important;
+    }
 }
 </style>
 """, unsafe_allow_html=True)
@@ -187,31 +186,46 @@ if "day_index" not in st.session_state:
 if st.session_state.day_index >= len(daily_options):
     st.session_state.day_index = 0
 
-selected_date = daily_options[st.session_state.day_index]
+if st.session_state.day_index < 0:
+    st.session_state.day_index = 0
+
 
 # ---------- DATE NAVIGATION ----------
 
 # ============================================================
 # DATE NAVIGATION CONTROLS
-# This version uses real st.button buttons again.
-# No HTML links. No query params. No nested columns.
+# Real st.button buttons.
+# This version keeps your reverted stable layout, but tightens spacing.
 # ============================================================
 
-NAV_BUTTON_HEIGHT = 38
-NAV_BUTTON_FONT_SIZE = 14
-NAV_BUTTON_RADIUS = 9
+NAV_BUTTON_HEIGHT = 32
+NAV_BUTTON_FONT_SIZE = 13
+NAV_BUTTON_RADIUS = 6
 
 NAV_MOBILE_BREAKPOINT = 760
-NAV_MOBILE_BUTTON_HEIGHT = 36
-NAV_MOBILE_BUTTON_FONT_SIZE = 13
+NAV_MOBILE_BUTTON_HEIGHT = 32
+NAV_MOBILE_BUTTON_FONT_SIZE = 12
+
+# Controls button spacing.
+# Smaller first three numbers = tighter/narrower buttons.
+# Larger first three numbers = wider/more rectangular buttons.
+NAV_COLUMN_LAYOUT = [0.052, 0.052, 0.0452, 0.86]
+
+# Controls distance between nav buttons and summary iframe/card.
+# More negative = card moves closer upward.
+SUMMARY_IFRAME_TOP_MARGIN = -14
 
 
 st.markdown(f"""
 <style>
 /* ============================================================
    DATE NAVIGATION BUTTONS
-   Real Streamlit buttons, but without nested columns.
+   Applies to the real Streamlit buttons.
    ============================================================ */
+
+div[data-testid="stButton"] {{
+    margin-bottom: 0px !important;
+}}
 
 div[data-testid="stButton"] button {{
     background-color: #111814 !important;
@@ -229,6 +243,8 @@ div[data-testid="stButton"] button {{
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+
+    width: 100% !important;
 }}
 
 div[data-testid="stButton"] button:hover {{
@@ -241,16 +257,10 @@ div[data-testid="stButton"] button:active {{
     background-color: rgba(212, 175, 55, 0.12) !important;
 }}
 
-/* Make the actual button fill its tiny column */
-div[data-testid="stButton"] button {{
-    width: 100% !important;
+/* Pull the Daily Summary iframe/card closer to the nav buttons */
+iframe {{
+    margin-top: {SUMMARY_IFRAME_TOP_MARGIN}px !important;
 }}
-
-/* ============================================================
-   MOBILE HOT FIX
-   This is intentionally much less aggressive than before.
-   It only tries to prevent the immediate nav row from wrapping.
-   ============================================================ */
 
 @media (max-width: {NAV_MOBILE_BREAKPOINT}px) {{
 
@@ -260,12 +270,6 @@ div[data-testid="stButton"] button {{
         font-size: {NAV_MOBILE_BUTTON_FONT_SIZE}px !important;
         padding: 0px !important;
     }}
-
-    /*
-    Important:
-    Do NOT force all stHorizontalBlock elements globally.
-    That caused the side-scroll issue before.
-    */
 }}
 </style>
 """, unsafe_allow_html=True)
@@ -276,10 +280,9 @@ div[data-testid="stButton"] button {{
 # ▶ = newer summary
 # ⟳ = jump to latest summary
 #
-# This is one single Streamlit column row.
-# No nested columns.
-# The spacer keeps the buttons grouped on the left on desktop.
-b1, b2, b3, spacer = st.columns([0.06, 0.06, 0.06, 0.82], gap="small")
+# gap=None removes Streamlit's built-in spacing between columns.
+# NAV_COLUMN_LAYOUT controls how tight the buttons sit next to each other.
+b1, b2, b3, spacer = st.columns(NAV_COLUMN_LAYOUT, gap=None)
 
 with b1:
     if st.button("◀", key="prev_day_btn", help="Older summary", use_container_width=True):
@@ -420,6 +423,7 @@ body {{
 """
 
 components.html(summary_html, height=SUMMARY_CARD_HEIGHT, scrolling=False)
+
 # ---------- LATEST ACTIVITY ----------
 st.subheader("Latest Activity")
 
