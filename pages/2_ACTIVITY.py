@@ -274,34 +274,6 @@ iframe {{
 </style>
 """, unsafe_allow_html=True)
 
-
-# Button order:
-# ◀ = older summary
-# ▶ = newer summary
-# ⟳ = jump to latest summary
-#
-# gap=None removes Streamlit's built-in spacing between columns.
-# NAV_COLUMN_LAYOUT controls how tight the buttons sit next to each other.
-b1, b2, b3, spacer = st.columns(NAV_COLUMN_LAYOUT, gap=None)
-
-with b1:
-    if st.button("◀", key="prev_day_btn", help="Older summary", use_container_width=True):
-        if st.session_state.day_index < len(daily_options) - 1:
-            st.session_state.day_index += 1
-            st.rerun()
-
-with b2:
-    if st.button("▶", key="next_day_btn", help="Newer summary", use_container_width=True):
-        if st.session_state.day_index > 0:
-            st.session_state.day_index -= 1
-            st.rerun()
-
-with b3:
-    if st.button("⟳", key="latest_day_btn", help="Jump to latest summary", use_container_width=True):
-        st.session_state.day_index = 0
-        st.rerun()
-
-
 selected_date = daily_options[st.session_state.day_index]
 
 selected_summary = next(
@@ -423,6 +395,32 @@ body {{
 """
 
 components.html(summary_html, height=SUMMARY_CARD_HEIGHT, scrolling=False)
+
+# Button order:
+# ◀ = older summary
+# ▶ = newer summary
+# ⟳ = jump to latest summary
+#
+# gap=None removes Streamlit's built-in spacing between columns.
+# NAV_COLUMN_LAYOUT controls how tight the buttons sit next to each other.
+b1, b2, b3, spacer = st.columns(NAV_COLUMN_LAYOUT, gap=None)
+
+with b1:
+    if st.button("◀", key="prev_day_btn", help="Older summary", use_container_width=True):
+        if st.session_state.day_index < len(daily_options) - 1:
+            st.session_state.day_index += 1
+            st.rerun()
+
+with b2:
+    if st.button("▶", key="next_day_btn", help="Newer summary", use_container_width=True):
+        if st.session_state.day_index > 0:
+            st.session_state.day_index -= 1
+            st.rerun()
+
+with b3:
+    if st.button("⟳", key="latest_day_btn", help="Jump to latest summary", use_container_width=True):
+        st.session_state.day_index = 0
+        st.rerun()
 
 # ---------- LATEST ACTIVITY ----------
 st.subheader("Latest Activity")
