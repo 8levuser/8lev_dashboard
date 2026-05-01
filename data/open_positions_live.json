@@ -1,7 +1,7 @@
 {
-    "generated_at": "2026-05-01T12:05:01.730678-07:00",
+    "generated_at": "2026-05-01T13:05:01.316272-07:00",
     "source_bot": "2h8Lev_Bot",
-    "total_equity": 2909.133993,
+    "total_equity": 2909.603393,
     "positions": [
         {
             "symbol": "AMC",
@@ -20,6 +20,24 @@
             "last_close": 5.86,
             "unrealized_pl": 0.0600000000000005,
             "unrealized_pl_pct": 0.010344827586206983
+        },
+        {
+            "symbol": "CCO",
+            "total_cost_basis": 7.17,
+            "quantity": 3.0,
+            "entry_price": 2.39,
+            "last_close": 2.4,
+            "unrealized_pl": 0.02999999999999936,
+            "unrealized_pl_pct": 0.004184100418409952
+        },
+        {
+            "symbol": "COMP",
+            "total_cost_basis": 7.45,
+            "quantity": 1.0,
+            "entry_price": 7.45,
+            "last_close": 7.62,
+            "unrealized_pl": 0.16999999999999993,
+            "unrealized_pl_pct": 0.022818791946308713
         },
         {
             "symbol": "GNW",
