@@ -27,7 +27,7 @@ SUMMARY_GRID_GAP = 16            # Space between data blocks
 # Desktop card can be shorter because the grid is 2 columns.
 # Mobile card needs more height because the grid stacks into 1 column.
 SUMMARY_CARD_HEIGHT_DESKTOP = 300
-SUMMARY_CARD_HEIGHT_MOBILE = 415
+SUMMARY_CARD_HEIGHT_MOBILE = 420
 
 
 st.markdown("""
