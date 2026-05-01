@@ -844,7 +844,7 @@ else:
                     <div data-key="symbol" data-type="text">Symbol<span class="sort-indicator"></span></div>
                     <div data-key="entry" data-type="number">Entry<span class="sort-indicator"></span></div>
                     <div data-key="qty" data-type="number">Qty<span class="sort-indicator"></span></div>
-                    <div data-key="close" data-type="number">Close<span class="sort-indicator"></span></div>
+                    <div data-key="close" data-type="number">Last Close<span class="sort-indicator"></span></div>
                     <div data-key="pl" data-type="number">Unrealized $<span class="sort-indicator"></span></div>
                     <div data-key="pct" data-type="number">Unrealized %<span class="sort-indicator"></span></div>
                 </div>
