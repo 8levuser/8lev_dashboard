@@ -27,7 +27,7 @@ SUMMARY_GRID_GAP = 16            # Space between data blocks
 # Desktop card can be shorter because the grid is 2 columns.
 # Mobile card needs more height because the grid stacks into 1 column.
 SUMMARY_CARD_HEIGHT_DESKTOP = 300
-SUMMARY_CARD_HEIGHT_MOBILE = 395
+SUMMARY_CARD_HEIGHT_MOBILE = 500
 
 
 st.markdown("""
@@ -117,9 +117,12 @@ html, body {
     max-width: 100% !important;
 }
 
+/* Strong iframe cleanup */
 iframe {
     max-width: 100% !important;
     margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
+    display: block !important;
 }
 
 @media (max-width: 700px) {
@@ -268,22 +271,49 @@ div[data-testid="stButton"] button:active {{
     background-color: rgba(212, 175, 55, 0.12) !important;
 }}
 
-/* Scoped nav spacing below the Daily Summary card */
+/* ============================================================
+   AGGRESSIVE SCOPED NAV SPACING CLEANUP
+   This targets only the nav container below the summary card.
+   ============================================================ */
+
 .st-key-summary_nav_below {{
     margin-top: {NAV_TOP_MARGIN}px !important;
     padding-top: 0px !important;
     margin-bottom: {NAV_BOTTOM_MARGIN}px !important;
+    padding-bottom: 0px !important;
 }}
 
-.st-key-summary_nav_below div[data-testid="stHorizontalBlock"] {{
+/* Kill Streamlit's hidden vertical spacing inside the nav container */
+.st-key-summary_nav_below > div {{
     margin-top: 0px !important;
     padding-top: 0px !important;
 }}
 
+/* Column row */
+.st-key-summary_nav_below div[data-testid="stHorizontalBlock"] {{
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+    gap: 0px !important;
+}}
+
+/* Individual columns */
+.st-key-summary_nav_below div[data-testid="column"] {{
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+}}
+
+/* Element wrappers */
+.st-key-summary_nav_below div[data-testid="stElementContainer"] {{
+    margin-top: 0px !important;
+    padding-top: 0px !important;
+}}
+
+/* Button wrapper */
 .st-key-summary_nav_below div[data-testid="stButton"] {{
     margin-top: 0px !important;
     margin-bottom: 0px !important;
     padding-top: 0px !important;
+    padding-bottom: 0px !important;
 }}
 
 @media (max-width: {NAV_MOBILE_BREAKPOINT}px) {{
@@ -298,6 +328,17 @@ div[data-testid="stButton"] button:active {{
     .st-key-summary_nav_below {{
         margin-top: {NAV_TOP_MARGIN}px !important;
         margin-bottom: {NAV_BOTTOM_MARGIN}px !important;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }}
+
+    .st-key-summary_nav_below > div,
+    .st-key-summary_nav_below div[data-testid="stHorizontalBlock"],
+    .st-key-summary_nav_below div[data-testid="column"],
+    .st-key-summary_nav_below div[data-testid="stElementContainer"],
+    .st-key-summary_nav_below div[data-testid="stButton"] {{
+        margin-top: 0px !important;
+        padding-top: 0px !important;
     }}
 }}
 </style>
