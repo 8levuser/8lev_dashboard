@@ -41413,5 +41413,16 @@
         "buy_date": "2026-04-27 08:49",
         "profit": 0.08,
         "trade_percentage": 0.0114
+    },
+    "123756038": {
+        "id": 123756038,
+        "symbol": "EVGO",
+        "sell_price": 2.14,
+        "quantity": 4.0,
+        "sell_date": "2026-04-30 14:12",
+        "buy_price": 2.1,
+        "buy_date": "2026-04-30 12:41",
+        "profit": 0.16,
+        "trade_percentage": 0.019
     }
 }

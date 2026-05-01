@@ -17546,5 +17546,114 @@
         ],
         "raw_message": "🚀 Matt Day Summary | 2026-04-29 🎯\nAsset Activity: 5\nRealized Profit: $1.07\nTotal Equity: 2811.21\nDeployed Capital: $2652.49\nUnsettled Funds: $36.06\n📈 Profit Performance per Asset:\n- INDI: $0.48\n- PLUG: $0.08\n- SFIX: $0.10\n- NPWR: $0.35\n- AUR: $0.06",
         "logged_at": "2026-04-29T17:00:12.652978"
+    },
+    {
+        "bot_name": "Matt",
+        "summary_date": "2026-04-30",
+        "asset_activity": 24,
+        "realized_profit": 5.28,
+        "total_equity": 2856.1,
+        "deployed_capital": 2476.44,
+        "unsettled_funds": 229.28,
+        "profit_per_asset": [
+            {
+                "symbol": "LAC",
+                "profit": 0.18
+            },
+            {
+                "symbol": "MFG",
+                "profit": 0.13
+            },
+            {
+                "symbol": "ADT",
+                "profit": 0.22
+            },
+            {
+                "symbol": "BMBL",
+                "profit": 0.14
+            },
+            {
+                "symbol": "NVAX",
+                "profit": 0.32
+            },
+            {
+                "symbol": "MDXG",
+                "profit": 1.36
+            },
+            {
+                "symbol": "KURA",
+                "profit": 0.22
+            },
+            {
+                "symbol": "SGMT",
+                "profit": 0.35
+            },
+            {
+                "symbol": "SLI",
+                "profit": 0.08
+            },
+            {
+                "symbol": "ASPN",
+                "profit": 0.2
+            },
+            {
+                "symbol": "RNW",
+                "profit": 0.09
+            },
+            {
+                "symbol": "BGS",
+                "profit": 0.06
+            },
+            {
+                "symbol": "CRNC",
+                "profit": 0.09
+            },
+            {
+                "symbol": "FNKO",
+                "profit": 0.32
+            },
+            {
+                "symbol": "LUMN",
+                "profit": 0.09
+            },
+            {
+                "symbol": "EVLV",
+                "profit": 0.21
+            },
+            {
+                "symbol": "SABR",
+                "profit": 0.2
+            },
+            {
+                "symbol": "SVV",
+                "profit": 0.1
+            },
+            {
+                "symbol": "ARDX",
+                "profit": 0.07
+            },
+            {
+                "symbol": "DUOT",
+                "profit": 0.43
+            },
+            {
+                "symbol": "DNUT",
+                "profit": 0.08
+            },
+            {
+                "symbol": "URG",
+                "profit": 0.1
+            },
+            {
+                "symbol": "JMIA",
+                "profit": 0.08
+            },
+            {
+                "symbol": "EVGO",
+                "profit": 0.16
+            }
+        ],
+        "raw_message": "🚀 Matt Day Summary | 2026-04-30 🎯\nAsset Activity: 24\nRealized Profit: $5.28\nTotal Equity: 2856.10\nDeployed Capital: $2476.44\nUnsettled Funds: $229.28\n📈 Profit Performance per Asset:\n- LAC: $0.18\n- MFG: $0.13\n- ADT: $0.22\n- BMBL: $0.14\n- NVAX: $0.32\n- MDXG: $1.36\n- KURA: $0.22\n- SGMT: $0.35\n- SLI: $0.08\n- ASPN: $0.20\n- RNW: $0.09\n- BGS: $0.06\n- CRNC: $0.09\n- FNKO: $0.32\n- LUMN: $0.09\n- EVLV: $0.21\n- SABR: $0.20\n- SVV: $0.10\n- ARDX: $0.07\n- DUOT: $0.43\n- DNUT: $0.08\n- URG: $0.10\n- JMIA: $0.08\n- EVGO: $0.16",
+        "logged_at": "2026-04-30T17:00:12.562851"
     }
 ]
