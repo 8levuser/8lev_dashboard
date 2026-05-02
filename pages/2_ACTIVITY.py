@@ -640,6 +640,24 @@ else:
         symbol = trade["symbol"]
         profit = trade["profit"]
         pct = trade["trade_percentage"] * 100
+        is_positive = profit >= 0
+
+        activity_color = "#4CAF50" if is_positive else "#FF5C5C"
+        activity_border = (
+            "rgba(76, 175, 80, 0.38)"
+            if is_positive
+            else "rgba(255, 92, 92, 0.38)"
+        )
+        activity_bg = (
+            "rgba(76, 175, 80, 0.10)"
+            if is_positive
+            else "rgba(255, 92, 92, 0.10)"
+        )
+        activity_glow = (
+            "rgba(76, 175, 80, 0.12)"
+            if is_positive
+            else "rgba(255, 92, 92, 0.12)"
+        )        
         sell_price = trade["sell_price"]
         buy_price = trade["buy_price"]
         qty = int(trade["quantity"])
@@ -649,13 +667,21 @@ else:
         profit_text = fmt_signed_currency(profit)
 
         activity_html += f"""
-        <div class="activity-card">
+        <div class="activity-card" style="
+            background:
+                radial-gradient(circle at top right, {activity_glow}, transparent 34%),
+                #111814;
+        ">
             <div class="activity-top">
                 <div class="symbol">{symbol}</div>
-                <div class="return-pill">{pct_text}</div>
+                <div class="return-pill" style="
+                    border-color: {activity_border};
+                    background-color: {activity_bg};
+                    color: {activity_color};
+                ">{pct_text}</div>
             </div>
 
-            <div class="profit">{profit_text} realized</div>
+            <div class="profit" style="color: {activity_color};">{profit_text} realized</div>
 
             <div class="details">
                 <div class="detail-box">
