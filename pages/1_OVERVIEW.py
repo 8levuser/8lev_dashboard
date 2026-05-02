@@ -142,6 +142,9 @@ def fmt_quantity(value):
 
 
 def get_first_deposit_date(deposits_payload):
+    if not isinstance(deposits_payload, dict):
+        return None
+
     deposits = deposits_payload.get("deposits", [])
 
     if not isinstance(deposits, list) or not deposits:
@@ -150,16 +153,21 @@ def get_first_deposit_date(deposits_payload):
     deposit_dates = []
 
     for deposit in deposits:
+        if not isinstance(deposit, dict):
+            continue
+
         deposit_date = pd.to_datetime(
             deposit.get("date"),
-            errors="coerce"
+            errors="coerce",
+            utc=True,
         )
 
         if pd.isna(deposit_date):
             continue
 
-        if deposit_date.tzinfo is not None:
-            deposit_date = deposit_date.tz_localize(None)
+        # Convert timezone-aware UTC timestamp into timezone-naive timestamp
+        # so it matches the daily_summary_log dates.
+        deposit_date = deposit_date.tz_convert(None)
 
         deposit_dates.append(deposit_date)
 
@@ -175,6 +183,9 @@ st.title("Overview")
 daily_data = load_daily_summary()
 open_positions_payload = load_open_positions_live()
 deposits_payload = load_deposits_log()
+
+if not isinstance(deposits_payload, dict):
+    deposits_payload = {}
 
 latest = get_latest_daily_summary(daily_data)
 open_positions = open_positions_payload.get("positions", [])
