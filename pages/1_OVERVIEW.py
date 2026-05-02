@@ -2,7 +2,11 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 
-from utils.loaders import load_daily_summary, load_open_positions_live
+from utils.loaders import (
+    load_daily_summary,
+    load_open_positions_live,
+    load_deposits_log,
+)
 from utils.parsers import get_latest_daily_summary, prepare_equity_curve
 
 
@@ -137,14 +141,54 @@ def fmt_quantity(value):
     return f"{int(x)}" if x.is_integer() else f"{x:.2f}"
 
 
+def get_first_deposit_date(deposits_payload):
+    deposits = deposits_payload.get("deposits", [])
+
+    if not isinstance(deposits, list) or not deposits:
+        return None
+
+    deposit_dates = []
+
+    for deposit in deposits:
+        deposit_date = pd.to_datetime(
+            deposit.get("date"),
+            errors="coerce"
+        )
+
+        if pd.isna(deposit_date):
+            continue
+
+        if deposit_date.tzinfo is not None:
+            deposit_date = deposit_date.tz_localize(None)
+
+        deposit_dates.append(deposit_date)
+
+    if not deposit_dates:
+        return None
+
+    return min(deposit_dates)
+
+
 st.title("Overview")
 
 # ---------- LOAD DATA ----------
 daily_data = load_daily_summary()
 open_positions_payload = load_open_positions_live()
+deposits_payload = load_deposits_log()
 
 latest = get_latest_daily_summary(daily_data)
 open_positions = open_positions_payload.get("positions", [])
+open_positions_count = len(open_positions)
+
+principal = pd.to_numeric(
+    deposits_payload.get("principal"),
+    errors="coerce"
+)
+
+if pd.isna(principal):
+    principal = None
+
+first_deposit_date = get_first_deposit_date(deposits_payload)
 
 # ---------- EQUITY STATUS CARD ----------
 daily_df = pd.DataFrame(daily_data)
@@ -286,6 +330,38 @@ full_equity_df = (
     .sort_values("Date")
     .reset_index(drop=True)
 )
+
+# Add synthetic starting point for MAX range.
+# This uses the dynamically built principal from deposits_log.json.
+# It fixes the missing original starting equity that was not logged in daily_summary_log.json.
+if principal is not None and first_deposit_date is not None:
+    principal_start_row = pd.DataFrame([{
+        "Date": first_deposit_date,
+        "Equity": principal,
+    }])
+
+    full_equity_df = pd.concat(
+        [principal_start_row, full_equity_df],
+        ignore_index=True
+    )
+
+    full_equity_df["Date"] = pd.to_datetime(
+        full_equity_df["Date"],
+        errors="coerce"
+    )
+
+    full_equity_df["Equity"] = pd.to_numeric(
+        full_equity_df["Equity"],
+        errors="coerce"
+    )
+
+    full_equity_df = (
+        full_equity_df
+        .dropna(subset=["Date", "Equity"])
+        .sort_values("Date")
+        .drop_duplicates(subset=["Date"], keep="first")
+        .reset_index(drop=True)
+    )
 
 # Append latest live equity from open_positions_live.json so the chart
 # matches the Total Equity card.
@@ -666,7 +742,7 @@ if is_mobile:
     )
 
 # ---------- OPEN POSITIONS ----------
-st.subheader("Open Positions")
+st.subheader(f"Open Positions ({open_positions_count})")
 
 if not open_positions:
     st.info("No open positions found.")
