@@ -1,0 +1,20 @@
+{
+    "generated_at": "2026-05-01T18:19:46.544709-07:00",
+    "source_bot": "2h8Lev_Bot",
+    "principal": 2000.0,
+    "deposit_count": 2,
+    "deposits": [
+        {
+            "date": "2025-02-11T00:00:00Z",
+            "amount": 1000.0,
+            "type": "ach",
+            "description": "ACH DEPOSIT"
+        },
+        {
+            "date": "2025-03-10T00:00:00Z",
+            "amount": 1000.0,
+            "type": "ach",
+            "description": "ACH DEPOSIT"
+        }
+    ]
+}
