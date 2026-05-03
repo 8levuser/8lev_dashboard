@@ -717,7 +717,7 @@ metric_cards([
         get_display(snapshot, "capital_behavior", "capital_utilization_display"),
         "neutral",
         "Average capital deployed",
-        True,
+        False,
     ),
     (
         "Return on Deployed Capital",
