@@ -598,7 +598,7 @@ metric_cards([
 # ============================================================
 
 st.subheader("Daily Consistency")
-section_note("Realized profit/loss tracks closed moves.")
+section_note("Realized profit/loss tracks completed moves.")
 
 metric_cards([
     (
