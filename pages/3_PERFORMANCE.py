@@ -695,16 +695,19 @@ metric_cards([
         "Sharpe Ratio",
         get_display(snapshot, "capital_behavior", "sharpe_ratio_display"),
         "neutral",
+        "Return quality after volatility",
     ),
     (
         "Sortino Ratio",
         get_display(snapshot, "capital_behavior", "sortino_ratio_display"),
         "neutral",
+        "Return quality after downside",
     ),
     (
         "Calmar Ratio",
         get_display(snapshot, "capital_behavior", "calmar_ratio_display"),
         "neutral",
+        "Return quality after drawdown",
     ),
 ], desktop_columns=3, mobile_columns=2)
 
