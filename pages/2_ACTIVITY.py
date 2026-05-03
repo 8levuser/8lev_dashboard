@@ -372,11 +372,14 @@ body {{
 }}
 
 .summary-card {{
-    background-color: #111814;
-    border: 1px solid rgba(212, 175, 55, 0.22);
+    background:
+        radial-gradient(circle at top right, rgba(212, 175, 55, 0.10), transparent 34%),
+        #111814;
+    border: 1px solid rgba(212, 175, 55, 0.30);
     border-radius: 22px;
     padding: {SUMMARY_CARD_PADDING}px;
     color: #E8F5E9;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
 }}
 
 .summary-title {{
