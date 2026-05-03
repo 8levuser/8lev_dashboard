@@ -1,0 +1,89 @@
+{
+    "generated_at": "2026-05-02 20:44:43",
+    "performance_snapshot": {
+        "net_realized_gain": 851.480000000005,
+        "net_realized_gain_display": "+$851.48",
+        "total_equity_return": 0.5055339097499261,
+        "total_equity_return_display": "50.55%",
+        "business_days_since_inception": 269,
+        "business_days_since_inception_display": "269"
+    },
+    "trade_quality": {
+        "total_realized_moves": 3832,
+        "total_realized_moves_display": "3,832",
+        "win_rate": 0.9895615866388309,
+        "win_rate_display": "98.96%",
+        "profit_factor": 4.891412641104177,
+        "profit_factor_display": "4.89",
+        "average_profit_per_move": 0.22220250521920668,
+        "average_profit_per_move_display": "+$0.22",
+        "average_moves_per_day": 14.245353159851302,
+        "average_moves_per_day_display": "14.25",
+        "average_realized_profit_per_day": 3.16535315985132,
+        "average_realized_profit_per_day_display": "+$3.17"
+    },
+    "monthly_consistency": {
+        "realized_profitable_months": 13,
+        "month_count": 14,
+        "realized_profitable_months_pct": 0.9285714285714286,
+        "realized_profitable_months_display": "13 of 14 / 92.86%",
+        "average_monthly_realized_profit": 53.223571428571425,
+        "average_monthly_realized_profit_display": "+$53.22",
+        "average_monthly_equity_growth": 0.02732851767612028,
+        "average_monthly_equity_growth_display": "2.73%"
+    },
+    "daily_consistency": {
+        "realized_profitable_days": 265,
+        "business_days": 269,
+        "realized_profitable_days_pct": 0.9851301115241635,
+        "realized_profitable_days_display": "265 of 269 / 98.51%",
+        "best_realized_day": {
+            "date": "2025-10-14",
+            "value": 22.0
+        },
+        "best_realized_day_display": "+$22.00",
+        "largest_realized_loss_day": {
+            "date": "2026-05-01",
+            "value": -208.37
+        },
+        "largest_realized_loss_day_display": "-$208.37",
+        "total_realized_profit": 1070.290000000005,
+        "total_realized_profit_display": "+$1,070.29",
+        "total_realized_loss": 218.81,
+        "total_realized_loss_display": "-$218.81",
+        "total_net_gain": 851.480000000005,
+        "total_net_gain_display": "+$851.48"
+    },
+    "largest_realized_loss_context": {
+        "date": "2026-05-01",
+        "realized_profit": -208.37,
+        "equity_on_loss_day": 2909.64,
+        "prior_peak_equity": 2909.64,
+        "equity_status": "New all-time high",
+        "context_text": "-$208.37 realized same-day equity closed at a new all-time high."
+    },
+    "capital_behavior": {
+        "max_drawdown": -0.18844329755555625,
+        "max_drawdown_display": "-18.84%",
+        "current_drawdown": 0.0,
+        "current_drawdown_display": "0.00%",
+        "drawdown_recovery_business_days": 37,
+        "drawdown_recovery_display": "37 business days",
+        "sharpe_ratio": 1.4252090409362164,
+        "sharpe_ratio_display": "1.43",
+        "sortino_ratio": 1.3539529682870275,
+        "sortino_ratio_display": "1.35",
+        "calmar_ratio": 2.4898957526544625,
+        "calmar_ratio_display": "2.49",
+        "return_on_deployed_capital": 0.5533998114390368,
+        "return_on_deployed_capital_display": "55.34%"
+    },
+    "position_behavior": {
+        "typical_holding_hours": 41.325,
+        "typical_holding_time_display": "1d 17.3h",
+        "long_holds_over_30_days": 107,
+        "long_holds_over_30_days_display": "107",
+        "daily_realized_profit_rate": 0.0011055550711250124,
+        "daily_realized_profit_rate_display": "0.11%"
+    }
+}

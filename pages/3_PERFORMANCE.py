@@ -1,15 +1,37 @@
-import streamlit as st
+import json
+from pathlib import Path
+
 import pandas as pd
-import altair as alt
-import streamlit.components.v1 as components
+import streamlit as st
 
-from utils.loaders import load_daily_summary, load_monthly_log, load_trade_log
+from utils.loaders import load_daily_summary
 
 
-# ---------- THEME ----------
+# ============================================================
+# FILE PATHS
+# ============================================================
+
+CURRENT_FILE = Path(__file__).resolve()
+
+# Handles both:
+# - root-level performance.py
+# - pages/performance.py
+if (CURRENT_FILE.parent / "data").exists():
+    BASE_DIR = CURRENT_FILE.parent
+else:
+    BASE_DIR = CURRENT_FILE.parent.parent
+
+DATA_DIR = BASE_DIR / "data"
+PERFORMANCE_SNAPSHOT_FILE = DATA_DIR / "performance_snapshot.json"
+
+
+# ============================================================
+# THEME
+# ============================================================
+
 st.markdown("""
 <style>
-            
+
 [data-testid="stAppViewContainer"] {
     background-color: #0B0F0C;
 }
@@ -53,188 +75,75 @@ h1, h2, h3 {
     letter-spacing: 0.2px;
 }
 
-[data-testid="stMetricLabel"] {
-    color: #A5D6A7 !important;
-    font-weight: 700 !important;
-    font-size: 0.85rem !important;
-    letter-spacing: 0.3px;
+[data-testid="stAlert"] {
+    background-color: #111814 !important;
+    color: #CFE8D2 !important;
+    border: 1px solid rgba(212, 175, 55, 0.12) !important;
+    border-radius: 14px;
 }
 
-[data-testid="stMetricValue"] {
-    color: #FFFFFF !important;
-    font-weight: 800 !important;
-    font-size: 1.4rem !important;
-    letter-spacing: -0.2px;
-    line-height: 1.2 !important;
+/* ---------- MOBILE PAGE WIDTH / OVERFLOW CONTROL ---------- */
+html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
 }
 
-[data-testid="stMetric"] {
-    background-color: #111814;
-    padding: 12px 14px;
-    border-radius: 18px;
-    border: 1px solid rgba(212, 175, 55, 0.16);
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"],
+.block-container {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
 }
+
+@media (max-width: 700px) {
+    .block-container {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+        max-width: 100% !important;
+    }
+}
+
 </style>
 """, unsafe_allow_html=True)
 
 
-# ---------- HELPERS ----------
+# ============================================================
+# HELPERS
+# ============================================================
+
+def load_performance_snapshot():
+    if not PERFORMANCE_SNAPSHOT_FILE.exists():
+        return None
+
+    with PERFORMANCE_SNAPSHOT_FILE.open("r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def get_display(snapshot, section, key, default="—"):
+    value = snapshot.get(section, {}).get(key)
+    if value is None:
+        return default
+    return value
+
+
 def fmt_currency(value):
     if value is None or pd.isna(value):
         return "—"
-    return f"${value:.2f}"
+    return f"${value:,.2f}"
 
 
 def fmt_signed_currency(value):
     if value is None or pd.isna(value):
         return "—"
-    return f"+${abs(value):.2f}" if value >= 0 else f"-${abs(value):.2f}"
+    return f"+${abs(value):,.2f}" if value >= 0 else f"-${abs(value):,.2f}"
 
-
-def fmt_pct(value):
-    if value is None or pd.isna(value):
-        return "—"
-    return f"{value:.2f}%"
-
-
-def metric_row(metrics):
-    cols = st.columns(len(metrics))
-    for col, (label, value) in zip(cols, metrics):
-        col.metric(label, value)
-
-
-def themed_chart(chart, height=320):
-    return (
-        chart
-        .properties(
-            height=height,
-            background="#111814",
-            padding={"left": 26, "right": 34, "top": 24, "bottom": 18}
-        )
-        .configure_view(strokeWidth=0)
-        .configure_axis(
-            labelFont="Segoe UI",
-            titleFont="Segoe UI",
-            labelFontSize=15,
-            titleFontSize=20,
-            labelFontWeight=700,
-            titleFontWeight=800,
-            labelColor="#E8F5E9",
-            titleColor="#D4AF37",
-            gridColor="#2E7D32",
-            gridOpacity=0.14,
-            domain=False,
-            tickColor="#2E7D32",
-            labelPadding=10,
-        )
-    )
-
-def resettable_chart(chart, chart_key, height=340):
-    reset_col, spacer = st.columns([0.25, 1.75])
-
-    with reset_col:
-        if st.button("Reset position", key=f"reset_{chart_key}"):
-            st.session_state[f"{chart_key}_version"] = (
-                st.session_state.get(f"{chart_key}_version", 0) + 1
-            )
-
-    version = st.session_state.get(f"{chart_key}_version", 0)
-
-    st.altair_chart(
-        themed_chart(chart.interactive(), height=height),
-        width="stretch",
-        key=f"{chart_key}_{version}"
-    )
-    
-def add_snap_layers(base, df, x_field, tooltip_fields):
-    hover = alt.selection_point(
-        nearest=True,
-        on="pointermove",
-        encodings=["x"],
-        empty=False
-    )
-
-    selectors = base.mark_point(
-        opacity=0,
-        size=220
-    ).encode(
-        tooltip=tooltip_fields
-    ).add_params(hover)
-
-    points = base.mark_circle(
-        size=85,
-        color="#4CAF50"
-    ).encode(
-        opacity=alt.condition(hover, alt.value(1), alt.value(0))
-    )
-
-    rules = alt.Chart(df).mark_rule(
-        color="#777777"
-    ).encode(
-        x=f"{x_field}:T",
-        opacity=alt.condition(hover, alt.value(0.45), alt.value(0))
-    ).add_params(hover)
-
-    return selectors, points, rules
-
-def parse_money_string(value):
-    if value is None or pd.isna(value):
-        return None
-
-    if isinstance(value, (int, float)):
-        return float(value)
-
-    cleaned = (
-        str(value)
-        .replace("$", "")
-        .replace(",", "")
-        .replace("+", "")
-        .strip()
-    )
-
-    try:
-        return float(cleaned)
-    except ValueError:
-        return None
-
-
-def parse_pct_string(value):
-    if value is None or pd.isna(value):
-        return None
-
-    cleaned = str(value).replace("%", "").strip()
-
-    try:
-        return float(cleaned)
-    except ValueError:
-        return None
-
-
-def parse_period_start_date(start_label, end_label, year):
-    start_dt = pd.to_datetime(
-        f"{start_label} {year}",
-        format="%B %d %Y",
-        errors="coerce"
-    )
-
-    end_dt = pd.to_datetime(
-        f"{end_label} {year}",
-        format="%B %d %Y",
-        errors="coerce"
-    )
-
-    if pd.isna(start_dt) or pd.isna(end_dt):
-        return pd.NaT
-
-    if start_dt.month > end_dt.month:
-        start_dt = start_dt - pd.DateOffset(years=1)
-
-    return start_dt
 
 def metric_value_size(value_text):
     value_text = str(value_text)
 
-    if len(value_text) >= 14:
+    if len(value_text) >= 18:
+        return "18px"
+    elif len(value_text) >= 14:
         return "20px"
     elif len(value_text) >= 11:
         return "23px"
@@ -244,391 +153,578 @@ def metric_value_size(value_text):
         return "30px"
 
 
-def metric_cards(metrics, columns=3):
-    cards_html = f"""
-    <div style="
-        display: grid;
-        grid-template-columns: repeat({columns}, 1fr);
-        gap: 14px;
-        margin-bottom: 18px;
-        font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', sans-serif;
-    ">
+def infer_tone(value_text):
+    """
+    Controls value color based on the display text.
+    """
+    value_text = str(value_text).strip()
+
+    if value_text.startswith("-"):
+        return "negative"
+
+    if value_text.startswith("+"):
+        return "positive"
+
+    return "neutral"
+
+
+def tone_color(tone):
+    if tone == "positive":
+        return "#4CAF50"
+    if tone == "negative":
+        return "#FF5C5C"
+    if tone == "gold":
+        return "#D4AF37"
+    return "#FFFFFF"
+
+
+def metric_cards(metrics, desktop_columns=3, mobile_columns=2, highlight_last=False):
+    """
+    Mobile-first metric card grid.
+
+    metrics format:
+    [
+        ("Label", "Value"),
+        ("Label", "Value", "tone"),
+        ("Label", "Value", "tone", "note"),
+    ]
     """
 
-    for label, value in metrics:
-        size = metric_value_size(value)
+    cards_html = f"""
+    <style>
+    .metric-grid {{
+        display: grid;
+        grid-template-columns: repeat({mobile_columns}, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 18px;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
+    }}
+
+    @media (max-width: 430px) {{
+        .metric-grid {{
+            grid-template-columns: 1fr;
+        }}
+    }}
+
+    @media (min-width: 900px) {{
+        .metric-grid {{
+            grid-template-columns: repeat({desktop_columns}, minmax(0, 1fr));
+        }}
+    }}
+
+    .metric-card {{
+        background-color: #111814;
+        border: 1px solid rgba(212, 175, 55, 0.16);
+        border-radius: 18px;
+        padding: 14px 14px;
+        min-height: 88px;
+        overflow: hidden;
+    }}
+
+    .metric-card.highlight {{
+        border-color: rgba(212, 175, 55, 0.42);
+        box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.06);
+    }}
+
+    .metric-label {{
+        color: #A5D6A7;
+        font-size: 12.5px;
+        font-weight: 850;
+        line-height: 1.15;
+        margin-bottom: 8px;
+    }}
+
+    .metric-value {{
+        font-weight: 950;
+        letter-spacing: -0.4px;
+        line-height: 1.05;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }}
+
+    .metric-note {{
+        color: #CFE8D2;
+        font-size: 11.5px;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-top: 7px;
+        opacity: 0.82;
+    }}
+    </style>
+
+    <div class="metric-grid">
+    """
+
+    for idx, metric in enumerate(metrics):
+        label = metric[0]
+        value = metric[1]
+
+        tone = metric[2] if len(metric) >= 3 else infer_tone(value)
+        note = metric[3] if len(metric) >= 4 else ""
+
+        value_color = tone_color(tone)
+        value_size = metric_value_size(value)
+
+        highlight_class = "highlight" if highlight_last and idx == len(metrics) - 1 else ""
 
         cards_html += f"""
-        <div style="
-            background-color: #111814;
-            border: 1px solid rgba(212, 175, 55, 0.16);
-            border-radius: 18px;
-            padding: 14px 16px;
-            min-height: 86px;
-        ">
-            <div style="
-                color: #A5D6A7;
-                font-size: 13px;
-                font-weight: 800;
-                margin-bottom: 8px;
-            ">
-                {label}
+        <div class="metric-card {highlight_class}">
+            <div class="metric-label">{label}</div>
+            <div class="metric-value" style="color:{value_color}; font-size:{value_size};">
+                {value}
             </div>
+            {f'<div class="metric-note">{note}</div>' if note else ''}
+        </div>
+        """
 
-            <div style="
-                color: #FFFFFF;
-                font-size: {size};
-                font-weight: 900;
-                letter-spacing: -0.4px;
-                line-height: 1.05;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            ">
+    cards_html += "</div>"
+
+    st.html(cards_html)
+
+
+def headline_cards(metrics):
+    """
+    Larger top-level mobile-first cards.
+    """
+
+    cards_html = """
+    <style>
+    .headline-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 13px;
+        margin-bottom: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
+    }
+
+    @media (min-width: 900px) {
+        .headline-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+
+    .headline-card {
+        background:
+            radial-gradient(circle at top right, rgba(212, 175, 55, 0.08), transparent 36%),
+            #111814;
+        border: 1px solid rgba(212, 175, 55, 0.25);
+        border-radius: 22px;
+        padding: 18px 16px;
+        min-height: 105px;
+    }
+
+    .headline-label {
+        color: #A5D6A7;
+        font-size: 13px;
+        font-weight: 850;
+        margin-bottom: 10px;
+    }
+
+    .headline-value {
+        font-size: 32px;
+        font-weight: 950;
+        letter-spacing: -0.7px;
+        line-height: 1.0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    </style>
+
+    <div class="headline-grid">
+    """
+
+    for label, value, tone in metrics:
+        cards_html += f"""
+        <div class="headline-card">
+            <div class="headline-label">{label}</div>
+            <div class="headline-value" style="color:{tone_color(tone)};">
                 {value}
             </div>
         </div>
         """
 
     cards_html += "</div>"
+
     st.html(cards_html)
 
-# ---------- LOAD DATA ----------
+
+def section_note(text):
+    st.markdown(
+        f"""
+        <div style="
+            color: #A5D6A7;
+            font-size: 12.5px;
+            font-weight: 750;
+            margin-top: -8px;
+            margin-bottom: 12px;
+            line-height: 1.25;
+        ">
+            {text}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+
+
+def context_card(title, main_text, sub_text=None):
+    sub_html = ""
+
+    if sub_text:
+        sub_html = f"""
+        <div style="
+            color: #CFE8D2;
+            font-size: 15px;
+            font-weight: 750;
+            line-height: 1.3;
+            margin-top: 8px;
+        ">
+            {sub_text}
+        </div>
+        """
+
+    card_html = f"""
+    <style>
+    .context-card {{
+        background:
+            radial-gradient(circle at top right, rgba(255, 92, 92, 0.10), transparent 34%),
+            #111814;
+        border: 1px solid rgba(212, 175, 55, 0.32);
+        border-radius: 22px;
+        padding: 17px 16px;
+        margin-bottom: 20px;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
+    }}
+
+    .context-title {{
+        color: #D4AF37;
+        font-size: 14px;
+        font-weight: 950;
+        margin-bottom: 10px;
+    }}
+
+    .context-main {{
+        color: #FF5C5C;
+        font-size: 24px;
+        font-weight: 950;
+        letter-spacing: -0.4px;
+        line-height: 1.1;
+    }}
+    </style>
+
+    <div class="context-card">
+        <div class="context-title">{title}</div>
+        <div class="context-main">{main_text}</div>
+        {sub_html}
+    </div>
+    """
+
+    st.html(card_html)
+
+# ============================================================
+# LOAD DATA
+# ============================================================
+
+snapshot = load_performance_snapshot()
 daily_data = load_daily_summary()
-monthly_data = load_monthly_log()
-trade_log = load_trade_log()
 
 daily_df = pd.DataFrame(daily_data)
 
-daily_df["summary_date_dt"] = pd.to_datetime(
-    daily_df["summary_date"],
-    errors="coerce"
-)
-daily_df["realized_profit"] = pd.to_numeric(
-    daily_df["realized_profit"],
-    errors="coerce"
-)
-daily_df["total_equity"] = pd.to_numeric(
-    daily_df["total_equity"],
-    errors="coerce"
-)
-
-daily_df = (
-    daily_df
-    .dropna(subset=["summary_date_dt"])
-    .sort_values("summary_date_dt")
-    .reset_index(drop=True)
-)
-
-daily_df["cumulative_realized_profit"] = daily_df["realized_profit"].cumsum()
-
-trade_df = pd.DataFrame(list(trade_log.values())) if trade_log else pd.DataFrame()
-
-if not trade_df.empty:
-    trade_df["buy_date_dt"] = pd.to_datetime(trade_df["buy_date"], errors="coerce")
-    trade_df["sell_date_dt"] = pd.to_datetime(trade_df["sell_date"], errors="coerce")
-    trade_df["profit"] = pd.to_numeric(trade_df["profit"], errors="coerce")
-    trade_df["trade_percentage"] = pd.to_numeric(
-        trade_df["trade_percentage"],
+if not daily_df.empty:
+    daily_df["summary_date_dt"] = pd.to_datetime(
+        daily_df["summary_date"],
         errors="coerce"
     )
 
-    trade_df = (
-        trade_df
-        .dropna(subset=["sell_date_dt", "profit"])
-        .sort_values("sell_date_dt")
+    daily_df["realized_profit"] = pd.to_numeric(
+        daily_df["realized_profit"],
+        errors="coerce"
+    )
+
+    daily_df["total_equity"] = pd.to_numeric(
+        daily_df["total_equity"],
+        errors="coerce"
+    )
+
+    daily_df["deployed_capital"] = pd.to_numeric(
+        daily_df.get("deployed_capital"),
+        errors="coerce"
+    )
+
+    daily_df["unsettled_funds"] = pd.to_numeric(
+        daily_df.get("unsettled_funds"),
+        errors="coerce"
+    )
+
+    daily_df = (
+        daily_df
+        .dropna(subset=["summary_date_dt"])
+        .sort_values("summary_date_dt")
         .reset_index(drop=True)
     )
 
 
-# ---------- PAGE ----------
+# ============================================================
+# PAGE
+# ============================================================
+
 st.title("Performance")
 
-if trade_df.empty:
-    st.info("No closed position data found.")
+if snapshot is None:
+    st.info("No performance snapshot found. Run performance_snapshot.py first.")
+    st.stop()
+
+if daily_df.empty:
+    st.info("No daily summary data found.")
     st.stop()
 
 
-# ---------- PERFORMANCE SNAPSHOT ----------
+# ============================================================
+# PERFORMANCE SNAPSHOT
+# ============================================================
+
 st.subheader("Performance Snapshot")
 
-total_net_profit = trade_df["profit"].sum()
-if not daily_df.empty:
-    initial_equity = daily_df["total_equity"].iloc[0]
-    pct_growth = total_net_profit / initial_equity if initial_equity != 0 else None
+headline_cards([
+    (
+        "Net Realized Gain",
+        get_display(snapshot, "performance_snapshot", "net_realized_gain_display"),
+        infer_tone(get_display(snapshot, "performance_snapshot", "net_realized_gain_display")),
+    ),
+    (
+        "Total Equity Return",
+        get_display(snapshot, "performance_snapshot", "total_equity_return_display"),
+        infer_tone(get_display(snapshot, "performance_snapshot", "total_equity_return_display")),
+    ),
+    (
+        "Business Days Since Inception",
+        get_display(snapshot, "performance_snapshot", "business_days_since_inception_display"),
+        "neutral",
+    ),
+])
+
+
+# ============================================================
+# TRADE QUALITY
+# ============================================================
+
+st.subheader("Trade Quality")
+
+profit_factor = get_display(snapshot, "trade_quality", "profit_factor_display")
+
+metric_cards([
+    (
+        "Total Realized Moves",
+        get_display(snapshot, "trade_quality", "total_realized_moves_display"),
+        "neutral",
+    ),
+    (
+        "Win Rate",
+        get_display(snapshot, "trade_quality", "win_rate_display"),
+        "neutral",
+    ),
+    (
+        "Profit Factor",
+        profit_factor,
+        "neutral",
+        "Profit vs loss strength",
+    ),
+    (
+        "Average Profit per Move",
+        get_display(snapshot, "trade_quality", "average_profit_per_move_display"),
+    ),
+    (
+        "Average Moves per Day",
+        get_display(snapshot, "trade_quality", "average_moves_per_day_display"),
+        "neutral",
+    ),
+    (
+        "Average Realized Profit per Day",
+        get_display(snapshot, "trade_quality", "average_realized_profit_per_day_display"),
+    ),
+], desktop_columns=3, mobile_columns=2)
+
+
+# ============================================================
+# MONTHLY CONSISTENCY
+# ============================================================
+
+st.subheader("Monthly Consistency")
+section_note("Realized = closed positions. Equity = total account value.")
+
+metric_cards([
+    (
+        "Realized Profitable Months",
+        get_display(snapshot, "monthly_consistency", "realized_profitable_months_display"),
+        "neutral",
+    ),
+    (
+        "Average Monthly Realized Profit",
+        get_display(snapshot, "monthly_consistency", "average_monthly_realized_profit_display"),
+    ),
+    (
+        "Average Monthly Equity Growth",
+        get_display(snapshot, "monthly_consistency", "average_monthly_equity_growth_display"),
+    ),
+], desktop_columns=2, mobile_columns=2)
+
+
+# ============================================================
+# DAILY CONSISTENCY
+# ============================================================
+
+st.subheader("Daily Consistency")
+section_note("Realized profit/loss tracks closed moves.")
+
+metric_cards([
+    (
+        "Realized Profitable Days",
+        get_display(snapshot, "daily_consistency", "realized_profitable_days_display"),
+        "neutral",
+    ),
+], desktop_columns=2, mobile_columns=2)
+
+metric_cards([
+    (
+        "Best Realized Day",
+        get_display(snapshot, "daily_consistency", "best_realized_day_display"),
+        "positive",
+    ),
+    (
+        "Largest Realized Loss Day",
+        get_display(snapshot, "daily_consistency", "largest_realized_loss_day_display"),
+        "negative",
+    ),
+], desktop_columns=2, mobile_columns=2)
+
+metric_cards([
+    (
+        "Total Realized Profit",
+        get_display(snapshot, "daily_consistency", "total_realized_profit_display"),
+        "positive",
+    ),
+    (
+        "Total Realized Loss",
+        get_display(snapshot, "daily_consistency", "total_realized_loss_display"),
+        "negative",
+    ),
+    (
+        "Total Net Gain",
+        get_display(snapshot, "daily_consistency", "total_net_gain_display"),
+        infer_tone(get_display(snapshot, "daily_consistency", "total_net_gain_display")),
+    ),
+], desktop_columns=3, mobile_columns=1, highlight_last=True)
+
+
+# ============================================================
+# LARGEST REALIZED LOSS CONTEXT
+# ============================================================
+
+loss_context = snapshot.get("largest_realized_loss_context") or {}
+
+context_text = loss_context.get("context_text", "—")
+realized_loss_display = get_display(
+    snapshot,
+    "daily_consistency",
+    "largest_realized_loss_day_display"
+)
+
+if " while " in context_text:
+    main_text, sub_text = context_text.split(" while ", 1)
+    sub_text = "while " + sub_text
 else:
-    pct_growth = None
-total_moves = len(trade_df)
-avg_profit_per_move = trade_df["profit"].mean()
+    main_text = realized_loss_display
+    sub_text = context_text
 
-total_days = len(daily_df) if not daily_df.empty else 0
+context_card(
+    "Largest Realized Loss Context",
+    main_text,
+    sub_text,
+)
 
-avg_moves_per_day = total_moves / total_days if total_days > 0 else None
-avg_profit_per_day = total_net_profit / total_days if total_days > 0 else None
 
-# Days Invested = business days from first move to latest exit
-first_move = trade_df["buy_date_dt"].min()
-latest_exit = trade_df["sell_date_dt"].max()
+# ============================================================
+# CAPITAL BEHAVIOR
+# ============================================================
 
-if pd.notna(first_move) and pd.notna(latest_exit):
-    days_invested = len(pd.bdate_range(start=first_move.date(), end=latest_exit.date()))
-else:
-    days_invested = None
+st.subheader("Capital Behavior")
 
-# Row 1
 metric_cards([
-    ("Total Net Realized Profit",
- f"{fmt_signed_currency(total_net_profit)} "
-),
-    ("Days Invested", f"{days_invested:,}" if days_invested else "—"),
-], columns=2)
+    (
+        "Max Drawdown",
+        get_display(snapshot, "capital_behavior", "max_drawdown_display"),
+        "negative",
+    ),
+    (
+        "Current Drawdown",
+        get_display(snapshot, "capital_behavior", "current_drawdown_display"),
+        infer_tone(get_display(snapshot, "capital_behavior", "current_drawdown_display")),
+    ),
+    (
+        "Drawdown Recovery",
+        get_display(snapshot, "capital_behavior", "drawdown_recovery_display"),
+        "neutral",
+    ),
+    (
+        "Sharpe Ratio",
+        get_display(snapshot, "capital_behavior", "sharpe_ratio_display"),
+        "neutral",
+    ),
+    (
+        "Sortino Ratio",
+        get_display(snapshot, "capital_behavior", "sortino_ratio_display"),
+        "neutral",
+    ),
+    (
+        "Calmar Ratio",
+        get_display(snapshot, "capital_behavior", "calmar_ratio_display"),
+        "neutral",
+    ),
+], desktop_columns=3, mobile_columns=2)
 
-# Row 2
 metric_cards([
-    ("Average Profit per Move", fmt_signed_currency(avg_profit_per_move)),
-    ("Average Moves per Day", f"{avg_moves_per_day:.2f}" if avg_moves_per_day else "—"),
-], columns=2)
+    (
+        "Return on Deployed Capital",
+        get_display(snapshot, "capital_behavior", "return_on_deployed_capital_display"),
+        infer_tone(get_display(snapshot, "capital_behavior", "return_on_deployed_capital_display")),
+    ),
+], desktop_columns=1, mobile_columns=1)
 
-# Row 3
+
+# ============================================================
+# POSITION BEHAVIOR
+# ============================================================
+
+st.subheader("Position Behavior")
+
 metric_cards([
-    ("Average Profit per Day", fmt_signed_currency(avg_profit_per_day)),
-    ("Total Realized Moves", f"{total_moves:,}"),
-    
-], columns=2)
-
-# ---------- CUMULATIVE REALIZED PROFIT ----------
-st.subheader("Cumulative Realized Profit")
-
-cumulative_base = alt.Chart(daily_df).encode(
-    x=alt.X("summary_date_dt:T", title=None),
-    y=alt.Y(
-        "cumulative_realized_profit:Q",
-        title="Cumulative Realized Profit"
-    )
-)
-
-cumulative_area = cumulative_base.mark_area(
-    interpolate="monotone",
-    opacity=0.18,
-    color="#4CAF50"
-)
-
-cumulative_line = cumulative_base.mark_line(
-    interpolate="monotone",
-    strokeWidth=3,
-    color="#4CAF50"
-)
-
-cumulative_selectors, cumulative_points, cumulative_rules = add_snap_layers(
-    cumulative_base,
-    daily_df,
-    "summary_date_dt",
-    [
-        alt.Tooltip("summary_date_dt:T", title="Date", format="%b %d, %Y"),
-        alt.Tooltip("realized_profit:Q", title="Daily Realized", format="$,.2f"),
-        alt.Tooltip("cumulative_realized_profit:Q", title="Cumulative", format="$,.2f"),
-    ]
-)
-
-st.altair_chart(
-    themed_chart(
-        alt.layer(
-            cumulative_area,
-            cumulative_line,
-            cumulative_selectors,
-            cumulative_points,
-            cumulative_rules
-        ),
-        height=340
+    (
+        "Typical Holding Time",
+        get_display(snapshot, "position_behavior", "typical_holding_time_display"),
+        "neutral",
     ),
-    width="stretch"
-)
-
-# ---------- DAILY REALIZED PROFIT ----------
-st.subheader("Daily Realized Profit")
-
-daily_profit_base = alt.Chart(daily_df).encode(
-    x=alt.X("summary_date_dt:T", title=None),
-    y=alt.Y("realized_profit:Q", title="Realized Profit")
-)
-
-daily_profit_bars = daily_profit_base.mark_bar(
-    color="#4CAF50",
-    opacity=0.75
-)
-
-daily_profit_hover = alt.selection_point(
-    nearest=True,
-    on="pointermove",
-    encodings=["x"],
-    empty=False
-)
-
-daily_profit_selectors = daily_profit_base.mark_point(
-    opacity=0,
-    size=220
-).encode(
-    tooltip=[
-        alt.Tooltip("summary_date_dt:T", title="Date", format="%b %d, %Y"),
-        alt.Tooltip("realized_profit:Q", title="Realized Profit", format="$,.2f"),
-    ]
-).add_params(daily_profit_hover)
-
-daily_profit_points = daily_profit_base.mark_circle(
-    size=85,
-    color="#4CAF50"
-).encode(
-    opacity=alt.condition(daily_profit_hover, alt.value(1), alt.value(0))
-)
-
-daily_profit_rules = alt.Chart(daily_df).mark_rule(
-    color="#777777"
-).encode(
-    x="summary_date_dt:T",
-    opacity=alt.condition(daily_profit_hover, alt.value(0.45), alt.value(0))
-).add_params(daily_profit_hover)
-
-daily_profit_chart = alt.layer(
-    daily_profit_bars,
-    daily_profit_selectors,
-    daily_profit_points,
-    daily_profit_rules
-)
-
-st.altair_chart(
-    themed_chart(daily_profit_chart, height=300),
-    width="stretch"
-)
-# ---------- MONTHLY DATA ----------
-if monthly_data:
-    monthly_df = pd.DataFrame(monthly_data)
-
-    monthly_df["monthly_realized_profit_num"] = (
-        monthly_df["monthly_realized_profit"].apply(parse_money_string)
-    )
-    monthly_df["growth_value_num"] = (
-        monthly_df["growth_value"].apply(parse_money_string)
-    )
-    monthly_df["equity_growth_pct_num"] = (
-        monthly_df["equity_growth_%"].apply(parse_pct_string)
-    )
-    monthly_df["end_amount"] = pd.to_numeric(
-        monthly_df["end_amount"],
-        errors="coerce"
-    )
-
-    monthly_df["period_start_dt"] = monthly_df.apply(
-        lambda row: parse_period_start_date(
-            row["start_label"],
-            row["end_label"],
-            row["year"]
-        ),
-        axis=1
-    )
-
-    monthly_df = (
-        monthly_df
-        .sort_values("period_start_dt")
-        .reset_index(drop=True)
-    )
-
-    monthly_df["period_label"] = (
-        monthly_df["start_label"].astype(str)
-        + " → "
-        + monthly_df["end_label"].astype(str)
-        + ", "
-        + monthly_df["year"].astype(str)
-    )
-
-    st.subheader("Monthly Progression")
-
-    latest_month_realized = monthly_df["monthly_realized_profit_num"].iloc[-1]
-    latest_month_growth = monthly_df["equity_growth_pct_num"].iloc[-1]
-
-    metric_row([
-        ("Latest Monthly Realized Profit", fmt_signed_currency(latest_month_realized)),
-        ("Latest Monthly Equity Growth", fmt_pct(latest_month_growth)),
-    ])
-
-# ---------- MONTHLY REALIZED PROFIT ----------
-st.subheader("Monthly Realized Profit")
-
-# Equal monthly slots, but chronologically sorted
-monthly_df = monthly_df.sort_values("period_start_dt").reset_index(drop=True)
-monthly_df["month_axis_label"] = monthly_df["period_start_dt"].dt.strftime("%b %Y")
-
-monthly_profit_base = alt.Chart(monthly_df).encode(
-    x=alt.X(
-        "month_axis_label:O",
-        title=None,
-        sort=alt.SortField(field="period_start_dt", order="ascending"),
-        axis=alt.Axis(labelAngle=0)
+    (
+        "Long Holds Over 30 Days",
+        get_display(snapshot, "position_behavior", "long_holds_over_30_days_display"),
+        "neutral",
     ),
-    y=alt.Y(
-        "monthly_realized_profit_num:Q",
-        title="Monthly Realized Profit"
-    )
-)
+], desktop_columns=4, mobile_columns=2)
 
-monthly_profit_bars = monthly_profit_base.mark_bar(
-    size=34,
-    color="#4CAF50",
-    opacity=0.85,
-    cornerRadiusTopLeft=5,
-    cornerRadiusTopRight=5,
-)
-
-monthly_profit_hover = alt.selection_point(
-    nearest=True,
-    on="pointermove",
-    encodings=["x"],
-    empty=False
-)
-
-monthly_profit_selectors = monthly_profit_base.mark_point(
-    opacity=0,
-    size=220
-).encode(
-    tooltip=[
-        alt.Tooltip("period_label:N", title="Period"),
-        alt.Tooltip(
-            "monthly_realized_profit_num:Q",
-            title="Monthly Realized Profit",
-            format="$,.2f"
-        ),
-    ]
-).add_params(monthly_profit_hover)
-
-monthly_profit_points = monthly_profit_base.mark_circle(
-    size=85,
-    color="#4CAF50"
-).encode(
-    opacity=alt.condition(monthly_profit_hover, alt.value(1), alt.value(0))
-)
-
-monthly_profit_rules = alt.Chart(monthly_df).mark_rule(
-    color="#777777"
-).encode(
-    x=alt.X(
-        "month_axis_label:O",
-        sort=alt.SortField(field="period_start_dt", order="ascending")
+metric_cards([
+    (
+        "Daily Realized Profit Rate",
+        get_display(snapshot, "position_behavior", "daily_realized_profit_rate_display"),
+        infer_tone(get_display(snapshot, "position_behavior", "daily_realized_profit_rate_display")),
+        "Average daily realized profit / average equity",
     ),
-    opacity=alt.condition(monthly_profit_hover, alt.value(0.45), alt.value(0))
-).add_params(monthly_profit_hover)
+], desktop_columns=1, mobile_columns=1)
 
-monthly_profit_chart = alt.layer(
-    monthly_profit_bars,
-    monthly_profit_selectors,
-    monthly_profit_points,
-    monthly_profit_rules
-)
 
-st.altair_chart(
-    themed_chart(monthly_profit_chart, height=300),
-    width="stretch"
-)
+# ============================================================
+# DAILY SUMMARY LOG
+# ============================================================
 
-# ---------- DAILY SUMMARY LOG ----------
 st.subheader("Daily Summary Log")
 
 DAILY_ROWS_PER_PAGE_OPTIONS = [25, 50, 100, 150, "All"]
@@ -703,7 +799,7 @@ daily_rows_html = ""
 
 for _, row in daily_table_df.iterrows():
     realized = row.get("Realized Profit")
-    realized_color = "#4CAF50" if realized >= 0 else "#FF5C5C"
+    realized_color = "#4CAF50" if pd.notna(realized) and realized >= 0 else "#FF5C5C"
 
     daily_rows_html += f"""
             <div class="table-row"
