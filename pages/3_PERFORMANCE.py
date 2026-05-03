@@ -187,6 +187,7 @@ def metric_cards(metrics, desktop_columns=3, mobile_columns=2, highlight_last=Fa
         ("Label", "Value"),
         ("Label", "Value", "tone"),
         ("Label", "Value", "tone", "note"),
+        ("Label", "Value", "tone", "note", True),  # golden flair
     ]
     """
 
@@ -222,8 +223,13 @@ def metric_cards(metrics, desktop_columns=3, mobile_columns=2, highlight_last=Fa
     }}
 
     .metric-card.highlight {{
-        border-color: rgba(212, 175, 55, 0.42);
-        box-shadow: 0 0 0 1px rgba(212, 175, 55, 0.06);
+        background:
+            radial-gradient(circle at top right, rgba(212, 175, 55, 0.10), transparent 34%),
+            #111814;
+        border-color: rgba(212, 175, 55, 0.36);
+        box-shadow:
+            0 18px 45px rgba(0, 0, 0, 0.18),
+            0 0 0 1px rgba(212, 175, 55, 0.05);
     }}
 
     .metric-label {{
@@ -232,6 +238,10 @@ def metric_cards(metrics, desktop_columns=3, mobile_columns=2, highlight_last=Fa
         font-weight: 850;
         line-height: 1.15;
         margin-bottom: 8px;
+    }}
+
+    .metric-card.highlight .metric-label {{
+        color: #D4AF37;
     }}
 
     .metric-value {{
@@ -262,11 +272,12 @@ def metric_cards(metrics, desktop_columns=3, mobile_columns=2, highlight_last=Fa
 
         tone = metric[2] if len(metric) >= 3 else infer_tone(value)
         note = metric[3] if len(metric) >= 4 else ""
+        highlight_this = metric[4] if len(metric) >= 5 else False
 
         value_color = tone_color(tone)
         value_size = metric_value_size(value)
 
-        highlight_class = "highlight" if highlight_last and idx == len(metrics) - 1 else ""
+        highlight_class = "highlight" if highlight_this or (highlight_last and idx == len(metrics) - 1) else ""
 
         cards_html += f"""
         <div class="metric-card {highlight_class}">
@@ -533,6 +544,9 @@ metric_cards([
     (
         "Average Profit per Move",
         get_display(snapshot, "trade_quality", "average_profit_per_move_display"),
+        infer_tone(get_display(snapshot, "trade_quality", "average_profit_per_move_display")),
+        "",
+        True,
     ),
     (
         "Average Moves per Day",
@@ -542,6 +556,9 @@ metric_cards([
     (
         "Average Realized Profit per Day",
         get_display(snapshot, "trade_quality", "average_realized_profit_per_day_display"),
+        infer_tone(get_display(snapshot, "trade_quality", "average_realized_profit_per_day_display")),
+        "",
+        True,
     ),
 ], desktop_columns=3, mobile_columns=2)
 
@@ -562,6 +579,9 @@ metric_cards([
     (
         "Average Monthly Realized Profit",
         get_display(snapshot, "monthly_consistency", "average_monthly_realized_profit_display"),
+        infer_tone(get_display(snapshot, "monthly_consistency", "average_monthly_realized_profit_display")),
+        "",
+        True,
     ),
     (
         "Average Monthly Equity Growth",
@@ -613,6 +633,8 @@ metric_cards([
         "Total Net Gain",
         get_display(snapshot, "daily_consistency", "total_net_gain_display"),
         infer_tone(get_display(snapshot, "daily_consistency", "total_net_gain_display")),
+        "",
+        True,
     ),
 ], desktop_columns=3, mobile_columns=1, highlight_last=True)
 
@@ -688,6 +710,8 @@ metric_cards([
         "Return on Deployed Capital",
         get_display(snapshot, "capital_behavior", "return_on_deployed_capital_display"),
         infer_tone(get_display(snapshot, "capital_behavior", "return_on_deployed_capital_display")),
+        "",
+        True,
     ),
 ], desktop_columns=1, mobile_columns=1)
 
@@ -717,6 +741,7 @@ metric_cards([
         get_display(snapshot, "position_behavior", "daily_realized_profit_rate_display"),
         infer_tone(get_display(snapshot, "position_behavior", "daily_realized_profit_rate_display")),
         "Average daily realized profit / average equity",
+        True,
     ),
 ], desktop_columns=1, mobile_columns=1)
 
