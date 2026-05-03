@@ -1,10 +1,12 @@
 {
-    "generated_at": "2026-05-02 21:42:46",
+    "generated_at": "2026-05-02 22:30:18",
     "performance_snapshot": {
+        "principal": 2000.0,
+        "principal_display": "$2,000.00",
         "net_realized_gain": 851.480000000005,
         "net_realized_gain_display": "+$851.48",
-        "total_equity_return": 0.5055339097499261,
-        "total_equity_return_display": "+50.55%",
+        "total_equity_return": 0.45481999999999995,
+        "total_equity_return_display": "+45.48%",
         "business_days_since_inception": 269,
         "business_days_since_inception_display": "269"
     },
@@ -73,10 +75,12 @@
         "sharpe_ratio_display": "1.43",
         "sortino_ratio": 1.3539529682870275,
         "sortino_ratio_display": "1.35",
-        "calmar_ratio": 2.4898957526544625,
-        "calmar_ratio_display": "2.49",
+        "calmar_ratio": 2.2426974351588216,
+        "calmar_ratio_display": "2.24",
         "return_on_deployed_capital": 0.5533998114390368,
-        "return_on_deployed_capital_display": "+55.34%"
+        "return_on_deployed_capital_display": "+55.34%",
+        "capital_utilization": 0.6140957002998411,
+        "capital_utilization_display": "61.41%"
     },
     "position_behavior": {
         "typical_holding_hours": 41.325,

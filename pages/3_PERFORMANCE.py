@@ -713,13 +713,20 @@ metric_cards([
 
 metric_cards([
     (
+        "Capital Utilization",
+        get_display(snapshot, "capital_behavior", "capital_utilization_display"),
+        "neutral",
+        "Average capital deployed",
+        True,
+    ),
+    (
         "Return on Deployed Capital",
         get_display(snapshot, "capital_behavior", "return_on_deployed_capital_display"),
         infer_tone(get_display(snapshot, "capital_behavior", "return_on_deployed_capital_display")),
-        "",
+        "Return from deployed capital",
         True,
     ),
-], desktop_columns=1, mobile_columns=1)
+], desktop_columns=2, mobile_columns=1)
 
 
 # ============================================================
