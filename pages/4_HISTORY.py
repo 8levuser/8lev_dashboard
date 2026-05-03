@@ -151,8 +151,8 @@ df["buy_date_dt"] = pd.to_datetime(df["buy_date"], errors="coerce")
 
 df = df.sort_values("sell_date_dt", ascending=False).reset_index(drop=True)
 
-# ---------- FILTERS ----------
-st.subheader("Filters")
+# ---------- PAGINATION ----------
+st.subheader("Closed Positions Log")
 
 symbol_options = sorted(df["symbol"].dropna().unique().tolist())
 selected_symbols = st.multiselect(
@@ -167,9 +167,6 @@ if selected_symbols:
     filtered_df = df[df["symbol"].isin(selected_symbols)].copy()
 else:
     filtered_df = df.copy()
-
-# ---------- PAGINATION ----------
-st.subheader("Closed Positions Log")
 
 page_col1, page_col2, page_col3 = st.columns([0.7, 0.7, 2.0])
 
