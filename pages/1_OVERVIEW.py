@@ -187,7 +187,6 @@ deposits_payload = load_deposits_log()
 if not isinstance(deposits_payload, dict):
     deposits_payload = {}
 
-latest = get_latest_daily_summary(daily_data)
 open_positions = open_positions_payload.get("positions", [])
 open_positions_count = len(open_positions)
 
@@ -204,20 +203,34 @@ first_deposit_date = get_first_deposit_date(deposits_payload)
 # ---------- EQUITY STATUS CARD ----------
 daily_df = pd.DataFrame(daily_data)
 
-daily_df["summary_date_dt"] = pd.to_datetime(
-    daily_df["summary_date"],
-    errors="coerce"
-)
+required_daily_columns = ["summary_date", "total_equity"]
 
-daily_df["summary_day"] = daily_df["summary_date_dt"].dt.date
+if daily_df.empty or any(col not in daily_df.columns for col in required_daily_columns):
+    daily_df = pd.DataFrame(columns=[
+        "summary_date",
+        "summary_date_dt",
+        "summary_day",
+        "total_equity",
+    ])
+else:
+    daily_df["summary_date_dt"] = pd.to_datetime(
+        daily_df["summary_date"],
+        errors="coerce"
+    )
 
-daily_df["total_equity"] = pd.to_numeric(
-    daily_df["total_equity"],
-    errors="coerce"
-)
+    daily_df["summary_day"] = daily_df["summary_date_dt"].dt.date
 
-daily_df = daily_df.dropna(subset=["summary_date_dt", "summary_day", "total_equity"])
-daily_df = daily_df.sort_values("summary_date_dt").reset_index(drop=True)
+    daily_df["total_equity"] = pd.to_numeric(
+        daily_df["total_equity"],
+        errors="coerce"
+    )
+
+    daily_df = (
+        daily_df
+        .dropna(subset=["summary_date_dt", "summary_day", "total_equity"])
+        .sort_values("summary_date_dt")
+        .reset_index(drop=True)
+    )
 
 # Pull latest/current equity from open_positions_live.json
 live_total_equity = open_positions_payload.get("total_equity")
@@ -637,13 +650,16 @@ area = base.mark_area(
         title=None,
         scale=alt.Scale(domain=[y_floor, y_ceiling], zero=False)
     ),
-    y2=alt.Y2("Baseline:Q")
+    y2=alt.Y2("Baseline:Q"),
+    tooltip=alt.value(None)
 )
 
 line = base.mark_line(
     strokeWidth=3,
     interpolate="monotone",
     color=chart_color
+).encode(
+    tooltip=alt.value(None)
 )
 
 if is_mobile:
