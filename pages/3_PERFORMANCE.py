@@ -586,6 +586,9 @@ metric_cards([
     (
         "Average Monthly Equity Growth",
         get_display(snapshot, "monthly_consistency", "average_monthly_equity_growth_display"),
+        infer_tone(get_display(snapshot, "monthly_consistency", "average_monthly_equity_growth_display")),
+        "",
+        True,
     ),
 ], desktop_columns=2, mobile_columns=2)
 
