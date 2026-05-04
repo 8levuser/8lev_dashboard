@@ -1,27 +1,27 @@
 {
-    "generated_at": "2026-05-04 11:00:32",
+    "generated_at": "2026-05-04 12:00:32",
     "performance_snapshot": {
         "principal": 2000.0,
         "principal_display": "$2,000.00",
-        "net_realized_gain": 854.4000000000051,
-        "net_realized_gain_display": "+$854.40",
+        "net_realized_gain": 854.5400000000052,
+        "net_realized_gain_display": "+$854.54",
         "total_equity_return": 0.45481999999999995,
         "total_equity_return_display": "+45.48%",
         "business_days_since_inception": 269,
         "business_days_since_inception_display": "269"
     },
     "trade_quality": {
-        "total_realized_moves": 3848,
-        "total_realized_moves_display": "3,848",
-        "win_rate": 0.9896049896049897,
+        "total_realized_moves": 3849,
+        "total_realized_moves_display": "3,849",
+        "win_rate": 0.9896076903091712,
         "win_rate_display": "98.96%",
-        "profit_factor": 4.904757552214273,
-        "profit_factor_display": "4.90",
-        "average_profit_per_move": 0.22203742203742202,
+        "profit_factor": 4.905397376719552,
+        "profit_factor_display": "4.91",
+        "average_profit_per_move": 0.22201610808002079,
         "average_profit_per_move_display": "+$0.22",
-        "average_moves_per_day": 14.304832713754648,
-        "average_moves_per_day_display": "14.30",
-        "average_realized_profit_per_day": 3.1762081784386806,
+        "average_moves_per_day": 14.308550185873607,
+        "average_moves_per_day_display": "14.31",
+        "average_realized_profit_per_day": 3.176728624535335,
         "average_realized_profit_per_day_display": "+$3.18"
     },
     "monthly_consistency": {
@@ -49,12 +49,12 @@
             "value": -208.37
         },
         "largest_realized_loss_day_display": "-$208.37",
-        "total_realized_profit": 1073.210000000005,
-        "total_realized_profit_display": "+$1,073.21",
+        "total_realized_profit": 1073.3500000000051,
+        "total_realized_profit_display": "+$1,073.35",
         "total_realized_loss": 218.81,
         "total_realized_loss_display": "-$218.81",
-        "total_net_gain": 854.4000000000051,
-        "total_net_gain_display": "+$854.40"
+        "total_net_gain": 854.5400000000052,
+        "total_net_gain_display": "+$854.54"
     },
     "largest_realized_loss_context": {
         "date": "2026-05-01",
@@ -77,14 +77,14 @@
         "sortino_ratio_display": "1.35",
         "calmar_ratio": 2.2426974351588216,
         "calmar_ratio_display": "2.24",
-        "return_on_deployed_capital": 0.5552975981743705,
-        "return_on_deployed_capital_display": "+55.53%",
+        "return_on_deployed_capital": 0.5553885879493524,
+        "return_on_deployed_capital_display": "+55.54%",
         "capital_utilization": 0.6140957002998411,
         "capital_utilization_display": "61.41%"
     },
     "position_behavior": {
-        "typical_holding_hours": 41.46666666666667,
-        "typical_holding_time_display": "1d 17.5h",
+        "typical_holding_hours": 41.38333333333333,
+        "typical_holding_time_display": "1d 17.4h",
         "long_holds_over_30_days": 107,
         "long_holds_over_30_days_display": "107",
         "daily_realized_profit_rate": 0.0011055550711250124,

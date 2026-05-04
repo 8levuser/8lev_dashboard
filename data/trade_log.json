@@ -42326,5 +42326,16 @@
         "buy_date": "2026-05-04 06:40",
         "profit": 0.26,
         "trade_percentage": 0.0371
+    },
+    "124077837": {
+        "id": 124077837,
+        "symbol": "BMBL",
+        "sell_price": 4.2,
+        "quantity": 2.0,
+        "sell_date": "2026-05-04 11:29",
+        "buy_price": 4.13,
+        "buy_date": "2026-05-04 06:41",
+        "profit": 0.14,
+        "trade_percentage": 0.0169
     }
 }
