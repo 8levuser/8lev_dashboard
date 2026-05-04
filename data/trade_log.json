@@ -42304,5 +42304,16 @@
         "buy_date": "2026-05-04 06:33",
         "profit": 0.17,
         "trade_percentage": 0.0305
+    },
+    "123992978": {
+        "id": 123992978,
+        "symbol": "NPWR",
+        "sell_price": 2.02,
+        "quantity": 4.0,
+        "sell_date": "2026-05-04 09:07",
+        "buy_price": 1.98,
+        "buy_date": "2026-05-04 08:23",
+        "profit": 0.16,
+        "trade_percentage": 0.0202
     }
 }
