@@ -42315,5 +42315,16 @@
         "buy_date": "2026-05-04 08:23",
         "profit": 0.16,
         "trade_percentage": 0.0202
+    },
+    "124077779": {
+        "id": 124077779,
+        "symbol": "SATL",
+        "sell_price": 7.27,
+        "quantity": 1.0,
+        "sell_date": "2026-05-04 10:46",
+        "buy_price": 7.01,
+        "buy_date": "2026-05-04 06:40",
+        "profit": 0.26,
+        "trade_percentage": 0.0371
     }
 }
