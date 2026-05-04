@@ -42337,5 +42337,16 @@
         "buy_date": "2026-05-04 06:41",
         "profit": 0.14,
         "trade_percentage": 0.0169
+    },
+    "124143819": {
+        "id": 124143819,
+        "symbol": "SGMT",
+        "sell_price": 7.91,
+        "quantity": 1.0,
+        "sell_date": "2026-05-04 12:56",
+        "buy_price": 7.5,
+        "buy_date": "2026-05-04 11:00",
+        "profit": 0.41,
+        "trade_percentage": 0.0547
     }
 }
