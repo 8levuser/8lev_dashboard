@@ -42150,5 +42150,137 @@
         "buy_date": "2026-05-01 08:12",
         "profit": 0.36,
         "trade_percentage": 0.0504
+    },
+    "123898917": {
+        "id": 123898917,
+        "symbol": "NIO",
+        "sell_price": 6.02,
+        "quantity": 1.0,
+        "sell_date": "2026-05-04 04:25",
+        "buy_price": 5.85,
+        "buy_date": "2026-05-01 08:09",
+        "profit": 0.17,
+        "trade_percentage": 0.0291
+    },
+    "123898895": {
+        "id": 123898895,
+        "symbol": "SLDP",
+        "sell_price": 3.43,
+        "quantity": 2.0,
+        "sell_date": "2026-05-04 05:35",
+        "buy_price": 3.37,
+        "buy_date": "2026-05-01 07:47",
+        "profit": 0.12,
+        "trade_percentage": 0.0178
+    },
+    "123901186": {
+        "id": 123901186,
+        "symbol": "URG",
+        "sell_price": 1.81,
+        "quantity": 5.0,
+        "sell_date": "2026-05-04 06:30",
+        "buy_price": 1.71,
+        "buy_date": "2026-05-01 08:13",
+        "profit": 0.5,
+        "trade_percentage": 0.0585
+    },
+    "123901190": {
+        "id": 123901190,
+        "symbol": "LAC",
+        "sell_price": 5.75,
+        "quantity": 1.0,
+        "sell_date": "2026-05-04 06:30",
+        "buy_price": 5.56,
+        "buy_date": "2026-05-01 08:12",
+        "profit": 0.19,
+        "trade_percentage": 0.0342
+    },
+    "123901202": {
+        "id": 123901202,
+        "symbol": "AMC",
+        "sell_price": 1.5,
+        "quantity": 6.0,
+        "sell_date": "2026-05-04 06:30",
+        "buy_price": 1.46,
+        "buy_date": "2026-05-01 08:09",
+        "profit": 0.24,
+        "trade_percentage": 0.0274
+    },
+    "123902199": {
+        "id": 123902199,
+        "symbol": "PLUG",
+        "sell_price": 3.17,
+        "quantity": 2.0,
+        "sell_date": "2026-05-04 06:30",
+        "buy_price": 3.07,
+        "buy_date": "2026-05-04 06:13",
+        "profit": 0.2,
+        "trade_percentage": 0.0326
+    },
+    "123901311": {
+        "id": 123901311,
+        "symbol": "SATL",
+        "sell_price": 7.19,
+        "quantity": 1.0,
+        "sell_date": "2026-05-04 06:31",
+        "buy_price": 7.03,
+        "buy_date": "2026-05-04 06:01",
+        "profit": 0.16,
+        "trade_percentage": 0.0228
+    },
+    "123901235": {
+        "id": 123901235,
+        "symbol": "SGMT",
+        "sell_price": 7.89,
+        "quantity": 1.0,
+        "sell_date": "2026-05-04 06:32",
+        "buy_price": 7.8,
+        "buy_date": "2026-05-01 09:38",
+        "profit": 0.09,
+        "trade_percentage": 0.0115
+    },
+    "123903275": {
+        "id": 123903275,
+        "symbol": "RR",
+        "sell_price": 2.52,
+        "quantity": 3.0,
+        "sell_date": "2026-05-04 06:32",
+        "buy_price": 2.49,
+        "buy_date": "2026-05-04 06:30",
+        "profit": 0.09,
+        "trade_percentage": 0.012
+    },
+    "123901248": {
+        "id": 123901248,
+        "symbol": "KURA",
+        "sell_price": 8.94,
+        "quantity": 1.0,
+        "sell_date": "2026-05-04 06:33",
+        "buy_price": 8.81,
+        "buy_date": "2026-05-01 10:03",
+        "profit": 0.13,
+        "trade_percentage": 0.0148
+    },
+    "123901218": {
+        "id": 123901218,
+        "symbol": "UROY",
+        "sell_price": 3.87,
+        "quantity": 2.0,
+        "sell_date": "2026-05-04 06:34",
+        "buy_price": 3.73,
+        "buy_date": "2026-05-01 08:13",
+        "profit": 0.28,
+        "trade_percentage": 0.0375
+    },
+    "123903302": {
+        "id": 123903302,
+        "symbol": "ITUB",
+        "sell_price": 8.69,
+        "quantity": 1.0,
+        "sell_date": "2026-05-04 06:41",
+        "buy_price": 8.6,
+        "buy_date": "2026-05-04 06:30",
+        "profit": 0.09,
+        "trade_percentage": 0.0105
     }
 }
