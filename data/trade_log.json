@@ -42359,5 +42359,16 @@
         "buy_date": "2026-05-04 08:40",
         "profit": 0.26,
         "trade_percentage": 0.0319
+    },
+    "124169212": {
+        "id": 124169212,
+        "symbol": "GRAB",
+        "sell_price": 3.7,
+        "quantity": 2.0,
+        "sell_date": "2026-05-04 15:36",
+        "buy_price": 3.6,
+        "buy_date": "2026-05-01 08:09",
+        "profit": 0.2,
+        "trade_percentage": 0.0278
     }
 }
