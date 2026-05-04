@@ -42282,5 +42282,27 @@
         "buy_date": "2026-05-04 06:30",
         "profit": 0.09,
         "trade_percentage": 0.0105
+    },
+    "123901264": {
+        "id": 123901264,
+        "symbol": "BSBR",
+        "sell_price": 5.87,
+        "quantity": 1.0,
+        "sell_date": "2026-05-04 07:31",
+        "buy_price": 5.8,
+        "buy_date": "2026-05-01 12:00",
+        "profit": 0.07,
+        "trade_percentage": 0.0121
+    },
+    "123904875": {
+        "id": 123904875,
+        "symbol": "LAC",
+        "sell_price": 5.75,
+        "quantity": 1.0,
+        "sell_date": "2026-05-04 07:39",
+        "buy_price": 5.58,
+        "buy_date": "2026-05-04 06:33",
+        "profit": 0.17,
+        "trade_percentage": 0.0305
     }
 }
