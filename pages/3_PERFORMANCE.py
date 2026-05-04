@@ -97,7 +97,19 @@ html, body {
 
 @media (max-width: 700px) {
     .block-container {
+        p@media (max-width: 700px) {
+    .block-container {
         padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+        padding-top: 1rem !important;
+        max-width: 100% !important;
+    }
+
+    h2, h3 {
+        margin-top: 0.65rem !important;
+        margin-bottom: 0.35rem !important;
+    }
+}adding-left: 0.75rem !important;
         padding-right: 0.75rem !important;
         max-width: 100% !important;
     }
@@ -261,6 +273,37 @@ def metric_cards(metrics, desktop_columns=3, mobile_columns=2, highlight_last=Fa
         margin-top: 7px;
         opacity: 0.82;
     }}
+
+    @media (max-width: 700px) {{
+        .metric-grid {{
+            gap: 8px;
+            margin-bottom: 11px;
+        }}
+
+        .metric-card {{
+            border-radius: 12px;
+            padding: 8px 9px;
+            min-height: 53px;
+        }}
+
+        .metric-label {{
+            font-size: 10.5px;
+            margin-bottom: 4px;
+            line-height: 1.05;
+        }}
+
+        .metric-value {{
+            font-size: 18px !important;
+            letter-spacing: -0.25px;
+            line-height: 1.0;
+        }}
+
+        .metric-note {{
+            font-size: 9.5px;
+            margin-top: 4px;
+            line-height: 1.1;
+        }}
+    }}
     </style>
 
     <div class="metric-grid">
@@ -340,6 +383,29 @@ def headline_cards(metrics):
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+
+    @media (max-width: 700px) {
+        .headline-grid {
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .headline-card {
+            border-radius: 14px;
+            padding: 10px 10px;
+            min-height: 63px;
+        }
+
+        .headline-label {
+            font-size: 10.5px;
+            margin-bottom: 5px;
+        }
+
+        .headline-value {
+            font-size: 22px;
+            letter-spacing: -0.35px;
+        }
     }
     </style>
 
