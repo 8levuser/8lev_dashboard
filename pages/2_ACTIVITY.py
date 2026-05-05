@@ -187,47 +187,6 @@ def fmt_trade_datetime(value):
         return "—"
 
 
-def fmt_holding_time(buy_date, sell_date):
-    """
-    Compact holding-time display.
-    Examples:
-    - 4h 22m
-    - 1d 3h
-    - 12d
-    """
-    try:
-        buy_dt = pd.to_datetime(buy_date, errors="coerce")
-        sell_dt = pd.to_datetime(sell_date, errors="coerce")
-
-        if pd.isna(buy_dt) or pd.isna(sell_dt):
-            return "—"
-
-        delta = sell_dt - buy_dt
-
-        total_minutes = int(delta.total_seconds() // 60)
-
-        if total_minutes < 0:
-            return "—"
-
-        days = total_minutes // 1440
-        hours = (total_minutes % 1440) // 60
-        minutes = total_minutes % 60
-
-        if days >= 1 and hours >= 1:
-            return f"{days}d {hours}h"
-
-        if days >= 1:
-            return f"{days}d"
-
-        if hours >= 1:
-            return f"{hours}h {minutes}m"
-
-        return f"{minutes}m"
-
-    except Exception:
-        return "—"
-
-
 st.title("Activity")
 
 # ---------- MOBILE DETECTION ----------
@@ -663,7 +622,7 @@ else:
         border: 1px solid rgba(212, 175, 55, 0.18);
         border-radius: 20px;
         padding: 16px;
-        min-height: 165px;
+        min-height: 150px;
         color: #E8F5E9;
         transition: transform 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease;
     }
@@ -722,10 +681,6 @@ else:
         padding: 8px 10px;
     }
 
-    .detail-box.full-width {
-        grid-column: 1 / -1;
-    }
-
     .detail-label {
         color: #A5D6A7;
         font-size: 11px;
@@ -741,11 +696,33 @@ else:
         font-weight: 850;
     }
 
-    .detail-value.time-range {
-        font-size: 13px;
+    .time-box {
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
+
+    .time-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 6px;
+        line-height: 1.15;
+        margin-top: 2px;
+    }
+
+    .time-label {
+        color: #A5D6A7;
+        font-size: 10px;
+        font-weight: 850;
+        text-transform: uppercase;
+        opacity: 0.88;
+    }
+
+    .time-value {
+        color: #FFFFFF;
+        font-size: 11.5px;
+        font-weight: 850;
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 
     @media (max-width: 760px) {
@@ -809,8 +786,23 @@ else:
             font-size: 11.5px;
         }
 
-        .detail-value.time-range {
-            font-size: 10.5px;
+        .time-box {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        .time-line {
+            gap: 4px;
+            line-height: 1.05;
+            margin-top: 1px;
+        }
+
+        .time-label {
+            font-size: 8.5px;
+        }
+
+        .time-value {
+            font-size: 9.5px;
         }
     }
     </style>
@@ -847,7 +839,6 @@ else:
 
         buy_time = fmt_trade_datetime(trade.get("buy_date"))
         sell_time = fmt_trade_datetime(trade.get("sell_date"))
-        held_text = fmt_holding_time(trade.get("buy_date"), trade.get("sell_date"))
 
         pct_text = f"{pct:+.2f}%"
         profit_text = fmt_signed_currency(profit)
@@ -885,14 +876,18 @@ else:
                     <div class="detail-value">{qty}</div>
                 </div>
 
-                <div class="detail-box">
-                    <div class="detail-label">Held</div>
-                    <div class="detail-value">{held_text}</div>
-                </div>
+                <div class="detail-box time-box">
+                    <div class="detail-label">Time</div>
 
-                <div class="detail-box full-width">
-                    <div class="detail-label">Opened → Closed</div>
-                    <div class="detail-value time-range">{buy_time} → {sell_time}</div>
+                    <div class="time-line">
+                        <span class="time-label">Open</span>
+                        <span class="time-value">{buy_time}</span>
+                    </div>
+
+                    <div class="time-line">
+                        <span class="time-label">Close</span>
+                        <span class="time-value">{sell_time}</span>
+                    </div>
                 </div>
             </div>
         </div>
