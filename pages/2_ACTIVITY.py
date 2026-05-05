@@ -697,17 +697,26 @@ else:
     }
 
     .time-box {
-        padding-top: 7px;
-        padding-bottom: 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .time-stack {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
     }
 
     .time-line {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        gap: 6px;
-        line-height: 1.15;
-        margin-top: 2px;
+        gap: 8px;
+        line-height: 1.1;
     }
 
     .time-label {
@@ -787,14 +796,17 @@ else:
         }
 
         .time-box {
-            padding-top: 5px;
-            padding-bottom: 5px;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+
+        .time-stack {
+            gap: 4px;
         }
 
         .time-line {
-            gap: 4px;
+            gap: 5px;
             line-height: 1.05;
-            margin-top: 1px;
         }
 
         .time-label {
@@ -877,14 +889,16 @@ else:
                 </div>
 
                 <div class="detail-box time-box">
-                    <div class="time-line">
-                        <span class="time-label">Open</span>
-                        <span class="time-value">{buy_time}</span>
-                    </div>
+                    <div class="time-stack">
+                        <div class="time-line">
+                            <span class="time-label">Close</span>
+                            <span class="time-value">{sell_time}</span>
+                        </div>
 
-                    <div class="time-line">
-                        <span class="time-label">Close</span>
-                        <span class="time-value">{sell_time}</span>
+                        <div class="time-line">
+                            <span class="time-label">Open</span>
+                            <span class="time-value">{buy_time}</span>
+                        </div>
                     </div>
                 </div>
             </div>
