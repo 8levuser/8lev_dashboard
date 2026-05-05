@@ -877,8 +877,6 @@ else:
                 </div>
 
                 <div class="detail-box time-box">
-                    <div class="detail-label">Time</div>
-
                     <div class="time-line">
                         <span class="time-label">Open</span>
                         <span class="time-value">{buy_time}</span>
