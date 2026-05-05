@@ -28,7 +28,7 @@ SUMMARY_GRID_GAP = 16            # Space between data blocks
 # Desktop card can be shorter because the grid is 2 columns.
 # Mobile card is now reduced because the mobile CSS shrinks the card.
 SUMMARY_CARD_HEIGHT_DESKTOP = 300
-SUMMARY_CARD_HEIGHT_MOBILE = 225
+SUMMARY_CARD_HEIGHT_MOBILE = 175
 
 
 st.markdown("""
@@ -246,7 +246,7 @@ NAV_COLUMN_LAYOUT = [0.052, 0.052, 0.0452, 0.86]
 
 # Controls button spacing below the summary card.
 # Since the buttons are below an iframe, SUMMARY_CARD_HEIGHT is still the main control.
-NAV_TOP_MARGIN = -8
+NAV_TOP_MARGIN = -12
 NAV_BOTTOM_MARGIN = 6
 
 
