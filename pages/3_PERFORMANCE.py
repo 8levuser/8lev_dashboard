@@ -599,8 +599,7 @@ def capital_flow_cycle_table(cycles, max_rows=30):
                 data-depth="{cycle.get("depth_pct", 0)}"
                 data-pressure="{cycle.get("pressure_duration_days", 0)}"
                 data-restore="{cycle.get("restoration_time_days", 0)}"
-                data-cycledays="{cycle.get("total_cycle_days", 0)}"
-                data-rdr="{cycle.get("restoration_dominance_ratio", 0)}"
+                data-cycledays="{cycle.get("total_cycle_days", 0)}"               
             >
                 <div class="muted">{cycle.get("cycle_number", "—")}</div>
                 <div class="level-pill" style="color:{level_color}; border-color:{level_color};">{escape(str(level_display))}</div>
@@ -611,7 +610,6 @@ def capital_flow_cycle_table(cycles, max_rows=30):
                 <div class="money">{escape(str(display.get("pressure_duration_display", "—")))}</div>
                 <div class="money">{escape(str(display.get("restoration_time_display", "—")))}</div>
                 <div class="money">{escape(str(display.get("total_cycle_display", "—")))}</div>
-                <div class="money">{escape(str(display.get("restoration_dominance_ratio_display", "—")))}</div>
             </div>
         """
 
@@ -669,7 +667,7 @@ def capital_flow_cycle_table(cycles, max_rows=30):
     .cfs-header,
     .cfs-row {{
         display: grid;
-        grid-template-columns: 0.42fr 0.75fr 0.85fr 0.85fr 0.85fr 0.65fr 0.9fr 0.9fr 0.9fr 0.7fr;
+        grid-template-columns: 0.42fr 0.75fr 0.85fr 0.85fr 0.85fr 0.65fr 0.9fr 0.9fr 0.9fr;
         gap: 8px;
         align-items: center;
     }}
@@ -782,7 +780,6 @@ def capital_flow_cycle_table(cycles, max_rows=30):
                     <div data-key="pressure" data-type="number">Pressure<span class="sort-indicator"></span></div>
                     <div data-key="restore" data-type="number">Restore<span class="sort-indicator"></span></div>
                     <div data-key="cycledays" data-type="number">Cycle<span class="sort-indicator"></span></div>
-                    <div data-key="rdr" data-type="number">RDR<span class="sort-indicator"></span></div>
                 </div>
 
                 {rows_html}
@@ -1218,12 +1215,6 @@ else:
             summary_display.get("max_restoration_time_display", "—"),
             "neutral",
         ),
-        (
-            "Restoration Dominance Ratio",
-            summary_display.get("avg_restoration_dominance_ratio_display", "—"),
-            "neutral",
-            "Restore time / pressure time",
-        ),
     ], desktop_columns=3, mobile_columns=2)
 
     metric_cards([
@@ -1237,7 +1228,7 @@ else:
     ], desktop_columns=1, mobile_columns=1)
 
     section_note(
-        "Grouped by completed downside pressure cycles: minor < 0.50%, medium 0.50%–3.00%, major >= 3.00%."
+        "Most recent cycles shown first. Click a column header to sort."
     )
 
     metric_cards([
