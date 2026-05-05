@@ -1187,7 +1187,6 @@ else:
     )
 
     summary_display = capital_flow.get("summary", {}).get("display", {})
-    pressure_share = capital_flow.get("pressure_share", {})
 
     metric_cards([
         (
