@@ -26,7 +26,7 @@ SUMMARY_CARD_PADDING = 20        # Inner padding inside the card
 SUMMARY_GRID_GAP = 16            # Space between data blocks
 
 # Desktop card can be shorter because the grid is 2 columns.
-# Mobile card is now reduced because the mobile CSS shrinks the card.
+# Mobile card is reduced because the mobile CSS shrinks the card.
 SUMMARY_CARD_HEIGHT_DESKTOP = 300
 SUMMARY_CARD_HEIGHT_MOBILE = 175
 
@@ -166,6 +166,66 @@ def fmt_signed_currency(value):
     if value is None or pd.isna(value):
         return "—"
     return f"+${abs(value):.2f}" if value >= 0 else f"-${abs(value):.2f}"
+
+
+def fmt_trade_datetime(value):
+    """
+    Compact date/time display for activity cards.
+    Example: 05/01 09:47
+    """
+    if not value:
+        return "—"
+
+    try:
+        dt = pd.to_datetime(value, errors="coerce")
+
+        if pd.isna(dt):
+            return "—"
+
+        return dt.strftime("%m/%d %H:%M")
+    except Exception:
+        return "—"
+
+
+def fmt_holding_time(buy_date, sell_date):
+    """
+    Compact holding-time display.
+    Examples:
+    - 4h 22m
+    - 1d 3h
+    - 12d
+    """
+    try:
+        buy_dt = pd.to_datetime(buy_date, errors="coerce")
+        sell_dt = pd.to_datetime(sell_date, errors="coerce")
+
+        if pd.isna(buy_dt) or pd.isna(sell_dt):
+            return "—"
+
+        delta = sell_dt - buy_dt
+
+        total_minutes = int(delta.total_seconds() // 60)
+
+        if total_minutes < 0:
+            return "—"
+
+        days = total_minutes // 1440
+        hours = (total_minutes % 1440) // 60
+        minutes = total_minutes % 60
+
+        if days >= 1 and hours >= 1:
+            return f"{days}d {hours}h"
+
+        if days >= 1:
+            return f"{days}d"
+
+        if hours >= 1:
+            return f"{hours}h {minutes}m"
+
+        return f"{minutes}m"
+
+    except Exception:
+        return "—"
 
 
 st.title("Activity")
@@ -603,7 +663,7 @@ else:
         border: 1px solid rgba(212, 175, 55, 0.18);
         border-radius: 20px;
         padding: 16px;
-        min-height: 150px;
+        min-height: 165px;
         color: #E8F5E9;
         transition: transform 0.14s ease, border-color 0.14s ease, box-shadow 0.14s ease;
     }
@@ -662,6 +722,10 @@ else:
         padding: 8px 10px;
     }
 
+    .detail-box.full-width {
+        grid-column: 1 / -1;
+    }
+
     .detail-label {
         color: #A5D6A7;
         font-size: 11px;
@@ -675,6 +739,13 @@ else:
         color: #FFFFFF;
         font-size: 14px;
         font-weight: 850;
+    }
+
+    .detail-value.time-range {
+        font-size: 13px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     @media (max-width: 760px) {
@@ -737,6 +808,10 @@ else:
         .detail-value {
             font-size: 11.5px;
         }
+
+        .detail-value.time-range {
+            font-size: 10.5px;
+        }
     }
     </style>
 
@@ -769,7 +844,10 @@ else:
         sell_price = trade["sell_price"]
         buy_price = trade["buy_price"]
         qty = int(trade["quantity"])
-        sell_time = trade["sell_date"].split(" ")[1]
+
+        buy_time = fmt_trade_datetime(trade.get("buy_date"))
+        sell_time = fmt_trade_datetime(trade.get("sell_date"))
+        held_text = fmt_holding_time(trade.get("buy_date"), trade.get("sell_date"))
 
         pct_text = f"{pct:+.2f}%"
         profit_text = fmt_signed_currency(profit)
@@ -808,8 +886,13 @@ else:
                 </div>
 
                 <div class="detail-box">
-                    <div class="detail-label">Closed</div>
-                    <div class="detail-value">{sell_time}</div>
+                    <div class="detail-label">Held</div>
+                    <div class="detail-value">{held_text}</div>
+                </div>
+
+                <div class="detail-box full-width">
+                    <div class="detail-label">Opened → Closed</div>
+                    <div class="detail-value time-range">{buy_time} → {sell_time}</div>
                 </div>
             </div>
         </div>
