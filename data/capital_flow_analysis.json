@@ -1,8 +1,8 @@
 {
-    "generated_at": "2026-05-04 23:40:15",
+    "generated_at": "2026-05-04 23:49:59",
     "title": "Capital Flow Stability",
     "description": "Capital Flow Stability measures how efficiently the system handles downside pressure and restores new equity highs.",
-    "interpretation": "Capital Flow Stability measures how efficiently the system handles downside pressure and restores new equity highs.\n\n25 of 30 completed downside pressure cycles were below 3%. Medium pressure averaged 1.37% in depth and restored in 2.25 business days, while major pressure averaged 9.23% in depth and restored in 20.8 business days. Larger market-regime pressure was fully handled, though it required longer capital rotation.",
+    "interpretation": "Capital Flow Stability measures how efficiently the system handles downside pressure and restores new equity highs.\n\n25 of 30 completed downside pressure cycles were below 3%. Medium pressure averaged 1.37% in depth and restored in 2.25 business days, while major pressure averaged 9.23% in depth and restored in 20.8 business days.",
     "thresholds": {
         "minor_downside_pressure": "< 0.50%",
         "medium_downside_pressure": "0.50% - 3.00%",
