@@ -1264,7 +1264,7 @@ else:
                 f"Current equity is below the latest high by "
                 f"{unresolved_display.get('current_depth_display', '—')}. "
                 f"Peak date: {unresolved.get('peak_date', '—')}. "
-                f"Business days since peak: "
+                f"Time since peak: "
                 f"{unresolved_display.get('business_days_since_peak_display', '—')}."
             ),
         )
