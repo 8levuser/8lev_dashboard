@@ -17932,5 +17932,17 @@
         ],
         "raw_message": "🚀 Matt Day Summary | 2026-05-01 🎯\nAsset Activity: 66\nRealized Profit: $-208.37\nTotal Equity: 2909.64\nDeployed Capital: $137.90\nUnsettled Funds: $2434.29\n📈 Profit Performance per Asset:\n- ALIT: $6.56\n- HNST: $0.10\n- GAMB: $0.20\n- AIOT: $0.72\n- GENI: $0.28\n- SLI: $0.10\n- SGMT: $0.09\n- GREE: $0.21\n- ARDX: $0.46\n- EVGO: $0.20\n- ABEV: $-0.22\n- ACB: $-0.58\n- YEXT: $-5.96\n- SNAP: $-1.26\n- STKL: $-0.01\n- TALK: $0.02\n- TIGR: $-0.64\n- GOTU: $-136.94\n- CXM: $-58.24\n- NIO: $-1.07\n- GRAB: $-1.75\n- RERE: $-0.48\n- AMC: $-3.03\n- LFMD: $0.01\n- MOMO: $-0.22\n- UAA: $-0.28\n- UA: $-0.28\n- VERI: $-1.08\n- BLND: $-0.38\n- HUYA: $-0.03\n- YMM: $-0.08\n- RXRX: $-0.49\n- RR: $-0.80\n- CLNE: $-0.51\n- NG: $-0.70\n- CCO: $0.03\n- RLX: $-0.24\n- JBLU: $-0.56\n- ARRY: $-0.19\n- VSTM: $-0.32\n- TWI: $-0.40\n- TBLA: $-0.12\n- ARHS: $0.02\n- COMP: $-0.42\n- JVA: $-0.12\n- POET: $-0.65\n- BMBL: $0.04\n- MCW: $-0.01\n- GNW: $0.01\n- KURA: $0.16\n- NVAX: $0.04\n- INDI: $0.01\n- LAC: $-0.05\n- WVE: $0.06\n- MNKD: $0.11\n- URG: $-0.17\n- UROY: $-0.09\n- EBS: $0.37\n- LFST: $0.13\n- SLI: $-0.03\n- SEV: $-0.21\n- WOOF: $-0.20\n- SGMT: $0.00\n- DNUT: $0.05\n- SLI: $0.10\n- RR: $0.36",
         "logged_at": "2026-05-01T17:00:04.365456"
+    },
+    {
+        "bot_name": "Matt",
+        "summary_date": "2026-05-04",
+        "asset_activity": 20,
+        "realized_profit": null,
+        "total_equity": 2906.39,
+        "deployed_capital": 322.2,
+        "unsettled_funds": 150.13,
+        "profit_per_asset": [],
+        "raw_message": "🚀 Matt Day Summary | 2026-05-04 🎯\nAsset Activity: 20\nRealized Profit: +$3.93\nTotal Equity: 2906.39\nDeployed Capital: $322.20\nUnsettled Funds: $150.13\n📈 Profit Performance per Asset:\n- NIO: +$0.17\n- SLDP: +$0.12\n- URG: +$0.50\n- LAC: +$0.19\n- AMC: +$0.24\n- PLUG: +$0.20\n- SATL: +$0.16\n- SGMT: +$0.09\n- RR: +$0.09\n- KURA: +$0.13\n- UROY: +$0.28\n- ITUB: +$0.09\n- BSBR: +$0.07\n- LAC: +$0.17\n- NPWR: +$0.16\n- SATL: +$0.26\n- BMBL: +$0.14\n- SGMT: +$0.41\n- RAIL: +$0.26\n- GRAB: +$0.20",
+        "logged_at": "2026-05-04T17:00:05.570108"
     }
 ]
