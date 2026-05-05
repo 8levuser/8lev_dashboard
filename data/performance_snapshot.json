@@ -1,5 +1,5 @@
 {
-    "generated_at": "2026-05-04 17:06:57",
+    "generated_at": "2026-05-04 17:47:28",
     "performance_snapshot": {
         "principal": 2000.0,
         "principal_display": "$2,000.00",
@@ -29,16 +29,16 @@
         "month_count": 14,
         "realized_profitable_months_pct": 0.9285714285714286,
         "realized_profitable_months_display": "13 of 14 / 92.86%",
-        "average_monthly_realized_profit": 53.223571428571425,
-        "average_monthly_realized_profit_display": "+$53.22",
+        "average_monthly_realized_profit": 53.50428571428571,
+        "average_monthly_realized_profit_display": "+$53.50",
         "average_monthly_equity_growth": 0.027240985726958836,
         "average_monthly_equity_growth_display": "+2.72%"
     },
     "daily_consistency": {
-        "realized_profitable_days": 265,
+        "realized_profitable_days": 266,
         "business_days": 270,
-        "realized_profitable_days_pct": 0.9814814814814815,
-        "realized_profitable_days_display": "265 of 270 / 98.15%",
+        "realized_profitable_days_pct": 0.9851851851851852,
+        "realized_profitable_days_display": "266 of 270 / 98.52%",
         "best_realized_day": {
             "date": "2025-10-14",
             "value": 22.0
@@ -87,7 +87,7 @@
         "typical_holding_time_display": "1d 17.3h",
         "long_holds_over_30_days": 107,
         "long_holds_over_30_days_display": "107",
-        "daily_realized_profit_rate": 0.001100808129939236,
+        "daily_realized_profit_rate": 0.0011066140644079344,
         "daily_realized_profit_rate_display": "+0.11%"
     }
 }

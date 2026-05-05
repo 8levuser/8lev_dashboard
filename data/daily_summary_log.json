@@ -17937,12 +17937,93 @@
         "bot_name": "Matt",
         "summary_date": "2026-05-04",
         "asset_activity": 20,
-        "realized_profit": null,
+        "realized_profit": 3.93,
         "total_equity": 2906.39,
         "deployed_capital": 322.2,
         "unsettled_funds": 150.13,
-        "profit_per_asset": [],
-        "raw_message": "🚀 Matt Day Summary | 2026-05-04 🎯\nAsset Activity: 20\nRealized Profit: +$3.93\nTotal Equity: 2906.39\nDeployed Capital: $322.20\nUnsettled Funds: $150.13\n📈 Profit Performance per Asset:\n- NIO: +$0.17\n- SLDP: +$0.12\n- URG: +$0.50\n- LAC: +$0.19\n- AMC: +$0.24\n- PLUG: +$0.20\n- SATL: +$0.16\n- SGMT: +$0.09\n- RR: +$0.09\n- KURA: +$0.13\n- UROY: +$0.28\n- ITUB: +$0.09\n- BSBR: +$0.07\n- LAC: +$0.17\n- NPWR: +$0.16\n- SATL: +$0.26\n- BMBL: +$0.14\n- SGMT: +$0.41\n- RAIL: +$0.26\n- GRAB: +$0.20",
-        "logged_at": "2026-05-04T17:00:05.570108"
+        "profit_per_asset": [
+            {
+                "symbol": "NIO",
+                "profit": 0.17
+            },
+            {
+                "symbol": "SLDP",
+                "profit": 0.12
+            },
+            {
+                "symbol": "URG",
+                "profit": 0.5
+            },
+            {
+                "symbol": "LAC",
+                "profit": 0.19
+            },
+            {
+                "symbol": "AMC",
+                "profit": 0.24
+            },
+            {
+                "symbol": "PLUG",
+                "profit": 0.2
+            },
+            {
+                "symbol": "SATL",
+                "profit": 0.16
+            },
+            {
+                "symbol": "SGMT",
+                "profit": 0.09
+            },
+            {
+                "symbol": "RR",
+                "profit": 0.09
+            },
+            {
+                "symbol": "KURA",
+                "profit": 0.13
+            },
+            {
+                "symbol": "UROY",
+                "profit": 0.28
+            },
+            {
+                "symbol": "ITUB",
+                "profit": 0.09
+            },
+            {
+                "symbol": "BSBR",
+                "profit": 0.07
+            },
+            {
+                "symbol": "LAC",
+                "profit": 0.17
+            },
+            {
+                "symbol": "NPWR",
+                "profit": 0.16
+            },
+            {
+                "symbol": "SATL",
+                "profit": 0.26
+            },
+            {
+                "symbol": "BMBL",
+                "profit": 0.14
+            },
+            {
+                "symbol": "SGMT",
+                "profit": 0.41
+            },
+            {
+                "symbol": "RAIL",
+                "profit": 0.26
+            },
+            {
+                "symbol": "GRAB",
+                "profit": 0.2
+            }
+        ],
+        "raw_message": "🚀 Matt Day Summary | 2026-05-04 🎯\nAsset Activity: 20\nRealized Profit: $3.93\nTotal Equity: 2906.39\nDeployed Capital: $322.20\nUnsettled Funds: $150.13\n📈 Profit Performance per Asset:\n- NIO: $0.17\n- SLDP: $0.12\n- URG: $0.50\n- LAC: $0.19\n- AMC: $0.24\n- PLUG: $0.20\n- SATL: $0.16\n- SGMT: $0.09\n- RR: $0.09\n- KURA: $0.13\n- UROY: $0.28\n- ITUB: $0.09\n- BSBR: $0.07\n- LAC: $0.17\n- NPWR: $0.16\n- SATL: $0.26\n- BMBL: $0.14\n- SGMT: $0.41\n- RAIL: $0.26\n- GRAB: $0.20",
+        "logged_at": "2026-05-04T17:47:06.868770"
     }
 ]
