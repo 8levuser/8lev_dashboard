@@ -1,0 +1,2354 @@
+{
+    "generated_at": "2026-05-04 20:41:47",
+    "title": "Capital Flow Stability",
+    "description": "Capital Flow Stability measures how efficiently the system handles downside pressure and restores new equity highs.",
+    "interpretation": "Capital Flow Stability measures how efficiently the system handles downside pressure and restores new equity highs.\n\n25 of 30 completed downside pressure cycles were below 3%. Medium pressure averaged 1.37% in depth and restored in 2.25 business days, while major pressure averaged 9.23% in depth and restored in 20.8 business days. Larger market-regime pressure was fully handled, though it required longer capital rotation.",
+    "thresholds": {
+        "minor_downside_pressure": "< 0.50%",
+        "medium_downside_pressure": "0.50% - 3.00%",
+        "major_downside_pressure": ">= 3.00%"
+    },
+    "summary": {
+        "metrics": {
+            "completed_cycles": 30,
+            "time_below_equity_high_pct": 77.41,
+            "avg_depth_pct": 2.16,
+            "max_depth_pct": 18.84,
+            "avg_restoration_time_days": 4.93,
+            "max_restoration_time_days": 38,
+            "avg_restoration_dominance_ratio": 1.73,
+            "restoration_consistency_index": 0.3437,
+            "avg_restoration_profit_density_dollars_per_day": 11.95,
+            "avg_restoration_profit_density_pct_per_day": 0.4858,
+            "avg_restoration_efficiency_score": 0.551,
+            "avg_capital_rotation_efficiency": 0.0412,
+            "depth_vs_restoration_slope_days_per_1pct": 2.21,
+            "total_cycle_days": 248
+        },
+        "display": {
+            "completed_cycles_display": "30",
+            "time_below_equity_high_display": "77.41%",
+            "avg_depth_display": "2.16%",
+            "max_depth_display": "18.84%",
+            "avg_restoration_time_display": "4.93 business days",
+            "max_restoration_time_display": "38 business days",
+            "avg_restoration_dominance_ratio_display": "1.73",
+            "restoration_consistency_index_display": "0.3437",
+            "avg_restoration_profit_density_display": "$11.95/day",
+            "avg_restoration_profit_density_pct_display": "0.4858%/day",
+            "avg_restoration_efficiency_score_display": "0.551",
+            "avg_capital_rotation_efficiency_display": "0.0412",
+            "depth_vs_restoration_slope_display": "2.21 days per 1%"
+        }
+    },
+    "group_summaries": {
+        "all": {
+            "metrics": {
+                "completed_cycles": 30,
+                "time_below_equity_high_pct": 77.41,
+                "avg_depth_pct": 2.16,
+                "max_depth_pct": 18.84,
+                "avg_restoration_time_days": 4.93,
+                "max_restoration_time_days": 38,
+                "avg_restoration_dominance_ratio": 1.73,
+                "restoration_consistency_index": 0.3437,
+                "avg_restoration_profit_density_dollars_per_day": 11.95,
+                "avg_restoration_profit_density_pct_per_day": 0.4858,
+                "avg_restoration_efficiency_score": 0.551,
+                "avg_capital_rotation_efficiency": 0.0412,
+                "depth_vs_restoration_slope_days_per_1pct": 2.21,
+                "total_cycle_days": 248
+            },
+            "display": {
+                "completed_cycles_display": "30",
+                "time_below_equity_high_display": "77.41%",
+                "avg_depth_display": "2.16%",
+                "max_depth_display": "18.84%",
+                "avg_restoration_time_display": "4.93 business days",
+                "max_restoration_time_display": "38 business days",
+                "avg_restoration_dominance_ratio_display": "1.73",
+                "restoration_consistency_index_display": "0.3437",
+                "avg_restoration_profit_density_display": "$11.95/day",
+                "avg_restoration_profit_density_pct_display": "0.4858%/day",
+                "avg_restoration_efficiency_score_display": "0.551",
+                "avg_capital_rotation_efficiency_display": "0.0412",
+                "depth_vs_restoration_slope_display": "2.21 days per 1%"
+            },
+            "cycle_numbers": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30
+            ]
+        },
+        "minor": {
+            "metrics": {
+                "completed_cycles": 13,
+                "time_below_equity_high_pct": null,
+                "avg_depth_pct": 0.18,
+                "max_depth_pct": 0.44,
+                "avg_restoration_time_days": 1.31,
+                "max_restoration_time_days": 3,
+                "avg_restoration_dominance_ratio": 1.06,
+                "restoration_consistency_index": 0.6747,
+                "avg_restoration_profit_density_dollars_per_day": 3.59,
+                "avg_restoration_profit_density_pct_per_day": 0.1519,
+                "avg_restoration_efficiency_score": 0.4205,
+                "avg_capital_rotation_efficiency": 0.0071,
+                "depth_vs_restoration_slope_days_per_1pct": 0.51,
+                "total_cycle_days": 35
+            },
+            "display": {
+                "completed_cycles_display": "13",
+                "time_below_equity_high_display": "N/A",
+                "avg_depth_display": "0.18%",
+                "max_depth_display": "0.44%",
+                "avg_restoration_time_display": "1.31 business days",
+                "max_restoration_time_display": "3 business days",
+                "avg_restoration_dominance_ratio_display": "1.06",
+                "restoration_consistency_index_display": "0.6747",
+                "avg_restoration_profit_density_display": "$3.59/day",
+                "avg_restoration_profit_density_pct_display": "0.1519%/day",
+                "avg_restoration_efficiency_score_display": "0.4205",
+                "avg_capital_rotation_efficiency_display": "0.0071",
+                "depth_vs_restoration_slope_display": "0.51 days per 1%"
+            },
+            "cycle_numbers": [
+                4,
+                5,
+                7,
+                9,
+                10,
+                13,
+                15,
+                16,
+                17,
+                19,
+                20,
+                21,
+                25
+            ]
+        },
+        "medium": {
+            "metrics": {
+                "completed_cycles": 12,
+                "time_below_equity_high_pct": null,
+                "avg_depth_pct": 1.37,
+                "max_depth_pct": 2.26,
+                "avg_restoration_time_days": 2.25,
+                "max_restoration_time_days": 7,
+                "avg_restoration_dominance_ratio": 1.05,
+                "restoration_consistency_index": 0.5679,
+                "avg_restoration_profit_density_dollars_per_day": 20.55,
+                "avg_restoration_profit_density_pct_per_day": 0.8403,
+                "avg_restoration_efficiency_score": 0.7028,
+                "avg_capital_rotation_efficiency": 0.0345,
+                "depth_vs_restoration_slope_days_per_1pct": 0.53,
+                "total_cycle_days": 56
+            },
+            "display": {
+                "completed_cycles_display": "12",
+                "time_below_equity_high_display": "N/A",
+                "avg_depth_display": "1.37%",
+                "max_depth_display": "2.26%",
+                "avg_restoration_time_display": "2.25 business days",
+                "max_restoration_time_display": "7 business days",
+                "avg_restoration_dominance_ratio_display": "1.05",
+                "restoration_consistency_index_display": "0.5679",
+                "avg_restoration_profit_density_display": "$20.55/day",
+                "avg_restoration_profit_density_pct_display": "0.8403%/day",
+                "avg_restoration_efficiency_score_display": "0.7028",
+                "avg_capital_rotation_efficiency_display": "0.0345",
+                "depth_vs_restoration_slope_display": "0.53 days per 1%"
+            },
+            "cycle_numbers": [
+                1,
+                2,
+                3,
+                8,
+                11,
+                12,
+                18,
+                22,
+                23,
+                24,
+                26,
+                29
+            ]
+        },
+        "major": {
+            "metrics": {
+                "completed_cycles": 5,
+                "time_below_equity_high_pct": null,
+                "avg_depth_pct": 9.23,
+                "max_depth_pct": 18.84,
+                "avg_restoration_time_days": 20.8,
+                "max_restoration_time_days": 38,
+                "avg_restoration_dominance_ratio": 5.1,
+                "restoration_consistency_index": 0.5656,
+                "avg_restoration_profit_density_dollars_per_day": 13.02,
+                "avg_restoration_profit_density_pct_per_day": 0.5031,
+                "avg_restoration_efficiency_score": 0.5257,
+                "avg_capital_rotation_efficiency": 0.1459,
+                "depth_vs_restoration_slope_days_per_1pct": 2.29,
+                "total_cycle_days": 157
+            },
+            "display": {
+                "completed_cycles_display": "5",
+                "time_below_equity_high_display": "N/A",
+                "avg_depth_display": "9.23%",
+                "max_depth_display": "18.84%",
+                "avg_restoration_time_display": "20.8 business days",
+                "max_restoration_time_display": "38 business days",
+                "avg_restoration_dominance_ratio_display": "5.1",
+                "restoration_consistency_index_display": "0.5656",
+                "avg_restoration_profit_density_display": "$13.02/day",
+                "avg_restoration_profit_density_pct_display": "0.5031%/day",
+                "avg_restoration_efficiency_score_display": "0.5257",
+                "avg_capital_rotation_efficiency_display": "0.1459",
+                "depth_vs_restoration_slope_display": "2.29 days per 1%"
+            },
+            "cycle_numbers": [
+                6,
+                14,
+                27,
+                28,
+                30
+            ]
+        }
+    },
+    "pressure_share": {
+        "major_cycle_share_pct": 16.67,
+        "major_cycle_time_share_pct": 63.31,
+        "major_cycle_share_display": "16.67%",
+        "major_cycle_time_share_display": "63.31%"
+    },
+    "cycles": [
+        {
+            "cycle_number": 1,
+            "pressure_level": "medium",
+            "peak_date": "2025-04-09",
+            "peak_equity": 2014.82,
+            "trough_date": "2025-04-10",
+            "trough_equity": 1970.92,
+            "restored_date": "2025-04-14",
+            "restored_equity": 2047.44,
+            "depth_dollars": 43.9,
+            "depth_pct": 2.18,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 2,
+            "total_cycle_days": 3,
+            "restoration_dominance_ratio": 2.0,
+            "restoration_profit_density_dollars_per_day": 21.95,
+            "restoration_profit_density_pct_per_day": 1.0894,
+            "restoration_efficiency_score": 0.5737,
+            "capital_rotation_efficiency": 0.0483,
+            "display": {
+                "pressure_level_display": "Medium",
+                "depth_display": "2.18%",
+                "depth_dollars_display": "$43.90",
+                "restoration_time_display": "2 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "3 business days",
+                "restoration_dominance_ratio_display": "2",
+                "restoration_profit_density_display": "$21.95/day",
+                "restoration_profit_density_pct_display": "1.0894%/day",
+                "restoration_efficiency_score_display": "0.5737",
+                "capital_rotation_efficiency_display": "0.0483"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-04-10",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 1970.92
+                },
+                {
+                    "date": "2025-04-11",
+                    "x": 0.5,
+                    "y": 0.3515,
+                    "equity": 1986.35
+                },
+                {
+                    "date": "2025-04-14",
+                    "x": 1.0,
+                    "y": 1.7431,
+                    "equity": 2047.44
+                }
+            ]
+        },
+        {
+            "cycle_number": 2,
+            "pressure_level": "medium",
+            "peak_date": "2025-04-15",
+            "peak_equity": 2052.62,
+            "trough_date": "2025-04-16",
+            "trough_equity": 2021.17,
+            "restored_date": "2025-04-17",
+            "restored_equity": 2063.47,
+            "depth_dollars": 31.45,
+            "depth_pct": 1.53,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 1,
+            "total_cycle_days": 2,
+            "restoration_dominance_ratio": 1.0,
+            "restoration_profit_density_dollars_per_day": 31.45,
+            "restoration_profit_density_pct_per_day": 1.5322,
+            "restoration_efficiency_score": 0.7435,
+            "capital_rotation_efficiency": 0.0435,
+            "display": {
+                "pressure_level_display": "Medium",
+                "depth_display": "1.53%",
+                "depth_dollars_display": "$31.45",
+                "restoration_time_display": "1 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "2 business days",
+                "restoration_dominance_ratio_display": "1",
+                "restoration_profit_density_display": "$31.45/day",
+                "restoration_profit_density_pct_display": "1.5322%/day",
+                "restoration_efficiency_score_display": "0.7435",
+                "capital_rotation_efficiency_display": "0.0435"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-04-16",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2021.17
+                },
+                {
+                    "date": "2025-04-17",
+                    "x": 1.0,
+                    "y": 1.345,
+                    "equity": 2063.47
+                }
+            ]
+        },
+        {
+            "cycle_number": 3,
+            "pressure_level": "medium",
+            "peak_date": "2025-04-17",
+            "peak_equity": 2063.47,
+            "trough_date": "2025-04-21",
+            "trough_equity": 2023.16,
+            "restored_date": "2025-04-23",
+            "restored_equity": 2079.9,
+            "depth_dollars": 40.31,
+            "depth_pct": 1.95,
+            "pressure_duration_days": 2,
+            "restoration_time_days": 2,
+            "total_cycle_days": 4,
+            "restoration_dominance_ratio": 1.0,
+            "restoration_profit_density_dollars_per_day": 20.15,
+            "restoration_profit_density_pct_per_day": 0.9768,
+            "restoration_efficiency_score": 0.7104,
+            "capital_rotation_efficiency": 0.0538,
+            "display": {
+                "pressure_level_display": "Medium",
+                "depth_display": "1.95%",
+                "depth_dollars_display": "$40.31",
+                "restoration_time_display": "2 business days",
+                "pressure_duration_display": "2 business days",
+                "total_cycle_display": "4 business days",
+                "restoration_dominance_ratio_display": "1",
+                "restoration_profit_density_display": "$20.15/day",
+                "restoration_profit_density_pct_display": "0.9768%/day",
+                "restoration_efficiency_score_display": "0.7104",
+                "capital_rotation_efficiency_display": "0.0538"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-04-21",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2023.16
+                },
+                {
+                    "date": "2025-04-22",
+                    "x": 0.5,
+                    "y": 0.9484,
+                    "equity": 2061.39
+                },
+                {
+                    "date": "2025-04-23",
+                    "x": 1.0,
+                    "y": 1.4076,
+                    "equity": 2079.9
+                }
+            ]
+        },
+        {
+            "cycle_number": 4,
+            "pressure_level": "minor",
+            "peak_date": "2025-04-25",
+            "peak_equity": 2117.14,
+            "trough_date": "2025-04-30",
+            "trough_equity": 2107.92,
+            "restored_date": "2025-05-01",
+            "restored_equity": 2123.61,
+            "depth_dollars": 9.22,
+            "depth_pct": 0.44,
+            "pressure_duration_days": 3,
+            "restoration_time_days": 1,
+            "total_cycle_days": 4,
+            "restoration_dominance_ratio": 0.33,
+            "restoration_profit_density_dollars_per_day": 9.22,
+            "restoration_profit_density_pct_per_day": 0.4355,
+            "restoration_efficiency_score": 0.5876,
+            "capital_rotation_efficiency": 0.0117,
+            "display": {
+                "pressure_level_display": "Minor",
+                "depth_display": "0.44%",
+                "depth_dollars_display": "$9.22",
+                "restoration_time_display": "1 business days",
+                "pressure_duration_display": "3 business days",
+                "total_cycle_display": "4 business days",
+                "restoration_dominance_ratio_display": "0.33",
+                "restoration_profit_density_display": "$9.22/day",
+                "restoration_profit_density_pct_display": "0.4355%/day",
+                "restoration_efficiency_score_display": "0.5876",
+                "capital_rotation_efficiency_display": "0.0117"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-04-30",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2107.92
+                },
+                {
+                    "date": "2025-05-01",
+                    "x": 1.0,
+                    "y": 1.7017,
+                    "equity": 2123.61
+                }
+            ]
+        },
+        {
+            "cycle_number": 5,
+            "pressure_level": "minor",
+            "peak_date": "2025-05-02",
+            "peak_equity": 2138.93,
+            "trough_date": "2025-05-05",
+            "trough_equity": 2133.05,
+            "restored_date": "2025-05-06",
+            "restored_equity": 2154.34,
+            "depth_dollars": 5.88,
+            "depth_pct": 0.27,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 1,
+            "total_cycle_days": 2,
+            "restoration_dominance_ratio": 1.0,
+            "restoration_profit_density_dollars_per_day": 5.88,
+            "restoration_profit_density_pct_per_day": 0.2749,
+            "restoration_efficiency_score": 0.2762,
+            "capital_rotation_efficiency": 0.0124,
+            "display": {
+                "pressure_level_display": "Minor",
+                "depth_display": "0.27%",
+                "depth_dollars_display": "$5.88",
+                "restoration_time_display": "1 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "2 business days",
+                "restoration_dominance_ratio_display": "1",
+                "restoration_profit_density_display": "$5.88/day",
+                "restoration_profit_density_pct_display": "0.2749%/day",
+                "restoration_efficiency_score_display": "0.2762",
+                "capital_rotation_efficiency_display": "0.0124"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-05-05",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2133.05
+                },
+                {
+                    "date": "2025-05-06",
+                    "x": 1.0,
+                    "y": 3.6207,
+                    "equity": 2154.34
+                }
+            ]
+        },
+        {
+            "cycle_number": 6,
+            "pressure_level": "major",
+            "peak_date": "2025-05-14",
+            "peak_equity": 2183.9,
+            "trough_date": "2025-05-15",
+            "trough_equity": 2077.5,
+            "restored_date": "2025-06-04",
+            "restored_equity": 2191.92,
+            "depth_dollars": 106.4,
+            "depth_pct": 4.87,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 14,
+            "total_cycle_days": 15,
+            "restoration_dominance_ratio": 14.0,
+            "restoration_profit_density_dollars_per_day": 7.6,
+            "restoration_profit_density_pct_per_day": 0.348,
+            "restoration_efficiency_score": 0.7046,
+            "capital_rotation_efficiency": 0.2424,
+            "display": {
+                "pressure_level_display": "Major",
+                "depth_display": "4.87%",
+                "depth_dollars_display": "$106.40",
+                "restoration_time_display": "14 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "15 business days",
+                "restoration_dominance_ratio_display": "14",
+                "restoration_profit_density_display": "$7.60/day",
+                "restoration_profit_density_pct_display": "0.348%/day",
+                "restoration_efficiency_score_display": "0.7046",
+                "capital_rotation_efficiency_display": "0.2424"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-05-15",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2077.5
+                },
+                {
+                    "date": "2025-05-16",
+                    "x": 0.0769,
+                    "y": 0.1758,
+                    "equity": 2096.2
+                },
+                {
+                    "date": "2025-05-19",
+                    "x": 0.1538,
+                    "y": 0.8119,
+                    "equity": 2163.89
+                },
+                {
+                    "date": "2025-05-20",
+                    "x": 0.2308,
+                    "y": 0.9165,
+                    "equity": 2175.02
+                },
+                {
+                    "date": "2025-05-21",
+                    "x": 0.3077,
+                    "y": 0.8394,
+                    "equity": 2166.81
+                },
+                {
+                    "date": "2025-05-22",
+                    "x": 0.3846,
+                    "y": 0.9161,
+                    "equity": 2174.97
+                },
+                {
+                    "date": "2025-05-23",
+                    "x": 0.4615,
+                    "y": 0.9042,
+                    "equity": 2173.71
+                },
+                {
+                    "date": "2025-05-27",
+                    "x": 0.5385,
+                    "y": 0.9705,
+                    "equity": 2180.76
+                },
+                {
+                    "date": "2025-05-28",
+                    "x": 0.6154,
+                    "y": 0.9607,
+                    "equity": 2179.72
+                },
+                {
+                    "date": "2025-05-29",
+                    "x": 0.6923,
+                    "y": 0.9542,
+                    "equity": 2179.03
+                },
+                {
+                    "date": "2025-05-30",
+                    "x": 0.7692,
+                    "y": 0.8876,
+                    "equity": 2171.94
+                },
+                {
+                    "date": "2025-06-02",
+                    "x": 0.8462,
+                    "y": 0.9168,
+                    "equity": 2175.05
+                },
+                {
+                    "date": "2025-06-03",
+                    "x": 0.9231,
+                    "y": 0.98,
+                    "equity": 2181.77
+                },
+                {
+                    "date": "2025-06-04",
+                    "x": 1.0,
+                    "y": 1.0754,
+                    "equity": 2191.92
+                }
+            ]
+        },
+        {
+            "cycle_number": 7,
+            "pressure_level": "minor",
+            "peak_date": "2025-06-04",
+            "peak_equity": 2191.92,
+            "trough_date": "2025-06-05",
+            "trough_equity": 2186.38,
+            "restored_date": "2025-06-09",
+            "restored_equity": 2192.02,
+            "depth_dollars": 5.54,
+            "depth_pct": 0.25,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 2,
+            "total_cycle_days": 3,
+            "restoration_dominance_ratio": 2.0,
+            "restoration_profit_density_dollars_per_day": 2.77,
+            "restoration_profit_density_pct_per_day": 0.1264,
+            "restoration_efficiency_score": 0.9823,
+            "capital_rotation_efficiency": 0.0129,
+            "display": {
+                "pressure_level_display": "Minor",
+                "depth_display": "0.25%",
+                "depth_dollars_display": "$5.54",
+                "restoration_time_display": "2 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "3 business days",
+                "restoration_dominance_ratio_display": "2",
+                "restoration_profit_density_display": "$2.77/day",
+                "restoration_profit_density_pct_display": "0.1264%/day",
+                "restoration_efficiency_score_display": "0.9823",
+                "capital_rotation_efficiency_display": "0.0129"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-06-05",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2186.38
+                },
+                {
+                    "date": "2025-06-06",
+                    "x": 0.5,
+                    "y": 0.2852,
+                    "equity": 2187.96
+                },
+                {
+                    "date": "2025-06-09",
+                    "x": 1.0,
+                    "y": 1.0181,
+                    "equity": 2192.02
+                }
+            ]
+        },
+        {
+            "cycle_number": 8,
+            "pressure_level": "medium",
+            "peak_date": "2025-06-10",
+            "peak_equity": 2193.1,
+            "trough_date": "2025-06-17",
+            "trough_equity": 2143.56,
+            "restored_date": "2025-06-26",
+            "restored_equity": 2215.39,
+            "depth_dollars": 49.54,
+            "depth_pct": 2.26,
+            "pressure_duration_days": 5,
+            "restoration_time_days": 7,
+            "total_cycle_days": 12,
+            "restoration_dominance_ratio": 1.4,
+            "restoration_profit_density_dollars_per_day": 7.08,
+            "restoration_profit_density_pct_per_day": 0.3227,
+            "restoration_efficiency_score": 0.6162,
+            "capital_rotation_efficiency": 0.062,
+            "display": {
+                "pressure_level_display": "Medium",
+                "depth_display": "2.26%",
+                "depth_dollars_display": "$49.54",
+                "restoration_time_display": "7 business days",
+                "pressure_duration_display": "5 business days",
+                "total_cycle_display": "12 business days",
+                "restoration_dominance_ratio_display": "1.4",
+                "restoration_profit_density_display": "$7.08/day",
+                "restoration_profit_density_pct_display": "0.3227%/day",
+                "restoration_efficiency_score_display": "0.6162",
+                "capital_rotation_efficiency_display": "0.062"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-06-17",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2143.56
+                },
+                {
+                    "date": "2025-06-18",
+                    "x": 0.1667,
+                    "y": 0.1906,
+                    "equity": 2153.0
+                },
+                {
+                    "date": "2025-06-20",
+                    "x": 0.3333,
+                    "y": 0.4405,
+                    "equity": 2165.38
+                },
+                {
+                    "date": "2025-06-23",
+                    "x": 0.5,
+                    "y": 0.3541,
+                    "equity": 2161.1
+                },
+                {
+                    "date": "2025-06-24",
+                    "x": 0.6667,
+                    "y": 0.6948,
+                    "equity": 2177.98
+                },
+                {
+                    "date": "2025-06-25",
+                    "x": 0.8333,
+                    "y": 0.7065,
+                    "equity": 2178.56
+                },
+                {
+                    "date": "2025-06-26",
+                    "x": 1.0,
+                    "y": 1.4499,
+                    "equity": 2215.39
+                }
+            ]
+        },
+        {
+            "cycle_number": 9,
+            "pressure_level": "minor",
+            "peak_date": "2025-06-26",
+            "peak_equity": 2215.39,
+            "trough_date": "2025-06-27",
+            "trough_equity": 2211.61,
+            "restored_date": "2025-06-30",
+            "restored_equity": 2229.17,
+            "depth_dollars": 3.78,
+            "depth_pct": 0.17,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 1,
+            "total_cycle_days": 2,
+            "restoration_dominance_ratio": 1.0,
+            "restoration_profit_density_dollars_per_day": 3.78,
+            "restoration_profit_density_pct_per_day": 0.1706,
+            "restoration_efficiency_score": 0.2153,
+            "capital_rotation_efficiency": 0.007,
+            "display": {
+                "pressure_level_display": "Minor",
+                "depth_display": "0.17%",
+                "depth_dollars_display": "$3.78",
+                "restoration_time_display": "1 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "2 business days",
+                "restoration_dominance_ratio_display": "1",
+                "restoration_profit_density_display": "$3.78/day",
+                "restoration_profit_density_pct_display": "0.1706%/day",
+                "restoration_efficiency_score_display": "0.2153",
+                "capital_rotation_efficiency_display": "0.007"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-06-27",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2211.61
+                },
+                {
+                    "date": "2025-06-30",
+                    "x": 1.0,
+                    "y": 4.6455,
+                    "equity": 2229.17
+                }
+            ]
+        },
+        {
+            "cycle_number": 10,
+            "pressure_level": "minor",
+            "peak_date": "2025-06-30",
+            "peak_equity": 2229.17,
+            "trough_date": "2025-07-01",
+            "trough_equity": 2226.91,
+            "restored_date": "2025-07-02",
+            "restored_equity": 2233.95,
+            "depth_dollars": 2.26,
+            "depth_pct": 0.1,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 1,
+            "total_cycle_days": 2,
+            "restoration_dominance_ratio": 1.0,
+            "restoration_profit_density_dollars_per_day": 2.26,
+            "restoration_profit_density_pct_per_day": 0.1014,
+            "restoration_efficiency_score": 0.321,
+            "capital_rotation_efficiency": 0.0056,
+            "display": {
+                "pressure_level_display": "Minor",
+                "depth_display": "0.10%",
+                "depth_dollars_display": "$2.26",
+                "restoration_time_display": "1 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "2 business days",
+                "restoration_dominance_ratio_display": "1",
+                "restoration_profit_density_display": "$2.26/day",
+                "restoration_profit_density_pct_display": "0.1014%/day",
+                "restoration_efficiency_score_display": "0.321",
+                "capital_rotation_efficiency_display": "0.0056"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-07-01",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2226.91
+                },
+                {
+                    "date": "2025-07-02",
+                    "x": 1.0,
+                    "y": 3.115,
+                    "equity": 2233.95
+                }
+            ]
+        },
+        {
+            "cycle_number": 11,
+            "pressure_level": "medium",
+            "peak_date": "2025-07-03",
+            "peak_equity": 2237.98,
+            "trough_date": "2025-07-07",
+            "trough_equity": 2224.57,
+            "restored_date": "2025-07-09",
+            "restored_equity": 2241.77,
+            "depth_dollars": 13.41,
+            "depth_pct": 0.6,
+            "pressure_duration_days": 2,
+            "restoration_time_days": 2,
+            "total_cycle_days": 4,
+            "restoration_dominance_ratio": 1.0,
+            "restoration_profit_density_dollars_per_day": 6.7,
+            "restoration_profit_density_pct_per_day": 0.2996,
+            "restoration_efficiency_score": 0.7797,
+            "capital_rotation_efficiency": 0.0225,
+            "display": {
+                "pressure_level_display": "Medium",
+                "depth_display": "0.60%",
+                "depth_dollars_display": "$13.41",
+                "restoration_time_display": "2 business days",
+                "pressure_duration_display": "2 business days",
+                "total_cycle_display": "4 business days",
+                "restoration_dominance_ratio_display": "1",
+                "restoration_profit_density_display": "$6.70/day",
+                "restoration_profit_density_pct_display": "0.2996%/day",
+                "restoration_efficiency_score_display": "0.7797",
+                "capital_rotation_efficiency_display": "0.0225"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-07-07",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2224.57
+                },
+                {
+                    "date": "2025-07-08",
+                    "x": 0.5,
+                    "y": 0.8867,
+                    "equity": 2236.46
+                },
+                {
+                    "date": "2025-07-09",
+                    "x": 1.0,
+                    "y": 1.2826,
+                    "equity": 2241.77
+                }
+            ]
+        },
+        {
+            "cycle_number": 12,
+            "pressure_level": "medium",
+            "peak_date": "2025-07-10",
+            "peak_equity": 2245.21,
+            "trough_date": "2025-07-15",
+            "trough_equity": 2232.99,
+            "restored_date": "2025-07-17",
+            "restored_equity": 2266.87,
+            "depth_dollars": 12.22,
+            "depth_pct": 0.54,
+            "pressure_duration_days": 3,
+            "restoration_time_days": 2,
+            "total_cycle_days": 5,
+            "restoration_dominance_ratio": 0.67,
+            "restoration_profit_density_dollars_per_day": 6.11,
+            "restoration_profit_density_pct_per_day": 0.2721,
+            "restoration_efficiency_score": 0.3607,
+            "capital_rotation_efficiency": 0.0155,
+            "display": {
+                "pressure_level_display": "Medium",
+                "depth_display": "0.54%",
+                "depth_dollars_display": "$12.22",
+                "restoration_time_display": "2 business days",
+                "pressure_duration_display": "3 business days",
+                "total_cycle_display": "5 business days",
+                "restoration_dominance_ratio_display": "0.67",
+                "restoration_profit_density_display": "$6.11/day",
+                "restoration_profit_density_pct_display": "0.2721%/day",
+                "restoration_efficiency_score_display": "0.3607",
+                "capital_rotation_efficiency_display": "0.0155"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-07-15",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2232.99
+                },
+                {
+                    "date": "2025-07-16",
+                    "x": 0.5,
+                    "y": 0.6899,
+                    "equity": 2241.42
+                },
+                {
+                    "date": "2025-07-17",
+                    "x": 1.0,
+                    "y": 2.7725,
+                    "equity": 2266.87
+                }
+            ]
+        },
+        {
+            "cycle_number": 13,
+            "pressure_level": "minor",
+            "peak_date": "2025-07-17",
+            "peak_equity": 2266.87,
+            "trough_date": "2025-07-18",
+            "trough_equity": 2264.52,
+            "restored_date": "2025-07-21",
+            "restored_equity": 2272.83,
+            "depth_dollars": 2.35,
+            "depth_pct": 0.1,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 1,
+            "total_cycle_days": 2,
+            "restoration_dominance_ratio": 1.0,
+            "restoration_profit_density_dollars_per_day": 2.35,
+            "restoration_profit_density_pct_per_day": 0.1037,
+            "restoration_efficiency_score": 0.2828,
+            "capital_rotation_efficiency": 0.0044,
+            "display": {
+                "pressure_level_display": "Minor",
+                "depth_display": "0.10%",
+                "depth_dollars_display": "$2.35",
+                "restoration_time_display": "1 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "2 business days",
+                "restoration_dominance_ratio_display": "1",
+                "restoration_profit_density_display": "$2.35/day",
+                "restoration_profit_density_pct_display": "0.1037%/day",
+                "restoration_efficiency_score_display": "0.2828",
+                "capital_rotation_efficiency_display": "0.0044"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-07-18",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2264.52
+                },
+                {
+                    "date": "2025-07-21",
+                    "x": 1.0,
+                    "y": 3.5362,
+                    "equity": 2272.83
+                }
+            ]
+        },
+        {
+            "cycle_number": 14,
+            "pressure_level": "major",
+            "peak_date": "2025-07-23",
+            "peak_equity": 2294.32,
+            "trough_date": "2025-08-01",
+            "trough_equity": 2157.92,
+            "restored_date": "2025-08-13",
+            "restored_equity": 2305.66,
+            "depth_dollars": 136.4,
+            "depth_pct": 5.95,
+            "pressure_duration_days": 7,
+            "restoration_time_days": 8,
+            "total_cycle_days": 15,
+            "restoration_dominance_ratio": 1.14,
+            "restoration_profit_density_dollars_per_day": 17.05,
+            "restoration_profit_density_pct_per_day": 0.7431,
+            "restoration_efficiency_score": 0.7056,
+            "capital_rotation_efficiency": 0.0861,
+            "display": {
+                "pressure_level_display": "Major",
+                "depth_display": "5.95%",
+                "depth_dollars_display": "$136.40",
+                "restoration_time_display": "8 business days",
+                "pressure_duration_display": "7 business days",
+                "total_cycle_display": "15 business days",
+                "restoration_dominance_ratio_display": "1.14",
+                "restoration_profit_density_display": "$17.05/day",
+                "restoration_profit_density_pct_display": "0.7431%/day",
+                "restoration_efficiency_score_display": "0.7056",
+                "capital_rotation_efficiency_display": "0.0861"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-08-01",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2157.92
+                },
+                {
+                    "date": "2025-08-04",
+                    "x": 0.125,
+                    "y": 0.3383,
+                    "equity": 2204.06
+                },
+                {
+                    "date": "2025-08-05",
+                    "x": 0.25,
+                    "y": 0.3235,
+                    "equity": 2202.04
+                },
+                {
+                    "date": "2025-08-06",
+                    "x": 0.375,
+                    "y": 0.3957,
+                    "equity": 2211.89
+                },
+                {
+                    "date": "2025-08-07",
+                    "x": 0.5,
+                    "y": 0.5502,
+                    "equity": 2232.97
+                },
+                {
+                    "date": "2025-08-08",
+                    "x": 0.625,
+                    "y": 0.3979,
+                    "equity": 2212.2
+                },
+                {
+                    "date": "2025-08-11",
+                    "x": 0.75,
+                    "y": 0.5894,
+                    "equity": 2238.32
+                },
+                {
+                    "date": "2025-08-12",
+                    "x": 0.875,
+                    "y": 0.7499,
+                    "equity": 2260.21
+                },
+                {
+                    "date": "2025-08-13",
+                    "x": 1.0,
+                    "y": 1.0831,
+                    "equity": 2305.66
+                }
+            ]
+        },
+        {
+            "cycle_number": 15,
+            "pressure_level": "minor",
+            "peak_date": "2025-08-19",
+            "peak_equity": 2378.71,
+            "trough_date": "2025-08-20",
+            "trough_equity": 2376.99,
+            "restored_date": "2025-08-21",
+            "restored_equity": 2379.0,
+            "depth_dollars": 1.72,
+            "depth_pct": 0.07,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 1,
+            "total_cycle_days": 2,
+            "restoration_dominance_ratio": 1.0,
+            "restoration_profit_density_dollars_per_day": 1.72,
+            "restoration_profit_density_pct_per_day": 0.0723,
+            "restoration_efficiency_score": 0.8557,
+            "capital_rotation_efficiency": 0.002,
+            "display": {
+                "pressure_level_display": "Minor",
+                "depth_display": "0.07%",
+                "depth_dollars_display": "$1.72",
+                "restoration_time_display": "1 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "2 business days",
+                "restoration_dominance_ratio_display": "1",
+                "restoration_profit_density_display": "$1.72/day",
+                "restoration_profit_density_pct_display": "0.0723%/day",
+                "restoration_efficiency_score_display": "0.8557",
+                "capital_rotation_efficiency_display": "0.002"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-08-20",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2376.99
+                },
+                {
+                    "date": "2025-08-21",
+                    "x": 1.0,
+                    "y": 1.1686,
+                    "equity": 2379.0
+                }
+            ]
+        },
+        {
+            "cycle_number": 16,
+            "pressure_level": "minor",
+            "peak_date": "2025-08-22",
+            "peak_equity": 2609.72,
+            "trough_date": "2025-08-25",
+            "trough_equity": 2608.6,
+            "restored_date": "2025-08-27",
+            "restored_equity": 2618.24,
+            "depth_dollars": 1.12,
+            "depth_pct": 0.04,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 2,
+            "total_cycle_days": 3,
+            "restoration_dominance_ratio": 2.0,
+            "restoration_profit_density_dollars_per_day": 0.56,
+            "restoration_profit_density_pct_per_day": 0.0215,
+            "restoration_efficiency_score": 0.1162,
+            "capital_rotation_efficiency": 0.0022,
+            "display": {
+                "pressure_level_display": "Minor",
+                "depth_display": "0.04%",
+                "depth_dollars_display": "$1.12",
+                "restoration_time_display": "2 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "3 business days",
+                "restoration_dominance_ratio_display": "2",
+                "restoration_profit_density_display": "$0.56/day",
+                "restoration_profit_density_pct_display": "0.0215%/day",
+                "restoration_efficiency_score_display": "0.1162",
+                "capital_rotation_efficiency_display": "0.0022"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-08-25",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2608.6
+                },
+                {
+                    "date": "2025-08-26",
+                    "x": 0.5,
+                    "y": 0.7054,
+                    "equity": 2609.39
+                },
+                {
+                    "date": "2025-08-27",
+                    "x": 1.0,
+                    "y": 8.6071,
+                    "equity": 2618.24
+                }
+            ]
+        },
+        {
+            "cycle_number": 17,
+            "pressure_level": "minor",
+            "peak_date": "2025-08-28",
+            "peak_equity": 2622.12,
+            "trough_date": "2025-09-02",
+            "trough_equity": 2615.16,
+            "restored_date": "2025-09-05",
+            "restored_equity": 2630.51,
+            "depth_dollars": 6.96,
+            "depth_pct": 0.27,
+            "pressure_duration_days": 3,
+            "restoration_time_days": 3,
+            "total_cycle_days": 6,
+            "restoration_dominance_ratio": 1.0,
+            "restoration_profit_density_dollars_per_day": 2.32,
+            "restoration_profit_density_pct_per_day": 0.0885,
+            "restoration_efficiency_score": 0.4534,
+            "capital_rotation_efficiency": 0.0125,
+            "display": {
+                "pressure_level_display": "Minor",
+                "depth_display": "0.27%",
+                "depth_dollars_display": "$6.96",
+                "restoration_time_display": "3 business days",
+                "pressure_duration_display": "3 business days",
+                "total_cycle_display": "6 business days",
+                "restoration_dominance_ratio_display": "1",
+                "restoration_profit_density_display": "$2.32/day",
+                "restoration_profit_density_pct_display": "0.0885%/day",
+                "restoration_efficiency_score_display": "0.4534",
+                "capital_rotation_efficiency_display": "0.0125"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-09-02",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2615.16
+                },
+                {
+                    "date": "2025-09-03",
+                    "x": 0.3333,
+                    "y": 0.0589,
+                    "equity": 2615.57
+                },
+                {
+                    "date": "2025-09-04",
+                    "x": 0.6667,
+                    "y": 0.7328,
+                    "equity": 2620.26
+                },
+                {
+                    "date": "2025-09-05",
+                    "x": 1.0,
+                    "y": 2.2055,
+                    "equity": 2630.51
+                }
+            ]
+        },
+        {
+            "cycle_number": 18,
+            "pressure_level": "medium",
+            "peak_date": "2025-09-05",
+            "peak_equity": 2630.51,
+            "trough_date": "2025-09-08",
+            "trough_equity": 2611.05,
+            "restored_date": "2025-09-10",
+            "restored_equity": 2638.38,
+            "depth_dollars": 19.46,
+            "depth_pct": 0.74,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 2,
+            "total_cycle_days": 3,
+            "restoration_dominance_ratio": 2.0,
+            "restoration_profit_density_dollars_per_day": 9.73,
+            "restoration_profit_density_pct_per_day": 0.3699,
+            "restoration_efficiency_score": 0.712,
+            "capital_rotation_efficiency": 0.0278,
+            "display": {
+                "pressure_level_display": "Medium",
+                "depth_display": "0.74%",
+                "depth_dollars_display": "$19.46",
+                "restoration_time_display": "2 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "3 business days",
+                "restoration_dominance_ratio_display": "2",
+                "restoration_profit_density_display": "$9.73/day",
+                "restoration_profit_density_pct_display": "0.3699%/day",
+                "restoration_efficiency_score_display": "0.712",
+                "capital_rotation_efficiency_display": "0.0278"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-09-08",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2611.05
+                },
+                {
+                    "date": "2025-09-09",
+                    "x": 0.5,
+                    "y": 0.7158,
+                    "equity": 2624.98
+                },
+                {
+                    "date": "2025-09-10",
+                    "x": 1.0,
+                    "y": 1.4044,
+                    "equity": 2638.38
+                }
+            ]
+        },
+        {
+            "cycle_number": 19,
+            "pressure_level": "minor",
+            "peak_date": "2025-09-11",
+            "peak_equity": 2650.41,
+            "trough_date": "2025-09-12",
+            "trough_equity": 2648.07,
+            "restored_date": "2025-09-15",
+            "restored_equity": 2652.23,
+            "depth_dollars": 2.34,
+            "depth_pct": 0.09,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 1,
+            "total_cycle_days": 2,
+            "restoration_dominance_ratio": 1.0,
+            "restoration_profit_density_dollars_per_day": 2.34,
+            "restoration_profit_density_pct_per_day": 0.0883,
+            "restoration_efficiency_score": 0.5625,
+            "capital_rotation_efficiency": 0.0056,
+            "display": {
+                "pressure_level_display": "Minor",
+                "depth_display": "0.09%",
+                "depth_dollars_display": "$2.34",
+                "restoration_time_display": "1 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "2 business days",
+                "restoration_dominance_ratio_display": "1",
+                "restoration_profit_density_display": "$2.34/day",
+                "restoration_profit_density_pct_display": "0.0883%/day",
+                "restoration_efficiency_score_display": "0.5625",
+                "capital_rotation_efficiency_display": "0.0056"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-09-12",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2648.07
+                },
+                {
+                    "date": "2025-09-15",
+                    "x": 1.0,
+                    "y": 1.7778,
+                    "equity": 2652.23
+                }
+            ]
+        },
+        {
+            "cycle_number": 20,
+            "pressure_level": "minor",
+            "peak_date": "2025-09-16",
+            "peak_equity": 2657.34,
+            "trough_date": "2025-09-17",
+            "trough_equity": 2655.53,
+            "restored_date": "2025-09-18",
+            "restored_equity": 2660.14,
+            "depth_dollars": 1.81,
+            "depth_pct": 0.07,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 1,
+            "total_cycle_days": 2,
+            "restoration_dominance_ratio": 1.0,
+            "restoration_profit_density_dollars_per_day": 1.81,
+            "restoration_profit_density_pct_per_day": 0.0681,
+            "restoration_efficiency_score": 0.3926,
+            "capital_rotation_efficiency": 0.0046,
+            "display": {
+                "pressure_level_display": "Minor",
+                "depth_display": "0.07%",
+                "depth_dollars_display": "$1.81",
+                "restoration_time_display": "1 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "2 business days",
+                "restoration_dominance_ratio_display": "1",
+                "restoration_profit_density_display": "$1.81/day",
+                "restoration_profit_density_pct_display": "0.0681%/day",
+                "restoration_efficiency_score_display": "0.3926",
+                "capital_rotation_efficiency_display": "0.0046"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-09-17",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2655.53
+                },
+                {
+                    "date": "2025-09-18",
+                    "x": 1.0,
+                    "y": 2.547,
+                    "equity": 2660.14
+                }
+            ]
+        },
+        {
+            "cycle_number": 21,
+            "pressure_level": "minor",
+            "peak_date": "2025-09-18",
+            "peak_equity": 2660.14,
+            "trough_date": "2025-09-19",
+            "trough_equity": 2659.89,
+            "restored_date": "2025-09-22",
+            "restored_equity": 2670.83,
+            "depth_dollars": 0.25,
+            "depth_pct": 0.01,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 1,
+            "total_cycle_days": 2,
+            "restoration_dominance_ratio": 1.0,
+            "restoration_profit_density_dollars_per_day": 0.25,
+            "restoration_profit_density_pct_per_day": 0.0094,
+            "restoration_efficiency_score": 0.0229,
+            "capital_rotation_efficiency": 0.0005,
+            "display": {
+                "pressure_level_display": "Minor",
+                "depth_display": "0.01%",
+                "depth_dollars_display": "$0.25",
+                "restoration_time_display": "1 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "2 business days",
+                "restoration_dominance_ratio_display": "1",
+                "restoration_profit_density_display": "$0.25/day",
+                "restoration_profit_density_pct_display": "0.0094%/day",
+                "restoration_efficiency_score_display": "0.0229",
+                "capital_rotation_efficiency_display": "0.0005"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-09-19",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2659.89
+                },
+                {
+                    "date": "2025-09-22",
+                    "x": 1.0,
+                    "y": 43.76,
+                    "equity": 2670.83
+                }
+            ]
+        },
+        {
+            "cycle_number": 22,
+            "pressure_level": "medium",
+            "peak_date": "2025-09-22",
+            "peak_equity": 2670.83,
+            "trough_date": "2025-09-25",
+            "trough_equity": 2653.39,
+            "restored_date": "2025-10-01",
+            "restored_equity": 2678.07,
+            "depth_dollars": 17.44,
+            "depth_pct": 0.65,
+            "pressure_duration_days": 3,
+            "restoration_time_days": 4,
+            "total_cycle_days": 7,
+            "restoration_dominance_ratio": 1.33,
+            "restoration_profit_density_dollars_per_day": 4.36,
+            "restoration_profit_density_pct_per_day": 0.1632,
+            "restoration_efficiency_score": 0.4726,
+            "capital_rotation_efficiency": 0.0215,
+            "display": {
+                "pressure_level_display": "Medium",
+                "depth_display": "0.65%",
+                "depth_dollars_display": "$17.44",
+                "restoration_time_display": "4 business days",
+                "pressure_duration_display": "3 business days",
+                "total_cycle_display": "7 business days",
+                "restoration_dominance_ratio_display": "1.33",
+                "restoration_profit_density_display": "$4.36/day",
+                "restoration_profit_density_pct_display": "0.1632%/day",
+                "restoration_efficiency_score_display": "0.4726",
+                "capital_rotation_efficiency_display": "0.0215"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-09-25",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2653.39
+                },
+                {
+                    "date": "2025-09-26",
+                    "x": 0.25,
+                    "y": 0.4541,
+                    "equity": 2661.31
+                },
+                {
+                    "date": "2025-09-29",
+                    "x": 0.5,
+                    "y": 0.1038,
+                    "equity": 2655.2
+                },
+                {
+                    "date": "2025-09-30",
+                    "x": 0.75,
+                    "y": 0.8595,
+                    "equity": 2668.38
+                },
+                {
+                    "date": "2025-10-01",
+                    "x": 1.0,
+                    "y": 1.4151,
+                    "equity": 2678.07
+                }
+            ]
+        },
+        {
+            "cycle_number": 23,
+            "pressure_level": "medium",
+            "peak_date": "2025-10-06",
+            "peak_equity": 2694.44,
+            "trough_date": "2025-10-10",
+            "trough_equity": 2634.83,
+            "restored_date": "2025-10-13",
+            "restored_equity": 2698.96,
+            "depth_dollars": 59.61,
+            "depth_pct": 2.21,
+            "pressure_duration_days": 4,
+            "restoration_time_days": 1,
+            "total_cycle_days": 5,
+            "restoration_dominance_ratio": 0.25,
+            "restoration_profit_density_dollars_per_day": 59.61,
+            "restoration_profit_density_pct_per_day": 2.2123,
+            "restoration_efficiency_score": 0.9295,
+            "capital_rotation_efficiency": 0.038,
+            "display": {
+                "pressure_level_display": "Medium",
+                "depth_display": "2.21%",
+                "depth_dollars_display": "$59.61",
+                "restoration_time_display": "1 business days",
+                "pressure_duration_display": "4 business days",
+                "total_cycle_display": "5 business days",
+                "restoration_dominance_ratio_display": "0.25",
+                "restoration_profit_density_display": "$59.61/day",
+                "restoration_profit_density_pct_display": "2.2123%/day",
+                "restoration_efficiency_score_display": "0.9295",
+                "capital_rotation_efficiency_display": "0.038"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-10-10",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2634.83
+                },
+                {
+                    "date": "2025-10-13",
+                    "x": 1.0,
+                    "y": 1.0758,
+                    "equity": 2698.96
+                }
+            ]
+        },
+        {
+            "cycle_number": 24,
+            "pressure_level": "medium",
+            "peak_date": "2025-10-15",
+            "peak_equity": 2755.35,
+            "trough_date": "2025-10-17",
+            "trough_equity": 2726.33,
+            "restored_date": "2025-10-20",
+            "restored_equity": 2756.29,
+            "depth_dollars": 29.02,
+            "depth_pct": 1.05,
+            "pressure_duration_days": 2,
+            "restoration_time_days": 1,
+            "total_cycle_days": 3,
+            "restoration_dominance_ratio": 0.5,
+            "restoration_profit_density_dollars_per_day": 29.02,
+            "restoration_profit_density_pct_per_day": 1.0532,
+            "restoration_efficiency_score": 0.9686,
+            "capital_rotation_efficiency": 0.0303,
+            "display": {
+                "pressure_level_display": "Medium",
+                "depth_display": "1.05%",
+                "depth_dollars_display": "$29.02",
+                "restoration_time_display": "1 business days",
+                "pressure_duration_display": "2 business days",
+                "total_cycle_display": "3 business days",
+                "restoration_dominance_ratio_display": "0.5",
+                "restoration_profit_density_display": "$29.02/day",
+                "restoration_profit_density_pct_display": "1.0532%/day",
+                "restoration_efficiency_score_display": "0.9686",
+                "capital_rotation_efficiency_display": "0.0303"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-10-17",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2726.33
+                },
+                {
+                    "date": "2025-10-20",
+                    "x": 1.0,
+                    "y": 1.0324,
+                    "equity": 2756.29
+                }
+            ]
+        },
+        {
+            "cycle_number": 25,
+            "pressure_level": "minor",
+            "peak_date": "2025-10-20",
+            "peak_equity": 2756.29,
+            "trough_date": "2025-10-22",
+            "trough_equity": 2744.89,
+            "restored_date": "2025-10-23",
+            "restored_equity": 2773.52,
+            "depth_dollars": 11.4,
+            "depth_pct": 0.41,
+            "pressure_duration_days": 2,
+            "restoration_time_days": 1,
+            "total_cycle_days": 3,
+            "restoration_dominance_ratio": 0.5,
+            "restoration_profit_density_dollars_per_day": 11.4,
+            "restoration_profit_density_pct_per_day": 0.4136,
+            "restoration_efficiency_score": 0.3982,
+            "capital_rotation_efficiency": 0.0114,
+            "display": {
+                "pressure_level_display": "Minor",
+                "depth_display": "0.41%",
+                "depth_dollars_display": "$11.40",
+                "restoration_time_display": "1 business days",
+                "pressure_duration_display": "2 business days",
+                "total_cycle_display": "3 business days",
+                "restoration_dominance_ratio_display": "0.5",
+                "restoration_profit_density_display": "$11.40/day",
+                "restoration_profit_density_pct_display": "0.4136%/day",
+                "restoration_efficiency_score_display": "0.3982",
+                "capital_rotation_efficiency_display": "0.0114"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-10-22",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2744.89
+                },
+                {
+                    "date": "2025-10-23",
+                    "x": 1.0,
+                    "y": 2.5114,
+                    "equity": 2773.52
+                }
+            ]
+        },
+        {
+            "cycle_number": 26,
+            "pressure_level": "medium",
+            "peak_date": "2025-10-24",
+            "peak_equity": 2787.36,
+            "trough_date": "2025-10-30",
+            "trough_equity": 2736.18,
+            "restored_date": "2025-11-03",
+            "restored_equity": 2796.91,
+            "depth_dollars": 51.18,
+            "depth_pct": 1.84,
+            "pressure_duration_days": 4,
+            "restoration_time_days": 2,
+            "total_cycle_days": 6,
+            "restoration_dominance_ratio": 0.5,
+            "restoration_profit_density_dollars_per_day": 25.59,
+            "restoration_profit_density_pct_per_day": 0.9181,
+            "restoration_efficiency_score": 0.8427,
+            "capital_rotation_efficiency": 0.0391,
+            "display": {
+                "pressure_level_display": "Medium",
+                "depth_display": "1.84%",
+                "depth_dollars_display": "$51.18",
+                "restoration_time_display": "2 business days",
+                "pressure_duration_display": "4 business days",
+                "total_cycle_display": "6 business days",
+                "restoration_dominance_ratio_display": "0.5",
+                "restoration_profit_density_display": "$25.59/day",
+                "restoration_profit_density_pct_display": "0.9181%/day",
+                "restoration_efficiency_score_display": "0.8427",
+                "capital_rotation_efficiency_display": "0.0391"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-10-30",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2736.18
+                },
+                {
+                    "date": "2025-10-31",
+                    "x": 0.5,
+                    "y": 0.5424,
+                    "equity": 2763.94
+                },
+                {
+                    "date": "2025-11-03",
+                    "x": 1.0,
+                    "y": 1.1866,
+                    "equity": 2796.91
+                }
+            ]
+        },
+        {
+            "cycle_number": 27,
+            "pressure_level": "major",
+            "peak_date": "2025-11-03",
+            "peak_equity": 2796.91,
+            "trough_date": "2025-11-19",
+            "trough_equity": 2434.8,
+            "restored_date": "2026-01-12",
+            "restored_equity": 2844.41,
+            "depth_dollars": 362.11,
+            "depth_pct": 12.95,
+            "pressure_duration_days": 12,
+            "restoration_time_days": 38,
+            "total_cycle_days": 50,
+            "restoration_dominance_ratio": 3.17,
+            "restoration_profit_density_dollars_per_day": 9.53,
+            "restoration_profit_density_pct_per_day": 0.3407,
+            "restoration_efficiency_score": 0.4351,
+            "capital_rotation_efficiency": 0.1648,
+            "display": {
+                "pressure_level_display": "Major",
+                "depth_display": "12.95%",
+                "depth_dollars_display": "$362.11",
+                "restoration_time_display": "38 business days",
+                "pressure_duration_display": "12 business days",
+                "total_cycle_display": "50 business days",
+                "restoration_dominance_ratio_display": "3.17",
+                "restoration_profit_density_display": "$9.53/day",
+                "restoration_profit_density_pct_display": "0.3407%/day",
+                "restoration_efficiency_score_display": "0.4351",
+                "capital_rotation_efficiency_display": "0.1648"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2025-11-19",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2434.8
+                },
+                {
+                    "date": "2025-11-20",
+                    "x": 0.0286,
+                    "y": 0.2691,
+                    "equity": 2532.26
+                },
+                {
+                    "date": "2025-11-21",
+                    "x": 0.0571,
+                    "y": 0.453,
+                    "equity": 2598.84
+                },
+                {
+                    "date": "2025-11-24",
+                    "x": 0.0857,
+                    "y": 0.6678,
+                    "equity": 2676.61
+                },
+                {
+                    "date": "2025-11-25",
+                    "x": 0.1143,
+                    "y": 0.7684,
+                    "equity": 2713.05
+                },
+                {
+                    "date": "2025-11-26",
+                    "x": 0.1429,
+                    "y": 0.7397,
+                    "equity": 2702.67
+                },
+                {
+                    "date": "2025-11-28",
+                    "x": 0.1714,
+                    "y": 0.7844,
+                    "equity": 2718.85
+                },
+                {
+                    "date": "2025-12-01",
+                    "x": 0.2,
+                    "y": 0.747,
+                    "equity": 2705.3
+                },
+                {
+                    "date": "2025-12-02",
+                    "x": 0.2286,
+                    "y": 0.7208,
+                    "equity": 2695.82
+                },
+                {
+                    "date": "2025-12-03",
+                    "x": 0.2571,
+                    "y": 0.804,
+                    "equity": 2725.95
+                },
+                {
+                    "date": "2025-12-04",
+                    "x": 0.2857,
+                    "y": 0.8831,
+                    "equity": 2754.58
+                },
+                {
+                    "date": "2025-12-05",
+                    "x": 0.3143,
+                    "y": 0.8515,
+                    "equity": 2743.13
+                },
+                {
+                    "date": "2025-12-08",
+                    "x": 0.3429,
+                    "y": 0.8652,
+                    "equity": 2748.1
+                },
+                {
+                    "date": "2025-12-09",
+                    "x": 0.3714,
+                    "y": 0.8938,
+                    "equity": 2758.46
+                },
+                {
+                    "date": "2025-12-10",
+                    "x": 0.4,
+                    "y": 0.8799,
+                    "equity": 2753.41
+                },
+                {
+                    "date": "2025-12-11",
+                    "x": 0.4286,
+                    "y": 0.8424,
+                    "equity": 2739.85
+                },
+                {
+                    "date": "2025-12-12",
+                    "x": 0.4571,
+                    "y": 0.7913,
+                    "equity": 2721.33
+                },
+                {
+                    "date": "2025-12-15",
+                    "x": 0.4857,
+                    "y": 0.7132,
+                    "equity": 2693.06
+                },
+                {
+                    "date": "2025-12-16",
+                    "x": 0.5143,
+                    "y": 0.7485,
+                    "equity": 2705.83
+                },
+                {
+                    "date": "2025-12-17",
+                    "x": 0.5429,
+                    "y": 0.6533,
+                    "equity": 2671.36
+                },
+                {
+                    "date": "2025-12-18",
+                    "x": 0.5714,
+                    "y": 0.7315,
+                    "equity": 2699.67
+                },
+                {
+                    "date": "2025-12-19",
+                    "x": 0.6,
+                    "y": 0.7599,
+                    "equity": 2709.97
+                },
+                {
+                    "date": "2025-12-22",
+                    "x": 0.6286,
+                    "y": 0.777,
+                    "equity": 2716.17
+                },
+                {
+                    "date": "2025-12-23",
+                    "x": 0.6571,
+                    "y": 0.7611,
+                    "equity": 2710.4
+                },
+                {
+                    "date": "2025-12-24",
+                    "x": 0.6857,
+                    "y": 0.7542,
+                    "equity": 2707.9
+                },
+                {
+                    "date": "2025-12-26",
+                    "x": 0.7143,
+                    "y": 0.7705,
+                    "equity": 2713.81
+                },
+                {
+                    "date": "2025-12-29",
+                    "x": 0.7429,
+                    "y": 0.7562,
+                    "equity": 2708.61
+                },
+                {
+                    "date": "2025-12-30",
+                    "x": 0.7714,
+                    "y": 0.699,
+                    "equity": 2687.93
+                },
+                {
+                    "date": "2025-12-31",
+                    "x": 0.8,
+                    "y": 0.6634,
+                    "equity": 2675.01
+                },
+                {
+                    "date": "2026-01-02",
+                    "x": 0.8286,
+                    "y": 0.8251,
+                    "equity": 2733.59
+                },
+                {
+                    "date": "2026-01-05",
+                    "x": 0.8571,
+                    "y": 0.897,
+                    "equity": 2759.6
+                },
+                {
+                    "date": "2026-01-06",
+                    "x": 0.8857,
+                    "y": 0.9059,
+                    "equity": 2762.85
+                },
+                {
+                    "date": "2026-01-07",
+                    "x": 0.9143,
+                    "y": 0.8834,
+                    "equity": 2754.67
+                },
+                {
+                    "date": "2026-01-08",
+                    "x": 0.9429,
+                    "y": 0.8521,
+                    "equity": 2743.37
+                },
+                {
+                    "date": "2026-01-09",
+                    "x": 0.9714,
+                    "y": 0.9295,
+                    "equity": 2771.37
+                },
+                {
+                    "date": "2026-01-12",
+                    "x": 1.0,
+                    "y": 1.1312,
+                    "equity": 2844.41
+                }
+            ]
+        },
+        {
+            "cycle_number": 28,
+            "pressure_level": "major",
+            "peak_date": "2026-01-12",
+            "peak_equity": 2844.41,
+            "trough_date": "2026-02-25",
+            "trough_equity": 2308.4,
+            "restored_date": "2026-04-20",
+            "restored_equity": 2847.22,
+            "depth_dollars": 536.01,
+            "depth_pct": 18.84,
+            "pressure_duration_days": 32,
+            "restoration_time_days": 38,
+            "total_cycle_days": 70,
+            "restoration_dominance_ratio": 1.19,
+            "restoration_profit_density_dollars_per_day": 14.11,
+            "restoration_profit_density_pct_per_day": 0.4959,
+            "restoration_efficiency_score": 0.3512,
+            "capital_rotation_efficiency": 0.1911,
+            "display": {
+                "pressure_level_display": "Major",
+                "depth_display": "18.84%",
+                "depth_dollars_display": "$536.01",
+                "restoration_time_display": "38 business days",
+                "pressure_duration_display": "32 business days",
+                "total_cycle_display": "70 business days",
+                "restoration_dominance_ratio_display": "1.19",
+                "restoration_profit_density_display": "$14.11/day",
+                "restoration_profit_density_pct_display": "0.4959%/day",
+                "restoration_efficiency_score_display": "0.3512",
+                "capital_rotation_efficiency_display": "0.1911"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2026-02-25",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2308.4
+                },
+                {
+                    "date": "2026-02-26",
+                    "x": 0.027,
+                    "y": 0.4261,
+                    "equity": 2536.78
+                },
+                {
+                    "date": "2026-02-27",
+                    "x": 0.0541,
+                    "y": 0.3785,
+                    "equity": 2511.26
+                },
+                {
+                    "date": "2026-03-02",
+                    "x": 0.0811,
+                    "y": 0.5009,
+                    "equity": 2576.9
+                },
+                {
+                    "date": "2026-03-03",
+                    "x": 0.1081,
+                    "y": 0.5045,
+                    "equity": 2578.8
+                },
+                {
+                    "date": "2026-03-04",
+                    "x": 0.1351,
+                    "y": 0.5594,
+                    "equity": 2608.22
+                },
+                {
+                    "date": "2026-03-05",
+                    "x": 0.1622,
+                    "y": 0.4289,
+                    "equity": 2538.27
+                },
+                {
+                    "date": "2026-03-06",
+                    "x": 0.1892,
+                    "y": 0.3909,
+                    "equity": 2517.9
+                },
+                {
+                    "date": "2026-03-09",
+                    "x": 0.2162,
+                    "y": 0.4067,
+                    "equity": 2526.39
+                },
+                {
+                    "date": "2026-03-10",
+                    "x": 0.2432,
+                    "y": 0.4192,
+                    "equity": 2533.09
+                },
+                {
+                    "date": "2026-03-11",
+                    "x": 0.2703,
+                    "y": 0.446,
+                    "equity": 2547.47
+                },
+                {
+                    "date": "2026-03-12",
+                    "x": 0.2973,
+                    "y": 0.6066,
+                    "equity": 2633.57
+                },
+                {
+                    "date": "2026-03-13",
+                    "x": 0.3243,
+                    "y": 0.6519,
+                    "equity": 2657.84
+                },
+                {
+                    "date": "2026-03-16",
+                    "x": 0.3514,
+                    "y": 0.7428,
+                    "equity": 2706.53
+                },
+                {
+                    "date": "2026-03-17",
+                    "x": 0.3784,
+                    "y": 0.7341,
+                    "equity": 2701.9
+                },
+                {
+                    "date": "2026-03-18",
+                    "x": 0.4054,
+                    "y": 0.5956,
+                    "equity": 2627.63
+                },
+                {
+                    "date": "2026-03-19",
+                    "x": 0.4324,
+                    "y": 0.5951,
+                    "equity": 2627.38
+                },
+                {
+                    "date": "2026-03-20",
+                    "x": 0.4595,
+                    "y": 0.5027,
+                    "equity": 2577.85
+                },
+                {
+                    "date": "2026-03-23",
+                    "x": 0.4865,
+                    "y": 0.5777,
+                    "equity": 2618.07
+                },
+                {
+                    "date": "2026-03-24",
+                    "x": 0.5135,
+                    "y": 0.4421,
+                    "equity": 2545.37
+                },
+                {
+                    "date": "2026-03-25",
+                    "x": 0.5405,
+                    "y": 0.3614,
+                    "equity": 2502.1
+                },
+                {
+                    "date": "2026-03-26",
+                    "x": 0.5676,
+                    "y": 0.2741,
+                    "equity": 2455.31
+                },
+                {
+                    "date": "2026-03-27",
+                    "x": 0.5946,
+                    "y": 0.1872,
+                    "equity": 2408.75
+                },
+                {
+                    "date": "2026-03-30",
+                    "x": 0.6216,
+                    "y": 0.1778,
+                    "equity": 2403.72
+                },
+                {
+                    "date": "2026-03-31",
+                    "x": 0.6486,
+                    "y": 0.3258,
+                    "equity": 2483.02
+                },
+                {
+                    "date": "2026-04-01",
+                    "x": 0.6757,
+                    "y": 0.3454,
+                    "equity": 2493.53
+                },
+                {
+                    "date": "2026-04-02",
+                    "x": 0.7027,
+                    "y": 0.3748,
+                    "equity": 2509.3
+                },
+                {
+                    "date": "2026-04-06",
+                    "x": 0.7297,
+                    "y": 0.5293,
+                    "equity": 2592.1
+                },
+                {
+                    "date": "2026-04-07",
+                    "x": 0.7568,
+                    "y": 0.4642,
+                    "equity": 2557.22
+                },
+                {
+                    "date": "2026-04-08",
+                    "x": 0.7838,
+                    "y": 0.5228,
+                    "equity": 2588.63
+                },
+                {
+                    "date": "2026-04-09",
+                    "x": 0.8108,
+                    "y": 0.5345,
+                    "equity": 2594.89
+                },
+                {
+                    "date": "2026-04-10",
+                    "x": 0.8378,
+                    "y": 0.536,
+                    "equity": 2595.68
+                },
+                {
+                    "date": "2026-04-13",
+                    "x": 0.8649,
+                    "y": 0.6582,
+                    "equity": 2661.2
+                },
+                {
+                    "date": "2026-04-14",
+                    "x": 0.8919,
+                    "y": 0.7744,
+                    "equity": 2723.48
+                },
+                {
+                    "date": "2026-04-15",
+                    "x": 0.9189,
+                    "y": 0.9154,
+                    "equity": 2799.04
+                },
+                {
+                    "date": "2026-04-16",
+                    "x": 0.9459,
+                    "y": 0.9196,
+                    "equity": 2801.33
+                },
+                {
+                    "date": "2026-04-17",
+                    "x": 0.973,
+                    "y": 0.9936,
+                    "equity": 2841.0
+                },
+                {
+                    "date": "2026-04-20",
+                    "x": 1.0,
+                    "y": 1.0052,
+                    "equity": 2847.22
+                }
+            ]
+        },
+        {
+            "cycle_number": 29,
+            "pressure_level": "medium",
+            "peak_date": "2026-04-20",
+            "peak_equity": 2847.22,
+            "trough_date": "2026-04-21",
+            "trough_equity": 2822.34,
+            "restored_date": "2026-04-22",
+            "restored_equity": 2856.72,
+            "depth_dollars": 24.88,
+            "depth_pct": 0.87,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 1,
+            "total_cycle_days": 2,
+            "restoration_dominance_ratio": 1.0,
+            "restoration_profit_density_dollars_per_day": 24.88,
+            "restoration_profit_density_pct_per_day": 0.8738,
+            "restoration_efficiency_score": 0.7237,
+            "capital_rotation_efficiency": 0.0112,
+            "display": {
+                "pressure_level_display": "Medium",
+                "depth_display": "0.87%",
+                "depth_dollars_display": "$24.88",
+                "restoration_time_display": "1 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "2 business days",
+                "restoration_dominance_ratio_display": "1",
+                "restoration_profit_density_display": "$24.88/day",
+                "restoration_profit_density_pct_display": "0.8738%/day",
+                "restoration_efficiency_score_display": "0.7237",
+                "capital_rotation_efficiency_display": "0.0112"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2026-04-21",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2822.34
+                },
+                {
+                    "date": "2026-04-22",
+                    "x": 1.0,
+                    "y": 1.3818,
+                    "equity": 2856.72
+                }
+            ]
+        },
+        {
+            "cycle_number": 30,
+            "pressure_level": "major",
+            "peak_date": "2026-04-22",
+            "peak_equity": 2856.72,
+            "trough_date": "2026-04-23",
+            "trough_equity": 2755.96,
+            "restored_date": "2026-05-01",
+            "restored_equity": 2909.64,
+            "depth_dollars": 100.76,
+            "depth_pct": 3.53,
+            "pressure_duration_days": 1,
+            "restoration_time_days": 6,
+            "total_cycle_days": 7,
+            "restoration_dominance_ratio": 6.0,
+            "restoration_profit_density_dollars_per_day": 16.79,
+            "restoration_profit_density_pct_per_day": 0.5879,
+            "restoration_efficiency_score": 0.4321,
+            "capital_rotation_efficiency": 0.0451,
+            "display": {
+                "pressure_level_display": "Major",
+                "depth_display": "3.53%",
+                "depth_dollars_display": "$100.76",
+                "restoration_time_display": "6 business days",
+                "pressure_duration_display": "1 business days",
+                "total_cycle_display": "7 business days",
+                "restoration_dominance_ratio_display": "6",
+                "restoration_profit_density_display": "$16.79/day",
+                "restoration_profit_density_pct_display": "0.5879%/day",
+                "restoration_efficiency_score_display": "0.4321",
+                "capital_rotation_efficiency_display": "0.0451"
+            },
+            "restoration_curve": [
+                {
+                    "date": "2026-04-23",
+                    "x": 0.0,
+                    "y": 0.0,
+                    "equity": 2755.96
+                },
+                {
+                    "date": "2026-04-24",
+                    "x": 0.1667,
+                    "y": 0.5956,
+                    "equity": 2815.97
+                },
+                {
+                    "date": "2026-04-27",
+                    "x": 0.3333,
+                    "y": 0.6739,
+                    "equity": 2823.86
+                },
+                {
+                    "date": "2026-04-28",
+                    "x": 0.5,
+                    "y": 0.9427,
+                    "equity": 2850.95
+                },
+                {
+                    "date": "2026-04-29",
+                    "x": 0.6667,
+                    "y": 0.5483,
+                    "equity": 2811.21
+                },
+                {
+                    "date": "2026-04-30",
+                    "x": 0.8333,
+                    "y": 0.9938,
+                    "equity": 2856.1
+                },
+                {
+                    "date": "2026-05-01",
+                    "x": 1.0,
+                    "y": 1.5252,
+                    "equity": 2909.64
+                }
+            ]
+        }
+    ],
+    "current_unresolved_pressure": {
+        "peak_date": "2026-05-01",
+        "peak_equity": 2909.64,
+        "current_date": "2026-05-04",
+        "current_equity": 2906.39,
+        "trough_date": "2026-05-04",
+        "trough_equity": 2906.39,
+        "current_depth_pct": 0.11,
+        "max_depth_pct": 0.11,
+        "business_days_since_peak": 1,
+        "business_days_since_trough": 0,
+        "display": {
+            "current_depth_display": "0.11%",
+            "max_depth_display": "0.11%",
+            "business_days_since_peak_display": "1 business days",
+            "business_days_since_trough_display": "0 business days"
+        }
+    }
+}

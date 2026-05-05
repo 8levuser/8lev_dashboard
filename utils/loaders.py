@@ -13,6 +13,7 @@ MONTHLY_LOG_FILE = DATA_DIR / "monthly_log.json"
 TRADE_LOG_FILE = DATA_DIR / "trade_log.json"
 OPEN_POSITIONS_FILE = DATA_DIR / "open_positions_live.json"
 DEPOSITS_LOG_FILE = DATA_DIR / "deposits_log.json"
+CAPITAL_FLOW_ANALYSIS_FILE = DATA_DIR / "capital_flow_analysis.json"
 
 
 def get_file_modified_time(file_path):
@@ -73,3 +74,6 @@ def load_open_positions_live():
 
 def load_deposits_log():
     return load_json_file(DEPOSITS_LOG_FILE, {})
+
+def load_capital_flow_analysis():
+    return load_json_file(CAPITAL_FLOW_ANALYSIS_FILE, {})

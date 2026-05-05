@@ -1,10 +1,11 @@
 import json
 from pathlib import Path
+from html import escape
 
 import pandas as pd
 import streamlit as st
 
-from utils.loaders import load_daily_summary
+from utils.loaders import load_daily_summary, load_capital_flow_analysis
 
 
 # ============================================================
@@ -97,8 +98,6 @@ html, body {
 
 @media (max-width: 700px) {
     .block-container {
-        p@media (max-width: 700px) {
-    .block-container {
         padding-left: 0.75rem !important;
         padding-right: 0.75rem !important;
         padding-top: 1rem !important;
@@ -108,10 +107,6 @@ html, body {
     h2, h3 {
         margin-top: 0.65rem !important;
         margin-bottom: 0.35rem !important;
-    }
-}adding-left: 0.75rem !important;
-        padding-right: 0.75rem !important;
-        max-width: 100% !important;
     }
 }
 
@@ -136,18 +131,6 @@ def get_display(snapshot, section, key, default="—"):
     if value is None:
         return default
     return value
-
-
-def fmt_currency(value):
-    if value is None or pd.isna(value):
-        return "—"
-    return f"${value:,.2f}"
-
-
-def fmt_signed_currency(value):
-    if value is None or pd.isna(value):
-        return "—"
-    return f"+${abs(value):,.2f}" if value >= 0 else f"-${abs(value):,.2f}"
 
 
 def metric_value_size(value_text):
@@ -199,7 +182,7 @@ def metric_cards(metrics, desktop_columns=3, mobile_columns=2, highlight_last=Fa
         ("Label", "Value"),
         ("Label", "Value", "tone"),
         ("Label", "Value", "tone", "note"),
-        ("Label", "Value", "tone", "note", True),  # golden flair
+        ("Label", "Value", "tone", "note", True),
     ]
     """
 
@@ -259,7 +242,8 @@ def metric_cards(metrics, desktop_columns=3, mobile_columns=2, highlight_last=Fa
     .metric-value {{
         font-weight: 950;
         letter-spacing: -0.4px;
-        line-height: 1.05;
+        line-height: 1.18;
+        padding-bottom: 2px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -270,7 +254,7 @@ def metric_cards(metrics, desktop_columns=3, mobile_columns=2, highlight_last=Fa
         font-size: 11.5px;
         font-weight: 700;
         line-height: 1.2;
-        margin-top: 7px;
+        margin-top: 10px;
         opacity: 0.82;
     }}
 
@@ -296,11 +280,12 @@ def metric_cards(metrics, desktop_columns=3, mobile_columns=2, highlight_last=Fa
             font-size: 18px !important;
             letter-spacing: -0.25px;
             line-height: 1.0;
+            padding-bottom; 2px;
         }}
 
         .metric-note {{
             font-size: 9.5px;
-            margin-top: 4px;
+            margin-top: 7px;
             line-height: 1.1;
         }}
     }}
@@ -499,11 +484,373 @@ def context_card(title, main_text, sub_text=None):
 
     st.html(card_html)
 
+
+def narrative_card(title, text):
+    safe_title = escape(str(title))
+    safe_text = escape(str(text)).replace("\n", "<br>")
+
+    card_html = f"""
+    <style>
+    .narrative-card {{
+        background:
+            radial-gradient(circle at top right, rgba(212, 175, 55, 0.08), transparent 34%),
+            #111814;
+        border: 1px solid rgba(212, 175, 55, 0.24);
+        border-radius: 22px;
+        padding: 17px 16px;
+        margin-bottom: 18px;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
+    }}
+
+    .narrative-title {{
+        color: #D4AF37;
+        font-size: 14px;
+        font-weight: 950;
+        margin-bottom: 10px;
+    }}
+
+    .narrative-text {{
+        color: #CFE8D2;
+        font-size: 14.5px;
+        font-weight: 750;
+        line-height: 1.45;
+    }}
+
+    @media (max-width: 700px) {{
+        .narrative-card {{
+            border-radius: 14px;
+            padding: 11px 10px;
+            margin-bottom: 12px;
+        }}
+
+        .narrative-title {{
+            font-size: 12px;
+            margin-bottom: 7px;
+        }}
+
+        .narrative-text {{
+            font-size: 12px;
+            line-height: 1.35;
+        }}
+    }}
+    </style>
+
+    <div class="narrative-card">
+        <div class="narrative-title">{safe_title}</div>
+        <div class="narrative-text">{safe_text}</div>
+    </div>
+    """
+
+    st.html(card_html)
+
+
+def get_capital_display(capital_flow, group, key, default="—"):
+    value = (
+        capital_flow
+        .get("group_summaries", {})
+        .get(group, {})
+        .get("display", {})
+        .get(key)
+    )
+
+    if value in [None, "N/A"]:
+        return default
+
+    return value
+
+
+def pressure_level_color(level):
+    level = str(level).lower()
+
+    if level == "minor":
+        return "#A5D6A7"
+
+    if level == "medium":
+        return "#D4AF37"
+
+    if level == "major":
+        return "#FFB74D"
+
+    return "#FFFFFF"
+
+
+def capital_flow_cycle_table(cycles, max_rows=30):
+    if not cycles:
+        st.info("No completed downside pressure cycles found.")
+        return
+
+    display_cycles = list(reversed(cycles))[:max_rows]
+    rows_html = ""
+
+    for cycle in display_cycles:
+        display = cycle.get("display", {})
+
+        level = cycle.get("pressure_level", "—")
+        level_display = display.get("pressure_level_display", str(level).title())
+        level_color = pressure_level_color(level)
+
+        rows_html += f"""
+            <div class="cfs-row"
+                data-cycle="{cycle.get("cycle_number", 0)}"
+                data-level="{escape(str(level_display))}"
+                data-peak="{escape(str(cycle.get("peak_date", "")))}"
+                data-trough="{escape(str(cycle.get("trough_date", "")))}"
+                data-restored="{escape(str(cycle.get("restored_date", "")))}"
+                data-depth="{cycle.get("depth_pct", 0)}"
+                data-pressure="{cycle.get("pressure_duration_days", 0)}"
+                data-restore="{cycle.get("restoration_time_days", 0)}"
+                data-cycledays="{cycle.get("total_cycle_days", 0)}"
+                data-rdr="{cycle.get("restoration_dominance_ratio", 0)}"
+            >
+                <div class="muted">{cycle.get("cycle_number", "—")}</div>
+                <div class="level-pill" style="color:{level_color}; border-color:{level_color};">{escape(str(level_display))}</div>
+                <div class="muted">{escape(str(cycle.get("peak_date", "—")))}</div>
+                <div class="muted">{escape(str(cycle.get("trough_date", "—")))}</div>
+                <div class="muted">{escape(str(cycle.get("restored_date", "—")))}</div>
+                <div class="negative">{escape(str(display.get("depth_display", "—")))}</div>
+                <div class="money">{escape(str(display.get("pressure_duration_display", "—")))}</div>
+                <div class="money">{escape(str(display.get("restoration_time_display", "—")))}</div>
+                <div class="money">{escape(str(display.get("total_cycle_display", "—")))}</div>
+                <div class="money">{escape(str(display.get("restoration_dominance_ratio_display", "—")))}</div>
+            </div>
+        """
+
+    table_html = f"""
+    <style>
+    * {{
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
+    }}
+
+    html, body {{
+        margin: 0;
+        padding: 0;
+        background: transparent;
+    }}
+
+    ::-webkit-scrollbar {{
+        width: 6px;
+        height: 6px;
+    }}
+
+    ::-webkit-scrollbar-track {{
+        background: transparent;
+    }}
+
+    ::-webkit-scrollbar-thumb {{
+        background: rgba(212, 175, 55, 0.35);
+        border-radius: 999px;
+    }}
+
+    ::-webkit-scrollbar-thumb:hover {{
+        background: rgba(212, 175, 55, 0.6);
+    }}
+
+    .cfs-shell {{
+        background-color: #111814;
+        border: 1px solid rgba(212, 175, 55, 0.20);
+        border-radius: 22px;
+        padding: 14px;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+    }}
+
+    .cfs-scroll {{
+        max-height: 560px;
+        overflow-x: auto;
+        overflow-y: auto;
+        border-radius: 14px;
+    }}
+
+    .cfs-grid {{
+        width: 100%;
+        min-width: 900px;
+    }}
+
+    .cfs-header,
+    .cfs-row {{
+        display: grid;
+        grid-template-columns: 0.42fr 0.75fr 0.85fr 0.85fr 0.85fr 0.65fr 0.9fr 0.9fr 0.9fr 0.7fr;
+        gap: 8px;
+        align-items: center;
+    }}
+
+    .cfs-header {{
+        padding: 10px 10px 12px 10px;
+        color: #D4AF37;
+        font-weight: 900;
+        font-size: 12px;
+        letter-spacing: 0.4px;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+        position: sticky;
+        top: 0;
+        background: #111814;
+        z-index: 3;
+    }}
+
+    .cfs-header div[data-key] {{
+        cursor: pointer;
+        user-select: none;
+    }}
+
+    .cfs-header div[data-key]:hover {{
+        color: #FFE082;
+    }}
+
+    .sort-indicator {{
+        opacity: 0.75;
+        font-size: 11px;
+        margin-left: 4px;
+    }}
+
+    .cfs-row {{
+        padding: 11px 10px;
+        color: #E8F5E9;
+        font-weight: 750;
+        font-size: 13px;
+        border-bottom: 1px solid rgba(165, 214, 167, 0.08);
+        border-radius: 12px;
+    }}
+
+    .cfs-row:hover {{
+        background-color: rgba(212, 175, 55, 0.055);
+    }}
+
+    .level-pill {{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid;
+        border-radius: 999px;
+        padding: 3px 8px;
+        font-size: 11px;
+        font-weight: 950;
+        text-transform: uppercase;
+        width: fit-content;
+    }}
+
+    .money {{
+        color: #F2FFF4;
+        font-weight: 800;
+    }}
+
+    .muted {{
+        color: #CFE8D2;
+        font-weight: 750;
+    }}
+
+    .negative {{
+        color: #FF5C5C;
+        font-weight: 950;
+    }}
+
+    @media (max-width: 700px) {{
+        .cfs-shell {{
+            border-radius: 18px;
+            padding: 10px;
+        }}
+
+        .cfs-scroll {{
+            max-height: 520px;
+            border-radius: 12px;
+        }}
+
+        .cfs-grid {{
+            min-width: 850px;
+        }}
+
+        .cfs-header {{
+            font-size: 11px;
+        }}
+
+        .cfs-row {{
+            font-size: 12px;
+        }}
+    }}
+    </style>
+
+    <div class="cfs-shell">
+        <div class="cfs-scroll">
+            <div class="cfs-grid" id="capital-flow-table">
+                <div class="cfs-header">
+                    <div data-key="cycle" data-type="number">#<span class="sort-indicator"></span></div>
+                    <div data-key="level" data-type="text">Level<span class="sort-indicator"></span></div>
+                    <div data-key="peak" data-type="text">Peak<span class="sort-indicator"></span></div>
+                    <div data-key="trough" data-type="text">Trough<span class="sort-indicator"></span></div>
+                    <div data-key="restored" data-type="text">Restored<span class="sort-indicator"></span></div>
+                    <div data-key="depth" data-type="number">Depth<span class="sort-indicator"></span></div>
+                    <div data-key="pressure" data-type="number">Pressure<span class="sort-indicator"></span></div>
+                    <div data-key="restore" data-type="number">Restore<span class="sort-indicator"></span></div>
+                    <div data-key="cycledays" data-type="number">Cycle<span class="sort-indicator"></span></div>
+                    <div data-key="rdr" data-type="number">RDR<span class="sort-indicator"></span></div>
+                </div>
+
+                {rows_html}
+            </div>
+        </div>
+    </div>
+
+    <script>
+    const table = document.getElementById("capital-flow-table");
+    const headers = table.querySelectorAll(".cfs-header div[data-key]");
+    let currentSort = {{ key: "cycle", direction: "desc" }};
+
+    headers.forEach(header => {{
+        header.addEventListener("click", () => {{
+            const key = header.dataset.key;
+            const type = header.dataset.type;
+
+            let direction = "asc";
+            if (currentSort.key === key && currentSort.direction === "asc") {{
+                direction = "desc";
+            }}
+
+            currentSort = {{ key, direction }};
+
+            const rows = Array.from(table.querySelectorAll(".cfs-row"));
+
+            rows.sort((a, b) => {{
+                let aVal = a.dataset[key];
+                let bVal = b.dataset[key];
+
+                if (type === "number") {{
+                    aVal = parseFloat(aVal || 0);
+                    bVal = parseFloat(bVal || 0);
+                }} else {{
+                    aVal = String(aVal).toUpperCase();
+                    bVal = String(bVal).toUpperCase();
+                }}
+
+                if (aVal < bVal) return direction === "asc" ? -1 : 1;
+                if (aVal > bVal) return direction === "asc" ? 1 : -1;
+                return 0;
+            }});
+
+            rows.forEach(row => table.appendChild(row));
+
+            headers.forEach(h => {{
+                const indicator = h.querySelector(".sort-indicator");
+                if (indicator) indicator.textContent = "";
+            }});
+
+            const activeIndicator = header.querySelector(".sort-indicator");
+            if (activeIndicator) {{
+                activeIndicator.textContent = direction === "asc" ? "▲" : "▼";
+            }}
+        }});
+    }});
+    </script>
+    """
+
+    st.iframe(table_html, height=650)
+
+
 # ============================================================
 # LOAD DATA
 # ============================================================
 
 snapshot = load_performance_snapshot()
+capital_flow = load_capital_flow_analysis()
 daily_data = load_daily_summary()
 
 daily_df = pd.DataFrame(daily_data)
@@ -826,318 +1173,118 @@ metric_cards([
 
 
 # ============================================================
-# DAILY SUMMARY LOG
+# CAPITAL FLOW STABILITY
 # ============================================================
 
-st.subheader("Daily Summary Log")
+st.subheader("Capital Flow Stability")
 
-DAILY_ROWS_PER_PAGE_OPTIONS = [25, 50, 100, 150, "All"]
-DEFAULT_DAILY_ROWS_PER_PAGE_INDEX = 1  # 0=25, 1=50, 2=100, 3=150, 4=All
-
-daily_display_df = daily_df.copy()
-
-daily_display_df = daily_display_df.rename(columns={
-    "summary_date": "Date",
-    "asset_activity": "Asset Activity",
-    "realized_profit": "Realized Profit",
-    "total_equity": "Total Equity",
-    "deployed_capital": "Deployed Capital",
-    "unsettled_funds": "Unsettled Funds",
-})
-
-daily_display_df = daily_display_df.sort_values("Date", ascending=False).reset_index(drop=True)
-
-# ---------- DAILY LOG PAGINATION ----------
-daily_page_col1, daily_page_col2, daily_page_col3 = st.columns([0.7, 0.7, 2.0])
-
-with daily_page_col1:
-    daily_rows_per_page = st.selectbox(
-        "Rows per page",
-        options=DAILY_ROWS_PER_PAGE_OPTIONS,
-        index=DEFAULT_DAILY_ROWS_PER_PAGE_INDEX,
-        key="daily_summary_rows_per_page",
-    )
-
-if daily_rows_per_page == "All":
-    daily_table_df = daily_display_df.copy()
-    daily_total_pages = 1
-    daily_page_number = 1
+if not capital_flow:
+    st.info("No capital flow analysis found. Run capital_flow_stability.py first.")
 else:
-    daily_total_pages = max(
-        1,
-        (len(daily_display_df) + daily_rows_per_page - 1) // daily_rows_per_page
+    narrative_card(
+        "Downside Pressure Handling",
+        capital_flow.get(
+            "interpretation",
+            "Capital Flow Stability analysis is available."
+        )
     )
 
-    with daily_page_col2:
-        daily_page_number = st.number_input(
-            "Page",
-            min_value=1,
-            max_value=daily_total_pages,
-            value=1,
-            step=1,
-            key="daily_summary_page_number",
+    summary_display = capital_flow.get("summary", {}).get("display", {})
+    pressure_share = capital_flow.get("pressure_share", {})
+
+    metric_cards([
+        (
+            "Completed Pressure Cycles",
+            summary_display.get("completed_cycles_display", "—"),
+            "neutral",
+        ),
+        (
+            "Avg Pressure Depth",
+            summary_display.get("avg_depth_display", "—"),
+            "neutral",
+        ),
+        (
+            "Max Pressure Depth",
+            summary_display.get("max_depth_display", "—"),
+            "negative",
+        ),
+        (
+            "Avg Restoration Time",
+            summary_display.get("avg_restoration_time_display", "—"),
+            "neutral",
+        ),
+        (
+            "Max Restoration Time",
+            summary_display.get("max_restoration_time_display", "—"),
+            "neutral",
+        ),
+        (
+            "Restoration Dominance Ratio",
+            summary_display.get("avg_restoration_dominance_ratio_display", "—"),
+            "neutral",
+            "Restore time / pressure time",
+        ),
+    ], desktop_columns=3, mobile_columns=2)
+
+    metric_cards([
+        (
+            "Depth vs Restoration",
+            summary_display.get("depth_vs_restoration_slope_display", "—"),
+            "neutral",
+            "Days added per 1% pressure",
+            True,
+        ),
+    ], desktop_columns=1, mobile_columns=1)
+
+    section_note(
+        "Grouped by completed downside pressure cycles: minor < 0.50%, medium 0.50%–3.00%, major >= 3.00%."
+    )
+
+    metric_cards([
+        (
+            "Minor Pressure",
+            get_capital_display(capital_flow, "minor", "completed_cycles_display"),
+            "neutral",
+            f"Avg depth {get_capital_display(capital_flow, 'minor', 'avg_depth_display')} | restored {get_capital_display(capital_flow, 'minor', 'avg_restoration_time_display')}",
+        ),
+        (
+            "Medium Pressure",
+            get_capital_display(capital_flow, "medium", "completed_cycles_display"),
+            "gold",
+            f"Avg depth {get_capital_display(capital_flow, 'medium', 'avg_depth_display')} | restored {get_capital_display(capital_flow, 'medium', 'avg_restoration_time_display')}",
+            True,
+        ),
+        (
+            "Major Pressure",
+            get_capital_display(capital_flow, "major", "completed_cycles_display"),
+            "neutral",
+            f"Avg depth {get_capital_display(capital_flow, 'major', 'avg_depth_display')} | restored {get_capital_display(capital_flow, 'major', 'avg_restoration_time_display')}",
+        ),
+    ], desktop_columns=3, mobile_columns=1)
+
+    unresolved = capital_flow.get("current_unresolved_pressure")
+
+    if unresolved:
+        unresolved_display = unresolved.get("display", {})
+
+        context_card(
+            "Current Downside Pressure",
+            unresolved_display.get("current_depth_display", "—"),
+            (
+                f"Current equity is below the latest high by "
+                f"{unresolved_display.get('current_depth_display', '—')}. "
+                f"Peak date: {unresolved.get('peak_date', '—')}. "
+                f"Business days since peak: "
+                f"{unresolved_display.get('business_days_since_peak_display', '—')}."
+            ),
         )
 
-    daily_start_idx = (daily_page_number - 1) * daily_rows_per_page
-    daily_end_idx = daily_start_idx + daily_rows_per_page
-    daily_table_df = daily_display_df.iloc[daily_start_idx:daily_end_idx].copy()
+    st.markdown("### Completed Pressure Cycle Breakdown")
+    section_note(
+        "Most recent cycles shown first. Click a column header to sort. RDR = restoration dominance ratio."
+    )
 
-st.markdown(
-    f"""
-    <div style="
-        color: #A5D6A7;
-        font-size: 12px;
-        font-weight: 700;
-        margin-top: -6px;
-        margin-bottom: 10px;
-    ">
-        Showing {len(daily_table_df)} of {len(daily_display_df)} daily summaries
-        {f"| Page {daily_page_number} of {daily_total_pages}" if daily_rows_per_page != "All" else ""}
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-
-# ---------- CUSTOM DAILY SUMMARY TABLE ----------
-daily_rows_html = ""
-
-for _, row in daily_table_df.iterrows():
-    realized = row.get("Realized Profit")
-    realized_color = "#4CAF50" if pd.notna(realized) and realized >= 0 else "#FF5C5C"
-
-    daily_rows_html += f"""
-            <div class="table-row"
-                data-date="{row.get("Date", "—")}"
-                data-activity="{row.get("Asset Activity", 0)}"
-                data-realized="{realized}"
-                data-equity="{row.get("Total Equity", 0)}"
-                data-deployed="{row.get("Deployed Capital", 0)}"
-                data-unsettled="{row.get("Unsettled Funds", 0)}"
-            >
-                <div class="muted">{row.get("Date", "—")}</div>
-                <div class="muted">{row.get("Asset Activity", "—")}</div>
-                <div class="pl" style="color:{realized_color};">{fmt_signed_currency(realized)}</div>
-                <div class="money">{fmt_currency(row.get("Total Equity"))}</div>
-                <div class="money">{fmt_currency(row.get("Deployed Capital"))}</div>
-                <div class="money">{fmt_currency(row.get("Unsettled Funds"))}</div>
-            </div>
-    """
-
-daily_table_html = f"""
-<style>
-* {{
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", sans-serif;
-}}
-
-html, body {{
-    margin: 0;
-    padding: 0;
-    background: transparent;
-}}
-
-::-webkit-scrollbar {{
-    width: 6px;
-    height: 6px;
-}}
-
-::-webkit-scrollbar-track {{
-    background: transparent;
-}}
-
-::-webkit-scrollbar-thumb {{
-    background: rgba(212, 175, 55, 0.35);
-    border-radius: 999px;
-}}
-
-::-webkit-scrollbar-thumb:hover {{
-    background: rgba(212, 175, 55, 0.6);
-}}
-
-.table-shell {{
-    background-color: #111814;
-    border: 1px solid rgba(212, 175, 55, 0.20);
-    border-radius: 22px;
-    padding: 14px;
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
-}}
-
-.table-scroll {{
-    max-height: 650px;
-    overflow-x: auto;
-    overflow-y: auto;
-    border-radius: 14px;
-}}
-
-.table-grid {{
-    width: 100%;
-    min-width: 660px;
-}}
-
-.table-row,
-.table-header {{
-    display: grid;
-    grid-template-columns: 1fr 0.8fr 1fr 1fr 1.15fr 1.15fr;
-    gap: 8px;
-    align-items: center;
-}}
-
-.table-header {{
-    padding: 10px 10px 12px 10px;
-    color: #D4AF37;
-    font-weight: 900;
-    font-size: 13px;
-    letter-spacing: 0.45px;
-    text-transform: uppercase;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.22);
-    position: sticky;
-    top: 0;
-    background: #111814;
-    z-index: 3;
-}}
-
-.table-header div {{
-    cursor: pointer;
-    user-select: none;
-}}
-
-.table-header div:hover {{
-    color: #FFE082;
-}}
-
-.sort-indicator {{
-    opacity: 0.75;
-    font-size: 11px;
-    margin-left: 4px;
-}}
-
-.table-row {{
-    padding: 11px 10px;
-    color: #E8F5E9;
-    font-weight: 700;
-    font-size: 14px;
-    border-bottom: 1px solid rgba(165, 214, 167, 0.08);
-    border-radius: 12px;
-    transition: background-color 0.12s ease;
-}}
-
-.table-row:hover {{
-    background-color: rgba(212, 175, 55, 0.055);
-}}
-
-.money {{
-    color: #F2FFF4;
-    font-weight: 750;
-}}
-
-.muted {{
-    color: #CFE8D2;
-    font-weight: 750;
-}}
-
-.pl {{
-    font-weight: 900;
-}}
-
-@media (max-width: 700px) {{
-    .table-shell {{
-        border-radius: 18px;
-        padding: 10px;
-    }}
-
-    .table-scroll {{
-        max-height: 620px;
-        border-radius: 12px;
-    }}
-
-    .table-grid {{
-        width: 100%;
-        min-width: 620px;
-    }}
-
-    .table-row,
-    .table-header {{
-        grid-template-columns: 1fr 0.75fr 1fr 1fr 1.1fr 1.1fr;
-        gap: 6px;
-    }}
-
-    .table-header {{
-        font-size: 12px;
-    }}
-
-    .table-row {{
-        font-size: 13px;
-    }}
-}}
-</style>
-
-<div class="table-shell">
-    <div class="table-scroll">
-        <div class="table-grid" id="daily-summary-table">
-            <div class="table-header">
-                <div data-key="date" data-type="text">Date<span class="sort-indicator"></span></div>
-                <div data-key="activity" data-type="number">Activity<span class="sort-indicator"></span></div>
-                <div data-key="realized" data-type="number">Realized<span class="sort-indicator"></span></div>
-                <div data-key="equity" data-type="number">Equity<span class="sort-indicator"></span></div>
-                <div data-key="deployed" data-type="number">Deployed<span class="sort-indicator"></span></div>
-                <div data-key="unsettled" data-type="number">Unsettled<span class="sort-indicator"></span></div>
-            </div>
-
-            {daily_rows_html}
-        </div>
-    </div>
-</div>
-
-<script>
-const table = document.getElementById("daily-summary-table");
-const headers = table.querySelectorAll(".table-header div[data-key]");
-let currentSort = {{ key: null, direction: "asc" }};
-
-headers.forEach(header => {{
-    header.addEventListener("click", () => {{
-        const key = header.dataset.key;
-        const type = header.dataset.type;
-
-        let direction = "asc";
-        if (currentSort.key === key && currentSort.direction === "asc") {{
-            direction = "desc";
-        }}
-
-        currentSort = {{ key, direction }};
-
-        const rows = Array.from(table.querySelectorAll(".table-row"));
-
-        rows.sort((a, b) => {{
-            let aVal = a.dataset[key];
-            let bVal = b.dataset[key];
-
-            if (type === "number") {{
-                aVal = parseFloat(aVal || 0);
-                bVal = parseFloat(bVal || 0);
-            }} else {{
-                aVal = String(aVal).toUpperCase();
-                bVal = String(bVal).toUpperCase();
-            }}
-
-            if (aVal < bVal) return direction === "asc" ? -1 : 1;
-            if (aVal > bVal) return direction === "asc" ? 1 : -1;
-            return 0;
-        }});
-
-        rows.forEach(row => table.appendChild(row));
-
-        headers.forEach(h => {{
-            const indicator = h.querySelector(".sort-indicator");
-            if (indicator) indicator.textContent = "";
-        }});
-
-        const activeIndicator = header.querySelector(".sort-indicator");
-        if (activeIndicator) {{
-            activeIndicator.textContent = direction === "asc" ? "▲" : "▼";
-        }}
-    }});
-}});
-</script>
-"""
-
-st.iframe(daily_table_html, height=740)
+    capital_flow_cycle_table(
+        capital_flow.get("cycles", []),
+        max_rows=30
+    )
