@@ -9,7 +9,8 @@ from utils.parsers import get_latest_daily_summary, get_latest_activity_trades
 
 # ============================================================
 # DAILY SUMMARY CARD FONT CONTROLS
-# Change these numbers until the Daily Summary card looks right.
+# Desktop values.
+# Mobile resizing is handled inside the card CSS below.
 # ============================================================
 
 SUMMARY_TITLE_SIZE = 20          # "Daily Summary | 2026-04-23"
@@ -25,9 +26,9 @@ SUMMARY_CARD_PADDING = 20        # Inner padding inside the card
 SUMMARY_GRID_GAP = 16            # Space between data blocks
 
 # Desktop card can be shorter because the grid is 2 columns.
-# Mobile card needs more height because the grid stacks into 1 column.
+# Mobile card is now reduced because the mobile CSS shrinks the card.
 SUMMARY_CARD_HEIGHT_DESKTOP = 300
-SUMMARY_CARD_HEIGHT_MOBILE = 420
+SUMMARY_CARD_HEIGHT_MOBILE = 225
 
 
 st.markdown("""
@@ -129,7 +130,22 @@ iframe {
     .block-container {
         padding-left: 0.75rem !important;
         padding-right: 0.75rem !important;
+        padding-top: 2.25rem !important;
         max-width: 100% !important;
+    }
+
+    h1 {
+        font-size: 1.75rem !important;
+        margin-bottom: 0.65rem !important;
+    }
+
+    h2, h3 {
+        margin-top: 0.65rem !important;
+        margin-bottom: 0.35rem !important;
+    }
+
+    [data-testid="stVerticalBlock"] {
+        gap: 0.45rem !important;
     }
 }
 </style>
@@ -220,7 +236,7 @@ NAV_BUTTON_FONT_SIZE = 13
 NAV_BUTTON_RADIUS = 6
 
 NAV_MOBILE_BREAKPOINT = 760
-NAV_MOBILE_BUTTON_HEIGHT = 32
+NAV_MOBILE_BUTTON_HEIGHT = 30
 NAV_MOBILE_BUTTON_FONT_SIZE = 12
 
 # Controls button spacing.
@@ -230,8 +246,8 @@ NAV_COLUMN_LAYOUT = [0.052, 0.052, 0.0452, 0.86]
 
 # Controls button spacing below the summary card.
 # Since the buttons are below an iframe, SUMMARY_CARD_HEIGHT is still the main control.
-NAV_TOP_MARGIN = 0
-NAV_BOTTOM_MARGIN = 12
+NAV_TOP_MARGIN = -8
+NAV_BOTTOM_MARGIN = 6
 
 
 st.markdown(f"""
@@ -433,8 +449,44 @@ body {{
 }}
 
 @media (max-width: 600px) {{
+    .summary-card {{
+        border-radius: 14px;
+        padding: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+    }}
+
+    .summary-title {{
+        font-size: 14px;
+        margin-bottom: 10px;
+        line-height: 1.1;
+    }}
+
     .summary-grid {{
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+    }}
+
+    .label {{
+        font-size: 10.5px;
+        margin-bottom: 2px;
+        line-height: 1.05;
+    }}
+
+    .realized-profit-value,
+    .asset-activity-value {{
+        font-size: 18px;
+        line-height: 1.0;
+    }}
+
+    .total-equity-value,
+    .deployed-capital-value {{
+        font-size: 16px;
+        line-height: 1.0;
+    }}
+
+    .unsettled-funds-value {{
+        font-size: 15px;
+        line-height: 1.0;
     }}
 }}
 </style>
@@ -628,10 +680,62 @@ else:
     @media (max-width: 760px) {
         .activity-grid {
             grid-template-columns: 1fr;
+            gap: 9px;
+            padding: 1px;
         }
 
         .activity-card {
+            border-radius: 13px;
+            padding: 10px;
             min-height: auto;
+            box-shadow: none;
+        }
+
+        .activity-card:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .activity-top {
+            gap: 7px;
+            margin-bottom: 7px;
+        }
+
+        .symbol {
+            font-size: 15px;
+            letter-spacing: 0.2px;
+        }
+
+        .return-pill {
+            padding: 3px 6px;
+            font-size: 11.5px;
+        }
+
+        .profit {
+            font-size: 18px;
+            letter-spacing: -0.25px;
+            margin-bottom: 8px;
+            line-height: 1.0;
+        }
+
+        .details {
+            gap: 6px;
+            margin-top: 4px;
+        }
+
+        .detail-box {
+            border-radius: 8px;
+            padding: 6px 7px;
+        }
+
+        .detail-label {
+            font-size: 9px;
+            margin-bottom: 2px;
+            letter-spacing: 0.25px;
+        }
+
+        .detail-value {
+            font-size: 11.5px;
         }
     }
     </style>
@@ -660,7 +764,8 @@ else:
             "rgba(76, 175, 80, 0.12)"
             if is_positive
             else "rgba(255, 92, 92, 0.12)"
-        )        
+        )
+
         sell_price = trade["sell_price"]
         buy_price = trade["buy_price"]
         qty = int(trade["quantity"])
