@@ -279,8 +279,8 @@ def metric_cards(metrics, desktop_columns=3, mobile_columns=2, highlight_last=Fa
         .metric-value {{
             font-size: 18px !important;
             letter-spacing: -0.25px;
-            line-height: 1.0;
-            padding-bottom; 2px;
+            line-height: 1.16;
+            padding-bottom: 2px;
         }}
 
         .metric-note {{
